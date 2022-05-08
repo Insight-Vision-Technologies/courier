@@ -1,0 +1,481 @@
+<div class="p-5 w-100">
+    <div class="row align-items-center">
+        <div class="col-4">
+            <h3 class="mb-0">Settings Management</h3>
+        </div>
+        <div class="col-8 text-right">
+
+            <!-- <a href="/" class="btn btn-sm btn-danger">System status</a> -->
+
+        </div>
+    </div>
+    <div class="card-body">
+        <form #form="ngForm" (ngSubmit)="addSiteSettingsForm(form)" class="m-3 container-fluid" method="post" enctype="multipart/form-data">
+            <mat-tab-group>
+                <mat-tab>
+                    <ng-template mat-tab-label>
+                        <i class="fa-solid fa-circle-info"></i>Site Info
+                    </ng-template>
+
+                    <div class="card mb-4">
+                        <div class="card-header">Site information</div>
+                        <div class="card-body">
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label for="siteName">Site Name</label>
+                                        <input type="text" class="form-control" name="siteName" [(ngModel)]="adminSetting.siteName" #siteName="ngModel" [ngClass]="{ 'is-invalid':form.submitted && siteName.invalid || siteName.touched }" placeholder="Write Site Name" required>
+                                        <div *ngIf="form.submitted && siteName.invalid || siteName.touched" class="invalid-feedback error-msg form-group">
+                                            <div *ngIf="siteName.errors?.required">Site Name is required</div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label for="siteDescription">Site Description</label>
+                                        <input type="text" class="form-control" name="siteDescription" [(ngModel)]="adminSetting.siteDescription" #siteDescription="ngModel" [ngClass]="{ 'is-invalid':form.submitted && siteDescription.invalid || siteDescription.touched }" placeholder="Write Site Description"
+                                            required>
+                                        <div *ngIf="form.submitted && siteDescription.invalid || siteDescription.touched" class="invalid-feedback error-msg form-group">
+                                            <div *ngIf="siteDescription.errors?.required">Site Description Name is required</div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label for="facebookLink">Facebook Link</label>
+                                        <input type="text" class="form-control" name="facebookLink" [(ngModel)]="adminSetting.facebookLink" #facebookLink="ngModel" [ngClass]="{ 'is-invalid':form.submitted && facebookLink.invalid || facebookLink.touched }" placeholder="Write Facebook Link" required>
+                                        <div *ngIf="form.submitted && facebookLink.invalid || facebookLink.touched" class="invalid-feedback error-msg form-group">
+                                            <div *ngIf="facebookLink.errors?.required">Facebook Link is required</div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label for="instagramLink">Instagram Link</label>
+                                        <input type="text" class="form-control" name="instagramLink" [(ngModel)]="adminSetting.instagramLink" #instagramLink="ngModel" [ngClass]="{ 'is-invalid':form.submitted && instagramLink.invalid || instagramLink.touched }" placeholder="Write Instagram Link"
+                                            required>
+                                        <div *ngIf="form.submitted && instagramLink.invalid || instagramLink.touched" class="invalid-feedback error-msg form-group">
+                                            <div *ngIf="instagramLink.errors?.required">Instagram Link is required</div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 text-center">
+                                    <div class="form-group">
+                                        <button type="submit" class="btn btn-block mybtn btn-primary tx-tfm text-light btn-shadow">
+                        Save Changes
+                      </button>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+                        </div>
+                    </div>
+
+                </mat-tab>
+                <mat-tab>
+                    <ng-template mat-tab-label>
+                        <i class="fa-solid fa-image"></i> Images
+                    </ng-template>
+                    <div class="card mb-4">
+                        <div class="card-header">Images</div>
+                        <div class="card-body">
+                            <div class="container">
+                                <div class="row justify-content-center">
+                                    <div class="col-md-12">
+                                        <div class="card-body1">
+                                            <div class="card-header">Images</div>
+
+                                            <input type="hidden" name="_method" value="put" />
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <div class="form-group text-center">
+                                                        <label class="form-control-label" for="input-name">Site Logo</label
+                        >
+                        <p class="mb-4">
+                          <input
+                            type="checkbox"
+                            name="site_logo_dark"
+                            class="form-check-input"
+                          />
+                        </p>
+
+                        <div class="text-center mt-2">
+                          <div class="form-group">
+                            <label class="hoverable" for="fileInput1">
+                              <img
+                                [src]="
+                                  url_logo
+                                    ? url_logo
+                                    : imageUrl + 'settings_img/' + adminSetting.logoWhite
+                                "
+                              />
+                              <div class="hover-text text-black">
+                                Choose file
+                              </div>
+                              <div class="background"></div>
+                            </label>
+                                                        <input id="fileInput1" type="file" accept="image/*" (change)="onSelectFileLogo($event)" />
+                                                    </div>
+                                                    <div>
+                                                        <button *ngIf="url_logo" class="btn btn-primary" (click)="deleteLogo()">
+                              Remove
+                            </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group text-center">
+                                                <label class="form-control-label" for="input-name">Site Logo Dark</label
+                        >
+                        <p class="mb-4">
+                          <input
+                            type="checkbox"
+                            name="site_logo_dark"
+                            class="form-check-input"
+                          />
+                        </p>
+
+                        <div class="text-center mt-2">
+                          <div class="form-group">
+                            <label class="hoverable" for="fileInput2">
+                              <img
+                                [src]="
+                                  url_logo_dark
+                                    ? url_logo_dark
+                                    : imageUrl +'settings_img/' + adminSetting.logoDark
+                                "
+                              />
+                              <div class="hover-text text-black">
+                                Choose file
+                              </div>
+                              <div class="background"></div>
+                            </label>
+                                                <input id="fileInput2" type="file" accept="image/*" (change)="onSelectFileLogoDark($event)" />
+                                            </div>
+                                            <div>
+                                                <button *ngIf="url_logo_dark" class="btn btn-primary" (click)="deleteLogoDark()">
+                              Remove
+                            </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group text-center">
+                                        <label class="form-control-label" for="input-name">Default Image</label
+                        >
+                        <p class="mb-4">
+                          <input
+                            type="checkbox"
+                            name="site_logo_dark"
+                            class="form-check-input"
+                          />
+                        </p>
+
+                        <div class="text-center mt-2">
+                          <div class="form-group">
+                            <label class="hoverable" for="fileInput3">
+                              <img
+                                [src]="
+                                  url_default_image
+                                    ? url_default_image
+                                    : imageUrl +'settings_img/' + adminSetting.defaultImage
+                                "
+                              />
+                              <div class="hover-text text-black">
+                                Choose file
+                              </div>
+                              <div class="background"></div>
+                            </label>
+                                        <input id="fileInput3" type="file" accept="image/*" (change)="onSelectFileDefaultImage($event)" />
+                                    </div>
+                                    <div>
+                                        <button *ngIf="url_default_image" class="btn btn-primary" (click)="deleteDefaultImage()">
+                              Remove
+                            </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group text-center">
+                                <label class="form-control-label" for="input-name">Cover Image</label
+                        >
+                        <p class="mb-4">
+                          <input
+                            type="checkbox"
+                            name="site_logo_dark"
+                            class="form-check-input"
+                          />
+                        </p>
+
+                        <div class="text-center mt-2">
+                          <div class="form-group">
+                            <label class="hoverable" for="fileInput4">
+                              <img
+                                [src]="
+                                  url_cover_image
+                                    ? url_cover_image
+                                    : imageUrl +'settings_img/' + adminSetting.coverImage
+                                "
+                              />
+                              <div class="hover-text text-black">
+                                Choose file
+                              </div>
+                              <div class="background"></div>
+                            </label>
+                                <input id="fileInput4" type="file" accept="image/*" (change)="onSelectFileCoverImage($event)" />
+                            </div>
+                            <div>
+                                <button *ngIf="url_cover_image" class="btn btn-primary" (click)="deleteCoverImage()">
+                              Remove
+                            </button>
+                            </div>
+                        </div>
+                    </div>
+    </div>
+    <div class="col-md-4">
+        <div class="form-group text-center">
+            <label class="form-control-label" for="input-name">Favicon</label
+                        >
+                        <p class="mb-4">
+                          <input
+                            type="checkbox"
+                            name="site_logo_dark"
+                            class="form-check-input"
+                          />
+                        </p>
+
+                        <div class="text-center mt-2">
+                          <div class="form-group">
+                            <label class="hoverable" for="fileInput5">
+                              <img
+                                [src]="
+                                  url_favicon_icon
+                                    ? url_favicon_icon
+                                    : imageUrl +'settings_img/' + adminSetting.faviconIcon
+                                "
+                              />
+                              <div class="hover-text text-black">
+                                Choose file
+                              </div>
+                              <div class="background"></div>
+                            </label>
+            <input id="fileInput5" type="file" accept="image/*" (change)="onSelectFileFaviconIcon($event)" />
+        </div>
+        <div>
+            <button *ngIf="url_favicon_icon" class="btn btn-primary" (click)="deleteFaviconIcon()">
+                              Remove
+                            </button>
+        </div>
+    </div>
+</div>
+</div>
+<div class="col-md-4">
+    <div class="form-group text-center">
+        <label class="form-control-label" for="input-name">Front Image</label
+                        >
+                        <p class="mb-4">
+                          <input
+                            type="checkbox"
+                            name="site_logo_dark"
+                            class="form-check-input"
+                          />
+                        </p>
+
+                        <div class="text-center mt-2">
+                          <div class="form-group">
+                            <label class="hoverable" for="fileInput6">
+                              <img
+                                [src]="
+                                  url_front_image
+                                    ? url_front_image
+                                    : imageUrl +'settings_img/' + adminSetting.frontImage
+                                "
+                              />
+                              <div class="hover-text text-black">
+                                Choose file
+                              </div>
+                              <div class="background"></div>
+                            </label>
+        <input id="fileInput6" type="file" accept="image/*" (change)="onSelectFileFrontImage($event)" />
+    </div>
+    <div>
+        <button *ngIf="url_front_image" class="btn btn-primary" (click)="deleteFrontImage()">
+                              Remove
+                            </button>
+    </div>
+</div>
+</div>
+</div>
+<div class="col-md-12 text-center mb-3">
+    <button type="submit" class="btn btn-block mybtn btn-primary tx-tfm text-light btn-shadow">
+                        Save Changes
+                      </button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</mat-tab>
+
+<mat-tab>
+    <ng-template mat-tab-label>
+        <i class="fa-solid fa-gears"></i>Setup
+    </ng-template>
+    <div class="card mb-4">
+        <div class="card-header">Setup</div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-12">
+                    <h4 class="display-4 mb-0">System</h4>
+                </div>
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label for="hostName">Host Name</label>
+                        <input type="text" class="form-control" name="hostName" [(ngModel)]="adminSetting.hostName" #hostName="ngModel" [ngClass]="{ 'is-invalid':form.submitted && hostName.invalid || hostName.touched }" placeholder="Write Host Name" required>
+                        <div *ngIf="form.submitted && hostName.invalid || hostName.touched" class="invalid-feedback error-msg form-group">
+                            <div *ngIf="hostName.errors?.required">Host Name is required</div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label for="hostEmail">Host Email</label>
+                        <input type="email" class="form-control" name="hostEmail" [(ngModel)]="adminSetting.hostEmail" #hostEmail="ngModel" [ngClass]="{ 'is-invalid':form.submitted && hostEmail.invalid || hostEmail.touched }" placeholder="Write Host Email" required>
+                        <div *ngIf="form.submitted && hostEmail.invalid || hostEmail.touched" class="invalid-feedback error-msg form-group">
+                            <div *ngIf="hostEmail.errors?.required">Host Email is required</div>
+                            <div *ngIf="hostEmail.errors?.email">Must be a valid email address</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label for="hostPassword">Host Password</label>
+                        <input type="text" class="form-control" name="hostPassword" [(ngModel)]="adminSetting.hostPassword" #hostPassword="ngModel" [ngClass]="{ 'is-invalid':form.submitted && hostPassword.invalid || hostPassword.touched }" placeholder="Write Host Password" required>
+                        <div *ngIf="form.submitted && hostPassword.invalid || hostPassword.touched" class="invalid-feedback error-msg form-group">
+                            <div *ngIf="hostPassword.errors?.required">Host Password is required</div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label for="host">Host</label>
+                        <input type="text" class="form-control" name="host" [(ngModel)]="adminSetting.host" #host="ngModel" [ngClass]="{ 'is-invalid':form.submitted && host.invalid || host.touched }" placeholder="Write Host" required>
+                        <div *ngIf="form.submitted && host.invalid || host.touched" class="invalid-feedback error-msg form-group">
+                            <div *ngIf="host.errors?.required">Host is required</div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label for="port">Port</label>
+                        <input type="text" class="form-control" name="port" [(ngModel)]="adminSetting.port" #port="ngModel" [ngClass]="{ 'is-invalid':form.submitted && port.invalid || port.touched }" placeholder="Write Port" required>
+                        <div *ngIf="form.submitted && port.invalid || port.touched" class="invalid-feedback error-msg form-group">
+                            <div *ngIf="port.errors?.required">Port is required</div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12 text-center">
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-block mybtn btn-primary tx-tfm text-light btn-shadow">
+                        Save Changes
+                      </button>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</mat-tab>
+
+<mat-tab>
+    <ng-template mat-tab-label>
+        <i class="fa-solid fa-coins"></i> Finance
+    </ng-template>
+    <div class="card mb-4">
+        <div class="card-header">Finance</div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label for="stripeApiKey">Stripe Api Key</label>
+                        <input type="text" class="form-control" name="stripeApiKey" [(ngModel)]="adminSetting.stripeApiKey" #stripeApiKey="ngModel" [ngClass]="{ 'is-invalid':form.submitted && stripeApiKey.invalid || stripeApiKey.touched }" placeholder="Write Stripe Api Key"
+                            required>
+                        <div *ngIf="form.submitted && stripeApiKey.invalid || stripeApiKey.touched" class="invalid-feedback error-msg form-group">
+                            <div *ngIf="stripeApiKey.errors?.required">Stripe Api Key is required</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label for="stripeApiSecretKey">Stripe Api Secret Key</label>
+                        <input type="text" class="form-control" name="stripeApiSecretKey" [(ngModel)]="adminSetting.stripeApiSecretKey" #stripeApiSecretKey="ngModel" [ngClass]="{ 'is-invalid':form.submitted && stripeApiSecretKey.invalid || stripeApiSecretKey.touched }" placeholder="Write Stripe Api Secret Key"
+                            required>
+                        <div *ngIf="form.submitted && stripeApiSecretKey.invalid || stripeApiSecretKey.touched" class="invalid-feedback error-msg form-group">
+                            <div *ngIf="stripeApiSecretKey.errors?.required">Stripe Api Secret Key is required</div>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label for="twilioAccountId">Twilio Account Id</label>
+                        <input type="text" class="form-control" name="twilioAccountId" [(ngModel)]="adminSetting.twilioAccountId" #twilioAccountId="ngModel" [ngClass]="{ 'is-invalid':form.submitted && twilioAccountId.invalid || twilioAccountId.touched }" placeholder="Write Twilio Account Id"
+                            required>
+                        <div *ngIf="form.submitted && twilioAccountId.invalid || twilioAccountId.touched" class="invalid-feedback error-msg form-group">
+                            <div *ngIf="twilioAccountId.errors?.required">Twilio Account Id is required</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label for="twilioAuthToken">Twilio Auth Token</label>
+                        <input type="text" class="form-control" name="twilioAuthToken" [(ngModel)]="adminSetting.twilioAuthToken" #twilioAuthToken="ngModel" [ngClass]="{ 'is-invalid':form.submitted && twilioAuthToken.invalid || twilioAuthToken.touched }" placeholder="Write Twilio Auth Token"
+                            required>
+                        <div *ngIf="form.submitted && twilioAuthToken.invalid || twilioAuthToken.touched" class="invalid-feedback error-msg form-group">
+                            <div *ngIf="twilioAuthToken.errors?.required">Twilio Auth Token is required</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label for="twilioMobileNo">Twilio Mobile No.</label>
+                        <input type="text" class="form-control" name="twilioMobileNo" [(ngModel)]="adminSetting.twilioMobileNo" #twilioMobileNo="ngModel" [ngClass]="{ 'is-invalid':form.submitted && twilioMobileNo.invalid || twilioMobileNo.touched }" placeholder="Write Twilio Mobile No"
+                            required>
+                        <div *ngIf="form.submitted && twilioMobileNo.invalid || twilioMobileNo.touched" class="invalid-feedback error-msg form-group">
+                            <div *ngIf="twilioMobileNo.errors?.required">Twilio Mobile No is required</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12 text-center">
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-block mybtn btn-primary tx-tfm text-light btn-shadow">
+                        Save Changes
+                      </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</mat-tab>
+</mat-tab-group>
+</form>
+</div>
+</div>

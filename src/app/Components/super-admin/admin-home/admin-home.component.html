@@ -1,0 +1,180 @@
+<div class="p-5 w-100 content">
+    <div class="content">
+        <div class="row">
+            <div class="col-sm-4">
+
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col">
+                                <h5 class="card-title">Orders</h5>
+                                <span class="h2 font-weight-bold mb-0">{{orderCount}}</span>
+                            </div>
+                            <div class="col-auto">
+                                <div class="icon icon-shape bg-yellow text-white rounded-circle shadow">
+                                    <i class="fas fa-shopping-basket"></i>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-sm-4">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col">
+                                <h5 class="card-title">Income</h5>
+                                <span class="h2 font-weight-bold mb-0">0</span>
+                            </div>
+                            <div class="col-auto">
+                                <div class="icon icon-shape bg-yellow text-white rounded-circle shadow">
+                                    <!-- <i class="fas fa-shopping-basket"></i> -->
+                                    <i class="fa-solid fa-money-bill-trend-up"></i>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-sm-4">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col">
+                                <h5 class="card-title">Courires</h5>
+                                <span class="h2 font-weight-bold mb-0">{{couriersCount}}</span>
+                            </div>
+                            <div class="col-auto">
+                                <div class="icon icon-shape bg-yellow text-white rounded-circle shadow">
+
+                                    <i class="fa-solid fa-truck"></i>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col-sm-4">
+
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col">
+                                <h5 class="card-title">Vehichles</h5>
+                                <span class="h2 font-weight-bold mb-0">{{vehicalesCount}}</span>
+                            </div>
+                            <div class="col-auto">
+                                <div class="icon icon-shape bg-yellow text-white rounded-circle shadow">
+                                    <i class="fa-solid fa-car"></i>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-sm-4">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col">
+                                <h5 class="card-title">Total Rating</h5>
+                                <span class="h2 font-weight-bold mb-0">{{countTotalRate}}</span>
+                            </div>
+                            <div class="col-auto">
+                                <div class="icon icon-shape bg-yellow text-white rounded-circle shadow">
+                                    <i class="fa-solid fa-star-half-stroke"></i>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-sm-4">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col">
+                                <h5 class="card-title">Users</h5>
+                                <span class="h2 font-weight-bold mb-0">{{userCount}}</span>
+                            </div>
+                            <div class="col-auto">
+                                <div class="icon icon-shape bg-yellow text-white rounded-circle shadow">
+                                    <i class="fa-solid fa-users"></i>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+
+
+        <div class="row flex-grow">
+
+            <div class="col-lg-12 col-md-12">
+                <div class="card">
+                    <div class="card-headercard-header-warning" style="    background: linear-gradient(60deg, #ef5350, #e53935);
+                box-shadow: 0 1px 10px 0 rgb(238 77 71); ">
+                        <h4 class="card-title" style="color: #eee; float: left;">Active orders</h4>
+                    </div>
+                    <div class="card-body table-responsive">
+                        <table class="table table-hover">
+                            <thead class="text-warning">
+                                <th>ID</th>
+                                <th class="xx">Order Date</th>
+                                <th class="xx">Shipped Date</th>
+                                <th>Status</th>
+                                <th class="xx">Driver</th>
+                                <th class="xx">Courires</th>
+                                <th>Total Amount</th>
+
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let orderList of orderList">
+                                    <td>{{orderList.orderNumber}}</td>
+                                    <td class="xx">{{orderList.createdOn| date:'d/M/yy'}}</td>
+                                    <td *ngIf="orderList.expectionDate==null" class="xx">xx</td>
+                                    <td *ngIf="orderList.expectionDate!=null" class="xx">{{orderList.expectionDate| date:'d/M/yy'}}</td>
+                                    <td *ngIf="orderList.status==0"><span class="badge bg-dark rounded-pill">{{ 'pending' }}</span></td>
+                                    <td *ngIf="orderList.status==1"><span class="badge bg-dark rounded-pill">{{ 'Confirmed' }}</span></td>
+                                    <td *ngIf="orderList.status==2"><span class="badge bg-secondary rounded-pill">{{ 'Ready For Pickup' }}</span></td>
+                                    <!-- <td *ngIf="orderList.status==2"><span class="badge bg-primary rounded-pill">{{ 'Picked By Courier' }}</span></td> -->
+                                    <td *ngIf="orderList.status==3"><span class="badge bg-warning rounded-pill">{{ 'On The Way' }}</span></td>
+                                    <td *ngIf="orderList.status==4"><span class="badge bg-primary rounded-pill">{{ 'Delivered' }}</span></td>
+                                    <td *ngIf="orderList.status==5"><span class="badge bg-success rounded-pill">{{ 'Done' }}</span></td>
+                                    <td>{{orderList.driverName}}</td>
+                                    <td class="xx">{{orderList.companyName}}</td>
+                                    <td class="xx">{{orderList.amount}}</td>
+                                </tr>
+
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>

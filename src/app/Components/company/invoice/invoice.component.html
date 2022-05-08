@@ -1,0 +1,145 @@
+<div class="p-5 w-100" id="invoice">
+
+
+    <div class="row common">
+        <div class="col-md-6">
+            <h3>Invoice#{{orderDetails.orderNumber}} </h3>
+            <p><img src="/assets/img/bar-code.png"></p>
+            <p>{{orderDetails.orderNumber}}</p>
+        </div>
+        <div class="col-md-6">
+            <p class="align-date">Date: {{orderDetails.createdOn | date: "dd:MMM:yyyy"}}</p>
+        </div>
+    </div>
+
+    <div class="row common">
+        <div class="col-md-4">
+            <p><b>From: </b>{{orderDetails.from}}</p>
+            <p><b>Name: </b>{{UserInfo.name}}</p>
+            <p><b>Address: </b>{{UserInfo.addressDetails}}</p>
+            <p><b>Phone: </b>{{UserInfo.phone}}</p>
+            <p><b>Email: </b>{{UserInfo.email}}</p>
+        </div>
+        <div class="col-md-4">
+            <p><b>To: </b>{{orderDetails.to}}</p>
+            <p><b>Name: </b>{{orderDetails.reciverName}}</p>
+            <p><b>Address: </b>{{orderDetails.reciverAddress}}</p>
+            <p><b>Phone: </b>{{orderDetails.reciverPhone}}</p>
+            <p><b>Email: </b>{{orderDetails.reciverEmail}}</p>
+        </div>
+        <div class="col-md-4">
+            <!-- <p><b>Order Id: </b>#{{orderDetails.orderNumber}}</p> -->
+            <p *ngIf="orderDetails.paymentMethod==0"><b>Payment Type:</b>Cash</p>
+            <p *ngIf="orderDetails.paymentMethod==1"><b>Payment Type:</b>Visa</p>
+        </div>
+    </div>
+    <hr>
+    <!-- <div class="mat-elevation-z8 container py-4 "> -->
+    <div class="card  bootstrap snippets bootdey">
+        <div class="card-header">
+            Payment Summary </div>
+        <div class="card-body  row">
+            <div class="col-md-12">
+                <div class="invoice-wrapper">
+                    <div class="payment-info">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <span>Payment No.</span>
+                                <strong>434334343</strong>
+                            </div>
+                            <div class="col-sm-6 text-right">
+                                <span>Payment Date</span>
+                                <strong>Jul 09, 2014 - 12:20 pm</strong>
+                            </div>
+                        </div>
+                    </div>
+
+                    <br>
+                    <div class="line-items">
+                        <!-- <div class="headers clearfix">
+                            <div class="row">
+                                <div class="col-6 bold">Description</div>
+                                <div class="col-6 bold">cost</div>
+                            </div>
+                        </div> -->
+                        <div class="row item">
+                            <div class="col-6 desc">
+                                Description
+                            </div>
+
+                            <div class="col-6 ">
+                                {{orderPriceDetails.description}}
+                            </div>
+                        </div>
+                        <div class="row item">
+                            <div class="col-6 desc">
+                                Order Cost
+                            </div>
+
+                            <div class="col-6 ">
+                                {{orderPriceDetails.orderCost}} AED
+                            </div>
+                        </div>
+                        <div class="items">
+                            <div class="row item">
+                                <div class="col-6 desc">
+                                    Shipping
+                                </div>
+
+                                <div class="col-6 ">
+                                    {{orderPriceDetails.timeCost}} AED
+                                </div>
+                            </div>
+                            <div class="row item">
+                                <div class="col-6 desc">
+                                    Type
+                                </div>
+
+                                <div class="col-6 ">
+                                    {{orderPriceDetails.typeCost}} AED
+                                </div>
+                            </div>
+                            <div class="row item">
+                                <div class="col-6 desc">
+                                    Size
+                                </div>
+
+                                <div class="col-6 ">
+                                    {{orderPriceDetails.sizeCost}} AED
+                                </div>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="total text-left">
+
+
+                            <div class="field grand-total">
+                                Total <span>{{orderPriceDetails.totalCost}} AED</span>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+    <table>
+        <tr>
+            <td colspan="2">
+                <button class="btn btn-primary btn-color btn-shadowLinear" (click)="printPage()">Send To Sender</button>
+
+            </td>
+            <td colspan="2">
+                <button class="btn btn-primary btn-color btn-shadowLinear" (click)="printPage()">Send To Receiver</button>
+
+            </td>
+            <td>
+                <button class="btn btn-primary btn-color btn-shadowLinear" (click)="printPage()">Print</button>
+
+            </td>
+        </tr>
+    </table>
+
+</div>

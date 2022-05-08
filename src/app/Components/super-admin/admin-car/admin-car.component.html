@@ -1,0 +1,118 @@
+<div class="container p-3">
+    <div class="d-flex justify-content-center row">
+        <div class="row">
+            <div class="col-md-7">
+                <div class="div">
+                    <h2 class="mt-4">Classfication</h2>
+                </div>
+                <div class="input-group form-1 pl-0 mb-4 search">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text purple lighten-3 fass btn-shadowLinear" id="basic-text1">
+              <i class="fas fa-search text-white" aria-hidden="true"></i
+            ></span>
+                    </div>
+                    <input ngModel class="form-control my-0 py-1" type="text" placeholder="Search" aria-label="Search" required />
+                </div>
+                <div *ngFor="let item of classfication" class="row p-2 bg-white border rounded">
+                    <div class="card-headercard-header-warning" style="
+              background: linear-gradient(60deg, #ef5350, #e53935);
+              box-shadow: 0 1px 10px 0 rgb(238 77 71);">
+                        <h4 class="card-title" style="color: #eee; align-items: center">
+                            {{item.classficactionName}}
+                        </h4>
+                    </div>
+                    <div class="col-md-3 mt-1">
+                        <img class="img-fluid img-responsive rounded product-image" src="../../../../assets/img/box-truck(1).png" />
+                    </div>
+                    <div class="col-md-6 mt-1">
+                        <ul class="list-group list-group-flush">
+
+                            <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                                <h6 class="mb-0">Capacity Max</h6>
+                                <span class="text">{{item.capacityMax}}</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                                <h6 class="mb-0">Capacity Min</h6>
+                                <span class="text">{{item.capacityMin}}</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                                <h6 class="mb-0">Dimention</h6>
+                                <span class="text">{{item.dimention}}</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="col-md-5">
+
+                <h4 class="mt-6"> Classification</h4>
+
+
+                <hr>
+                <h5 class="mt-2"> Add New Classification </h5>
+
+                <form #form="ngForm" class="container-fluid" method="post" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label class="lbl" for="photo">Car Image</label>
+                        <input id="photo" type="file" name="photo" id="photo" class="form-control" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="inputcapacity" class="col-form-label">Classfication Name</label>
+                        <div class="row-">
+                            <div class="input-group">
+
+                                <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)" name="classficactionName" ngModel required minlength="1" [(ngModel)]="classficationInfo.classficactionName" />
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <div class="form-group">
+                        <label for="inputcapacity" class="col-form-label">capacity</label>
+                        <div class="row-">
+                            <div class="input-group">
+
+                                <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)" name="capacity" ngModel required minlength="1" [(ngModel)]="classficationInfo.capacityMax" />
+
+                                <div class="input-group-append">
+                                    <span class="input-group-text">Max</span>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="input-group">
+
+                                <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)" name="capacity" ngModel required minlength="1" [(ngModel)]="classficationInfo.capacityMin" />
+
+                                <div class="input-group-append">
+                                    <span class="input-group-text">Min</span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="form-group">
+                        <label for="inputDimension" class="col-form-label">Dimention</label>
+
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">KG</span>
+                            </div>
+                            <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)" name="Dimension" [(ngModel)]="classficationInfo.dimention" />
+
+                            <div class="input-group-append">
+                                <span class="input-group-text">.00</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button type="submit" (click)="addclassfication()" class="btn btn-block mybtn btn-primary tx-tfm text-light btn-shadow">
+            Add Classfication
+          </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

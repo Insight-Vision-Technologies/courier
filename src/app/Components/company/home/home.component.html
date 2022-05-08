@@ -1,0 +1,163 @@
+<div class="p-5 w-100 content">
+    <div *ngIf="cardsBool" class="content">
+
+        <div class="container">
+            <div class="row">
+                <div *ngFor="let c of Cards" class="col-lg-6 col-md-12 col-sm-12 col-xs-12  form-group">
+                    <div class="card card-stats">
+                        <div class="card-header card-up {{c.ColorBck}} card-header-icon">
+                            <div class="card-icon">
+                                <i class="ss {{c.Icon}}"></i>
+
+                            </div>
+                            <h3 class="card-category">{{c.title}}</h3>
+                            <h3 class="card-title">{{c.NoDocument}}
+                            </h3>
+                        </div>
+
+                        <div class="card-footer">
+                            <div class="stats text-right">
+                                <button type="button" class="btn btn-primary btn-sm btn-shadowLinear" (click)="onClick(c.clickFun)">View All</button>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col mt-0">
+                                <h5 class="card-title">Total Orders </h5>
+                            </div>
+
+                            <div class="col-auto">
+                                <div class="stat text-primary">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-truck align-middle"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
+                                </div>
+                            </div>
+                        </div>
+                        <h4 class="mt-1 mb-3">{{orderCount}}</h4>
+                        <!-- <div class="mb-0">
+                                    <span class="text-danger"> <i class="mdi mdi-arrow-bottom-right"></i> -3.65% </span>
+                                    <span class="text-muted">More Than</span>
+                                </div> -->
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-sm-3">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col mt-0">
+                                <h5 class="card-title">Income</h5>
+                            </div>
+
+                            <div class="col-auto">
+                                <div class="stat text-primary">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-dollar-sign align-middle"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+                                </div>
+                            </div>
+                        </div>
+                        <h4 class="mt-1 mb-3">{{CountPayment}} AED</h4>
+                        <!-- <div class="mb-0">
+                                    <span class="text-success"> <i class="mdi mdi-arrow-bottom-right"></i> 6.65% </span>
+                                    <span class="text-muted"> More Than</span>
+                                </div> -->
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-sm-3">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col mt-0">
+                                <h5 class="card-title">Plan</h5>
+                            </div>
+
+                            <div class="col-auto">
+                                <div class="stat text-primary">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-shopping-cart align-middle"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+                                </div>
+                            </div>
+                        </div>
+                        <h4 class="mt-1 mb-3">64</h4>
+                        <!-- <div class="mb-0">
+                                    <span class="text-danger"> <i class="mdi mdi-arrow-bottom-right"></i> -2.25% </span>
+                                    <span class="text-muted">More Than</span>
+                                </div> -->
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-3">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col mt-0">
+                                <h5 class="card-title">Total Rating</h5>
+                            </div>
+
+                            <div class="col-auto">
+                                <div class="stat text-primary">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-users align-middle"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                                </div>
+                            </div>
+                        </div>
+                        <h4 class="mt-1 mb-3">{{CountRate}}</h4>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="w-100 flex-grow">
+        <div class="m-2">
+            <div class="card">
+                <div class="card-header card-header-danger pl-2" style="    background: linear-gradient(60deg, #ef5350, #e53935);
+              box-shadow: 0 1px 10px 0 rgb(238 77 71); ">
+                    <h4 class="card-title" style="color: #eee; float: left;">Active orders</h4>
+                </div>
+                <div class="card-body table-responsive">
+                    <table class="table table-hover">
+                        <thead class="text-danger">
+                            <th>ID</th>
+                            <th class="xx">Order Date</th>
+                            <th class="xx">Deliver Date</th>
+                            <th class="xx">Pickup From</th>
+                            <th class="xx">Deliver TO</th>
+                            <th>Status</th>
+                            <th class="xx">Driver Assign</th>
+
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let orderList of orderList">
+                                <td>{{orderList.orderNumber}}</td>
+                                <td class="xx">{{orderList.createdOn| date:'d/M/yy'}}</td>
+                                <td class="xx">{{orderList.createdOn| date:'d/M/yy'}}</td>
+                                <td class="xx">{{orderList.from}}</td>
+                                <td><span class="badge bg-success">{{orderList.to}}</span></td>
+                                <td *ngIf="orderList.status==0"><span class="badge bg-dark rounded-pill">{{ 'pending' }}</span></td>
+                                <td *ngIf="orderList.status==1"><span class="badge bg-dark rounded-pill">{{ 'Confirmed' }}</span></td>
+                                <td *ngIf="orderList.status==2"><span class="badge bg-secondary rounded-pill">{{ 'Ready For Pickup' }}</span></td>
+                                <!-- <td *ngIf="orderList.status==2"><span class="badge bg-primary rounded-pill">{{ 'Picked By Courier' }}</span></td> -->
+                                <td *ngIf="orderList.status==3"><span class="badge bg-warning rounded-pill">{{ 'On The Way' }}</span></td>
+                                <td *ngIf="orderList.status==4"><span class="badge bg-primary rounded-pill">{{ 'Delivered' }}</span></td>
+                                <td *ngIf="orderList.status==5"><span class="badge bg-success rounded-pill">{{ 'Done' }}</span></td>
+                                <td>{{orderList.driverName}}</td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>

@@ -1,0 +1,93 @@
+
+nav > .nav.nav-tabs{
+
+    border: none;
+      color:#fff;
+      background:#494c50;
+      border-radius:0;
+  
+  }
+  nav > div a.nav-item.nav-link,
+  nav > div a.nav-item.nav-link.active
+  {
+    border: none;
+      padding: 18px 25px;
+      color:#fff;
+      background:#494c50;
+      border-radius:0;
+  }
+  
+  nav > div a.nav-item.nav-link.active:after
+   {
+    content: "";
+    position: relative;
+    bottom: -60px;
+    left: -10%;
+    border: 15px solid transparent;
+    border-top-color: #ee4d47 ;
+  }
+  .tab-content{
+    background: #fdfdfd;
+      line-height: 25px;
+      border: 1px solid #ddd;
+      border-top:5px solid #ee4d47;
+      border-bottom:5px solid #ee4d47;
+      padding:30px 25px;
+  }
+  
+  nav > div a.nav-item.nav-link:hover,
+  nav > div a.nav-item.nav-link:focus
+  {
+    border: none;
+      background: #ee4d47;
+      color:#fff;
+      border-radius:0;
+      transition:background 0.20s linear;
+  }
+
+
+  .btn-shadow {
+    background:linear-gradient(to right, #FF4E7D 0%, #ff6a5b 100%);
+    color: #ffffff;
+    box-shadow: 0 1px 10px 0 rgb(238 77 71);
+  }
+  body {
+      background-color: rgb(248, 187, 138)
+  }
+  h6{
+    color: #FF4E7D;
+    font-style:initial;
+  }
+  
+  .courier-box{
+    box-shadow: rgb(238 77 71) 0px 3px 8px;
+    border-radius: 20px;
+    padding: 10px;
+  }
+  
+  .card {
+      border: 2px solid rgb(238, 231, 231);
+      margin: 7px;
+      padding: auto;
+      border-radius: 10px;
+      transition: all 1s;
+      cursor: pointer
+  }
+  
+  .card:hover {
+      -webkit-box-shadow: 3px 5px 17px -4px #221717;
+      box-shadow: 3px 5px 17px -4px #442929
+  }
+  
+  .ratings i {
+      color: green
+  }
+  
+  .apointment button {
+      border-radius: 20px;
+      background-color: #eee;
+      color: #000;
+      border-color: #eee;
+      font-size: 13px
+  }
+  

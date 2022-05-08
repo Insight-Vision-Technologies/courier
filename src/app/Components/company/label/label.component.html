@@ -1,0 +1,102 @@
+<div class="p-5 w-100" id="invoice">
+
+    <div>
+        <label>Label</label>
+    </div>
+    <div class="row">
+        <div class="col-md-7 common justify-content-center invoice courier-box">
+            <ul class="list-group font-size line-height">
+                <li class="list-group-item d-flex justify-content-left align-items-start">
+                    <div class="ms-2 width-head">
+                        <div class="fw-bold">From:</div>
+                    </div>
+                    <span class="">Company Name</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-left align-items-start">
+                    <div class="ms-2 width-head">
+                        <div class="fw-bold"></div>
+                    </div>
+                    <span class="">Street, City</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-left align-items-start">
+                    <div class="ms-2 width-head">
+                        <div class="fw-bold"></div>
+                    </div>
+                    <span class="">Phone</span>
+                </li>
+                <li class="list-group-item justify-content-left align-items-start">
+                    <div class="">
+                        <div class="fw-bold">
+                            <hr>
+                        </div>
+                    </div>
+                </li>
+                <li class="list-group-item d-flex justify-content-left align-items-start">
+                    <div class="ms-2 width-head">
+                        <div class="fw-bold">Ship To:</div>
+                    </div>
+                    <span class="">Company Name</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-left align-items-start">
+                    <div class="ms-2 width-head">
+                        <div class="fw-bold"></div>
+                    </div>
+                    <span class="">Street, City</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-left align-items-start">
+                    <div class="ms-2 width-head">
+                        <div class="fw-bold"></div>
+                    </div>
+                    <span class="">Phone</span>
+                </li>
+                <li class="list-group-item justify-content-left align-items-start">
+                    <div class="">
+                        <div class="fw-bold">
+                            <hr>
+                        </div>
+                    </div>
+                </li>
+                <li class="list-group-item d-flex justify-content-left align-items-start">
+                    <div class="ms-2 width-head">
+                        <div class="fw-bold">Weight:</div>
+                    </div>
+                    <span class="">{{orderDetails.amount}} KG</span>
+                </li>
+                <li class="list-group-item justify-content-left align-items-start">
+                    <div class="">
+                        <div class="fw-bold">
+                            <hr>
+                        </div>
+                    </div>
+                </li>
+                <li class="list-group-item d-flex justify-content-left align-items-start">
+                    <div class="ms-2 width-head">
+                        <div class="fw-bold">Order No:</div>
+                    </div>
+                    <span class="">{{orderDetails.orderNumber}}</span>
+                </li>
+                <li class="list-group-item justify-content-left align-items-start">
+                    <div class="ms-2">
+                        <div class="fw-bold"><img src="/assets/img/bar-code.png"></div>
+                    </div>
+                </li>
+                <li class="list-group-item justify-content-left align-items-start">
+                    <div class="">
+                        <div class="fw-bold">
+                            <p class="text-center">123456789123</p>
+                        </div>
+                    </div>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <button class="btn btn-primary btn-color btn-shadowLinear" (click)="printPage()">Print</button>
+        </div>
+    </div>
+
+    <div>
+
+    </div>

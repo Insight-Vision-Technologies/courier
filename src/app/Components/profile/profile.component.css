@@ -1,0 +1,87 @@
+* {
+    overflow-x: hidden !important;
+}
+
+.imgg {
+    width: fit-content;
+    height: 250px;
+}
+
+label {
+    font-size: 30px;
+}
+
+.lbl {
+    font-weight: bold !important;
+    font-size: 15px;
+}
+
+input[type='file'] {
+    color: transparent;
+    width: 130px;
+    overflow-x: hidden;
+}
+
+input[type=file]::file-selector-button {
+    border: 1px solid wheat;
+    padding: .2em .4em;
+    border-radius: .2em;
+    background-color: #EE4D47;
+    transition: 1s;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+input[type=file]::file-selector-button:hover {
+    background-color: #e9433d;
+    border: 1px solid wheat;
+}
+
+:host /deep/ .mat-tab-group {
+    flex-direction: row;
+}
+
+ :host /deep/ .mat-tab-header {
+    border-bottom: none;
+}
+
+ :host /deep/ .mat-tab-header-pagination {
+    display: none !important;
+}
+
+ :host /deep/ .mat-tab-labels {
+    flex-direction: column;
+}
+
+ :host /deep/ .mat-ink-bar {
+    height: 100%;
+    left: 100% !important;
+}
+
+ :host /deep/ .mat-tab-body-wrapper {
+    flex: 1 1 auto;
+}
+
+.mat-tab-list {
+    border-right: indigo;
+    border-width: 2px;
+    border-style: solid;
+    background-color: rgb(201, 147, 138) !important;
+}
+
+.card {
+    margin: 0 auto;
+}
+
+.cardhead {
+    font-weight: bold;
+}
+
+.com {
+    color: green;
+}
+
+.footcard {
+    font-weight: bold;
+}

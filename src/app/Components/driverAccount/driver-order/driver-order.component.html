@@ -1,0 +1,58 @@
+<div class="container">
+    <div class="p-5 w-100">
+
+        <div>
+            <label>Orders</label>
+        </div>
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="card">
+
+                    <div class="card-body">
+                        <table class="table table-striped table-responsive" style="width:100%">
+                            <thead class="bg-danger text-light">
+                                <tr>
+                                    <th>#</th>
+                                    <th>Product</th>
+                                    <th>Shipped Date</th>
+                                    <th>Phone</th>
+                                    <th>Pickup From</th>
+                                    <th>Delivered To</th>
+                                    <!-- <th>Shippment</th> -->
+                                    <th>Status</th>
+                                    <th>Role</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="ss" (click)="Details(item.orderId)" *ngFor="let item of OrderInfo">
+                                    <td><img src="https://bootdey.com/img/Content/avatar/avatar1.png" width="32" height="32" class="rounded-circle my-n1" alt="Avatar"></td>
+                                    <td>{{item.orderNumber}}</td>
+                                    <td>{{item.createdOn | date:'d/M/yy'}}</td>
+                                    <td>{{item.reciverPhone}}</td>
+
+                                    <td>{{item.from}}</td>
+                                    <td>{{item.to}}</td>
+                                    <!-- <td>{{item.totalCost}}</td> -->
+                                    <td *ngIf="item.status==0"><span class="badge bg-dark rounded-pill">{{ 'Pending' }}</span></td>
+                                    <td *ngIf="item.status==1"><span class="badge bg-dark rounded-pill">{{ 'Confirmed' }}</span></td>
+                                    <td *ngIf="item.status==2"><span class="badge bg-secondary rounded-pill">{{ 'Ready For Pickup' }}</span></td>
+                                    <!-- <td *ngIf="item.status==2"><span class="badge bg-primary rounded-pill">{{ 'Picked By Courier' }}</span></td> -->
+                                    <td *ngIf="item.status==3"><span class="badge bg-warning rounded-pill">{{ 'On The Way' }}</span></td>
+                                    <td *ngIf="item.status==4"><span class="badge bg-primary rounded-pill">{{ 'Delivered' }}</span></td>
+                                    <td *ngIf="item.status==5"><span class="badge bg-success rounded-pill">{{ 'Done' }}</span></td>
+                                    <td *ngIf="item.status>=3"><span class="badge bg-primary rounded-pill">{{ 'Drop' }}</span></td>
+                                    <td *ngIf="item.status<3"><span class="badge bg-success rounded-pill">{{ 'Pickup' }}</span></td>
+
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+    </div>
+</div>

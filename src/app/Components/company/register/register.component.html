@@ -1,0 +1,165 @@
+<div *ngIf="changee" class="cc">
+    <div class="">
+        <div class="bg align-items-center justify-content-center">
+            <div class="shadow p-3 mb-5 bg-white rounded card container cardw">
+                <div class="row align-items-center justify-content-center">
+                    <div class="col-md-7 py-5">
+                        <h3 class="text-center">Register Your Company</h3>
+                        <br />
+                        <!-- <p class="mb-4">Lorem ipsum dolor sit amet elit. Sapiente sit aut eos consectetur adipisicing.</p> -->
+                        <form #form="ngForm" (ngSubmit)="onSubmit(form)" method="post" enctype="multipart/form-data">
+                            <div *ngIf="nxtstep">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group first">
+                                            <label for="fname">Company Name</label>
+                                            <input type="text" class="form-control" placeholder="e.g. John" name="CompanyName" ngModel required minlength="4" #CompanyName="ngModel" />
+                                            <div *ngIf="
+                          CompanyName.invalid &&
+                          (CompanyName.dirty || CompanyName.touched)
+                        " class="mt-1">
+                                                <div class="alert alert-danger" *ngIf="CompanyName.errors?.required">
+                                                    Name is required.
+                                                </div>
+                                                <div class="alert alert-danger" *ngIf="CompanyName.errors?.minlength">
+                                                    Name must be at least 4 characters long.
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group first">
+                                            <label for="email">Email</label>
+                                            <input type="email" class="form-control" placeholder="e.g. john@your-domain.com" name="Email" ngModel required minlength="4" #Email="ngModel" />
+                                            <div *ngIf="Email.invalid && (Email.dirty || Email.touched)" class="mt-1">
+                                                <div class="alert alert-danger" *ngIf="Email.errors?.required">
+                                                    Name is required.
+                                                </div>
+                                                <div class="alert alert-danger" *ngIf="Email.errors?.minlength">
+                                                    Name must be at least 4 characters long.
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group first">
+                                            <label for="Password"> Password</label>
+                                            <input matinput type="Password" [type]="hide ? 'Password' : 'text'" id="Password" class="form-control" placeholder="" name="Password" ngModel #Password="ngModel" required minlength="4" />
+                                            <i class="material-icons passIcon" matsuffix (click)="hide = !hide">
+                        {{ hide ? "visibility" : "visibility_off" }}
+                      </i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group first">
+                                            <label for="lname">Phone Number</label>
+                                            <input type="text" class="form-control" placeholder="+00 0000 000 0000" name="Phone" ngModel required minlength="4" #Phone="ngModel" />
+                                            <div *ngIf="Phone.invalid && (Phone.dirty || Phone.touched)" class="mt-1">
+                                                <div class="alert alert-danger" *ngIf="Phone.errors?.required">
+                                                    Name is required.
+                                                </div>
+                                                <div class="alert alert-danger" *ngIf="Phone.errors?.minlength">
+                                                    Name must be at least 4 characters long.
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- <div class="col-md-6">
+                                    <div class="form-group first">
+                                        <label for="lname">Website</label>
+                                        <input type="text" class="form-control" placeholder="e.g. https://google.com" id="lname">
+                                    </div>
+                                </div> -->
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group last mb-3">
+                                            <label for="Country">Country</label>
+                                            <input type="text" class="form-control" placeholder="Your Country" id="Country" name="Country" ngModel required minlength="4" #Country="ngModel" />
+                                            <div *ngIf="
+                          Country.invalid && (Country.dirty || Country.touched)
+                        " class="mt-1">
+                                                <div class="alert alert-danger" *ngIf="Country.errors?.required">
+                                                    Name is required.
+                                                </div>
+                                                <div class="alert alert-danger" *ngIf="Country.errors?.minlength">
+                                                    Name must be at least 4 characters long.
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group last mb-3">
+                                            <label for="City">City</label>
+                                            <input type="text" class="form-control" placeholder="City" id="City" name="City" ngModel required minlength="4" #City="ngModel" />
+                                            <div *ngIf="City.invalid && (City.dirty || City.touched)" class="mt-1">
+                                                <div class="alert alert-danger" *ngIf="City.errors?.required">
+                                                    Name is required.
+                                                </div>
+                                                <div class="alert alert-danger" *ngIf="City.errors?.minlength">
+                                                    Name must be at least 4 characters long.
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="text-center">
+                                    <button class="btn px-5 btn-primary">
+                    Next <i class="fas fa-arrow-right ml-1"></i>
+                  </button>
+                                </div>
+                            </div>
+                        </form>
+                        <form #secondform="ngForm" (ngSubmit)="onSubmitSecond(secondform)" method="post" enctype="multipart/form-data">
+                            <div *ngIf="!nxtstep">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group first d-flex flex-row">
+                                            <img class="imgg rounded" [src]="url" /><br /><br />
+                                            <input type="file" (change)="selectFile($event)" class="align-self-center ml-2" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group first">
+                                            <label for="email">License</label>
+                                            <input type="text" class="form-control" placeholder="" id="License" name="License" ngModel required minlength="4" #License="ngModel" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <br />
+                                <div class="form-group form-check">
+                                    <input type="checkbox" class="form-check-input" id="exampleCheck1" />
+                                    <label class="form-check-label" for="exampleCheck1">
+                    Agree to <a href="#">Terms and Conditions</a> and our
+                    <a href="#">Privacy Policy</a>.
+                  </label>
+                                </div>
+                                <br />
+                                <div class="text-center">
+                                    <button class="btn px-5 btn-primary" (click)="firstfrm()">
+                    <i class="fas fa-arrow-left mr-1"></i> Back
+                  </button>
+                                    <button type="submit" class="btn px-5 btn-primary float-right">
+                    Register
+                  </button>
+                                    <!-- <button class="btn btn-lg btn-success" type="submit">Add</button> -->
+                                </div>
+                            </div>
+                            <br />
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

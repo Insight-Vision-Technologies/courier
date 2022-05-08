@@ -1,0 +1,95 @@
+<div class="main-content">
+    <!-- Top navbar -->
+    <div class="container-fluid p-3">
+        <div class="row">
+            <div class="col-md-12">
+                <h3>Edit this feature</h3>
+            </div>
+            <div class="col-md-12">
+                <div class="card shadow">
+                    <div class="card-body">
+                        <form #form="ngForm" (ngSubmit)="featuresForm(form)" class="m-3 container-fluid" method="post" enctype="multipart/form-data">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group text-center">
+                                        <label class="form-control-label" for="input-name">Select Image</label
+            >
+
+            <div class="text-center mt-2">
+              <div class="form-group">
+                <label class="hoverable" for="fileInput">
+                  <img
+                    [src]="
+                      url_img ? url_img : imageUrl + 'features_img/' + features.photo
+                    "
+                  />
+                  <div class="hover-text text-black">Choose file</div>
+                  <div class="background"></div>
+                </label>
+                                        <input id="fileInput" type="file" name="photo" accept="image/*" (change)="onSelectImage($event)" />
+                                    </div>
+                                    <div>
+                                        <button *ngIf="url_img" class="btn btn-primary" (click)="deleteImg()">
+                  Remove
+                </button>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label for="Name">Name</label>
+                            <input id="Name" type="text" name="Name" class="form-control" [(ngModel)]="features.Name" #Name="ngModel" [ngClass]="{
+                    'is-invalid':
+                      (form.submitted && Name.invalid) ||
+                      Name.touched
+                  }" placeholder="Enter Name" required minlength="3" />
+                            <div *ngIf="
+                    (form.submitted && Name.invalid) ||
+                    Name.touched
+                  " class="invalid-feedback error-msg form-group">
+                                <div *ngIf="Name.errors?.required">
+                                    Name is required
+                                </div>
+                                <div *ngIf="Name.errors?.minlength">
+                                    Name should be at least 3 character long
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label for="Description">Description</label>
+                            <textarea id="Description" name="Description" class="form-control" [(ngModel)]="features.Description" #Description="ngModel" [ngClass]="{
+                    'is-invalid':
+                      (form.submitted && Description.invalid) ||
+                      Description.touched
+                  }" placeholder="Enter Description" required minlength="3"></textarea>
+                            <div *ngIf="
+                    (form.submitted && Description.invalid) ||
+                    Description.touched
+                  " class="invalid-feedback error-msg form-group">
+                                <div *ngIf="Description.errors?.required">
+                                    Description is required
+                                </div>
+                                <div *ngIf="Description.errors?.minlength">
+                                    Description should be at least 3 character long
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12 text-center mb-3">
+                        <button type="submit " class="btn btn-block mybtn btn-primary tx-tfm">
+            Submit
+          </button>
+                    </div>
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</div>

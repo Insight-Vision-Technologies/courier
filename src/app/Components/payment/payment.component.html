@@ -1,0 +1,164 @@
+<app-header [tableData]="bgColor"></app-header>
+
+<div class="p-5 w-100">
+    <h3 class="text-center mt-5">Payment</h3>
+
+    <div class="mat-elevation-z8 container py-4">
+        <div class="card bootstrap snippets bootdey">
+            <div class="card-header">Order Summary</div>
+            <div class="card-body row">
+                <div class="col-md-12">
+                    <div class="invoice-wrapper">
+                        <div class="payment-info">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <span>Order No.</span>
+                                    <strong>{{ orderPriceDetails.orderNumber }}</strong>
+                                </div>
+                                <div class="col-sm-6 text-right">
+                                    <span>Payment Date</span>
+                                    <strong>{{
+                    orderPriceDetails.createdOn | date: "short"
+                  }}</strong>
+                                </div>
+                            </div>
+                        </div>
+
+                        <br />
+                        <div class="line-items">
+                            <!-- <div class="headers clearfix">
+                                <div class="row">
+                                    <div class="col-6 bold">Description</div>
+                                    <div class="col-6 bold">cost</div>
+                                </div>
+                            </div> -->
+                            <div class="items">
+                                <div class="row item">
+                                    <div class="col-6 desc">Description</div>
+
+                                    <div class="col-6">
+                                        {{ orderPriceDetails.description }}
+                                    </div>
+                                </div>
+                                <div class="row item">
+                                    <div class="col-6 desc">Order Cost</div>
+
+                                    <div class="col-6">{{ orderPriceDetails.orderCost }} AED</div>
+                                </div>
+                                <hr />
+                                <div class="row item">
+                                    <div class="col-6 desc">Shipping</div>
+
+                                    <div class="col-6">{{ orderPriceDetails.timeCost }} AED</div>
+                                </div>
+                                <div class="row item">
+                                    <div class="col-6 desc">Type</div>
+
+                                    <div class="col-6">{{ orderPriceDetails.typeCost }} AED</div>
+                                </div>
+                                <div class="row item">
+                                    <div class="col-6 desc">
+                                        Size/Dimension
+                                    </div>
+
+                                    <div class="col-6">{{ orderPriceDetails.sizeCost }} AED</div>
+                                </div>
+                            </div>
+                            <hr />
+                            <div class="total text-left">
+                                <div class="field grand-total">
+                                    Total <span>{{ orderPriceDetails.totalCost }} AED</span>
+                                </div>
+                            </div>
+
+                            <div class="print">
+                                <a href="#"> <i class="fa fa-print"></i> Print this receipt </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="mat-elevation-z8 container py-4">
+        <div class="text-center">
+            <div class="card">
+                <div class="card-header">Payment Method</div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label class="first" for="fname "> Payment Method</label>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="Payment" id="Classification" value="0" [(ngModel)]="pay" ngModel (change)="onItemChange($event)" checked />
+                                <label class="form-check-label first" for="Payment ">
+                  Cash
+                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="Payment" id="Classification" value="1" [(ngModel)]="pay" ngModel (change)="onItemChange($event)" checked />
+                                <label class="form-check-label first" for="Payment ">
+                  Card
+                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End -->
+                    <div class="row" *ngIf="!cardpay">
+                        <div class="col-md-12">
+                            <app-stripe-payment [amount]="orderPriceDetails.totalCost" [name]="orderPriceDetails.orderNumber"></app-stripe-payment>
+                        </div>
+                        <!-- <div class="col-6 "> -->
+                        <!-- <div class="col-6  d-flex flex-column bg-light text-center mt-4 ">
+
+                                <div class="pay mb-2 btn btn-secondary"> <i class="fas fa-credit-card mr-2"></i> Credit Card </div>
+
+                            </div> -->
+                        <!-- </div> -->
+                        <!-- <div class="col-6 ">
+                                <div class="row mr-2">
+                                    <div class="col-md-12">
+                                        <div class="form-group first">
+                                            <label for="email">Name on Card</label>
+                                            <input type="email" class="form-control" placeholder="" id="email">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mr-2">
+                                    <div class="col-md-6">
+                                        <div class="form-group first">
+                                            <label for="fname">Card Number</label>
+                                            <input type="text" class="form-control" placeholder="" id="fname">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group first">
+                                            <label for="lname">CVV</label>
+                                            <input type="number" class="form-control" placeholder="" id="lname">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mr-2">
+                                    <div class="col-md-12">
+                                        <div class="form-group first">
+                                            <label for="email">Expiration Date</label>
+                                            <input type="email" class="form-control" placeholder="MM/YY" id="email">
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div> -->
+                    </div>
+                </div>
+
+                <div class="row" *ngIf="cardpay">
+                    <div class="col-md-12">
+                        <button class="btn btn-primary btn-shadow mt-2" style="margin-right: 34px" (click)="method()">
+              Done
+            </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>

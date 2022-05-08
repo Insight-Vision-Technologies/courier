@@ -1,0 +1,50 @@
+<div class="pt-4 pl-3" (click)="home()"><i class="fas fa-arrow-left"></i></div>
+<div class="p-5 w-100">
+
+    <div>
+        <label>Car Direction</label>
+    </div>
+    <br>
+
+
+    <div class="">
+        <div class="table-responsive p-4">
+            <table mat-table matSort [dataSource]="dataSource" class="courier-box p-3 mat-elevation-z8">
+
+                <ng-container matColumnDef="carPlate">
+                    <th mat-header-cell *matHeaderCellDef> Car </th>
+                    <td mat-cell *matCellDef="let element"> {{element.carPlate}} </td>
+                </ng-container>
+
+                <!-- Weight Column -->
+                <ng-container matColumnDef="dname">
+                    <th mat-header-cell *matHeaderCellDef> Driver </th>
+                    <td mat-cell *matCellDef="let element"> {{element.driverName}} </td>
+                </ng-container>
+
+                <!-- Symbol Column -->
+                <!-- <ng-container matColumnDef="symbol">
+                    <th mat-header-cell *matHeaderCellDef> Pickup From</th>
+                    <td mat-cell *matCellDef="let element"> {{element.from}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="to">
+                    <th mat-header-cell *matHeaderCellDef> Sending To</th>
+                    <td mat-cell *matCellDef="let element"> {{element.to}} </td>
+                </ng-container> -->
+
+                <ng-container matColumnDef="num">
+                    <th mat-header-cell *matHeaderCellDef> Num of order </th>
+                    <td mat-cell *matCellDef="let element"> {{element.orderNum}} </td>
+                </ng-container>
+
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+        </div>
+
+
+    </div>
+
+</div>

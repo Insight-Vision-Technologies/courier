@@ -1,0 +1,72 @@
+.align-date {
+    text-align: right;
+    color: black;
+}
+
+.common {
+    font-size: 15px;
+    color: black;
+}
+
+.btn-color {
+    color: white;
+    background: linear-gradient(to right, #FF4E7D 0%, #ff6a5b 100%);
+    border-color: #F37F69;
+    float: right;
+}
+
+.btn-shadow {
+    background-color: #EE4D47;
+    color: #ffffff;
+    box-shadow: 0 1px 10px 0 rgb(238 77 71);
+}
+
+.align-date {
+    text-align: right;
+    color: black;
+}
+
+.common {
+    font-size: 15px;
+    color: black;
+}
+
+.btn-color {
+    color: white;
+    background-color: #F37F69;
+    border-color: #F37F69;
+    float: right;
+}
+
+.btn-shadow {
+    background-color: #EE4D47;
+    color: #ffffff;
+    box-shadow: 0 1px 10px 0 rgb(238 77 71);
+}
+
+.title {
+    color: black;
+    font-size: 35px;
+    font-weight: bold;
+    /* text-align: center; */
+}
+
+.card-header {
+    background-color: #ee4d47;
+    color: white;
+    font-size: 20px;
+}
+
+.card {
+    margin: 0 auto;
+    /* Added */
+    float: none;
+    /* Added */
+    margin-bottom: 10px;
+    font-size: 17px;
+    /* Added */
+}
+
+* {
+    color: black;
+}

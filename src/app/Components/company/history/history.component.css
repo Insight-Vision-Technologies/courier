@@ -1,0 +1,59 @@
+table {
+    width: 90%;
+    font-size: 20px;
+}
+
+label {
+    color: rgb(0, 0, 0);
+    font-size: 2rem !important;
+}
+
+.thead-bck {
+    background-color: rgb(235, 73, 69);
+    color: rgb(240, 240, 240);
+}
+
+.fa-trash-alt {
+    color: red;
+    font-size: 3vh !important;
+    font-weight: 500 !important;
+    cursor: pointer;
+    align-items: center;
+    text-align: center !important;
+}
+
+.fa-plus {
+    color: rgb(201, 74, 74)!important;
+    font-size: 3vh !important;
+    font-weight: 500 !important;
+    cursor: pointer;
+}
+
+.iconn {
+    text-align: center;
+}
+
+th {
+    margin-right: 1px;
+    font-size: 17px;
+    font-weight: 600;
+}
+
+td {
+    font-size: 15px;
+}
+
+.bor {
+    border-color: rgb(206, 202, 197);
+    border-width: .2px;
+    border-style: solid;
+}
+
+.bgb {
+    background-color: #D7EFFC;
+}
+
+.fa-arrow-left {
+    color: black;
+    cursor: pointer;
+}

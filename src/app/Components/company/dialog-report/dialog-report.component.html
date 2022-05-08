@@ -1,0 +1,129 @@
+<div class="m-4">
+    <button mat-icon-button class="close-button" [mat-dialog-close]="true">
+  <mat-icon class="close-icon" color="warn">close</mat-icon>
+</button>
+    <h2 mat-dialog-title>Add New Driver</h2>
+
+    <form mat-dialog-content class="mt-2" #driverForm="ngForm" (ngSubmit)="onSubmit(driverForm)">
+        <div class="form-group row">
+            <label for="inputCarPalte" class="col-sm-3 col-form-label">Driver Name</label
+    >
+    <div class="col-sm-8">
+      <mat-form-field class="w-100">
+        <mat-select class="form-control" name="DriNum" ngModel required #DriNum="ngModel">
+
+            <mat-option *ngFor="let item of driverName" [value]="item.nameID">{{item.name}}</mat-option>
+
+        </mat-select>
+        <div *ngIf="DriNum.invalid && (DriNum.dirty || DriNum.touched)" class="mt-1">
+
+            <div class="alert alert-danger" *ngIf="DriNum.errors?.required">
+                DriNum is required.
+            </div>
+
+
+
+        </div>
+        <!-- <mat-hint>Here's the dropdown arrow ^</mat-hint> -->
+    </mat-form-field>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="inputCarPalte" class="col-sm-3 col-form-label">Vehicle Number</label
+>
+            <div class="col-sm-8">
+                <mat-form-field class="w-100">
+                    <mat-select class="form-control" name="VehNum" ngModel required #VehNum="ngModel">
+
+                        <mat-option *ngFor="let item of vehName" [value]="item.nameID">{{item.name}}</mat-option>
+
+                    </mat-select>
+                    <div *ngIf="VehNum.invalid && (VehNum.dirty || VehNum.touched)" class="mt-1">
+
+                        <div class="alert alert-danger" *ngIf="VehNum.errors?.required">
+                            VehNum is required.
+                        </div>
+
+
+
+                    </div>
+                    <!-- <mat-hint>Here's the dropdown arrow ^</mat-hint> -->
+                </mat-form-field>
+            </div>
+        </div>
+
+
+        <div class="form-group row">
+            <label for="inputClassification" class="col-sm-3 col-form-label">Date & Time</label>
+            <div class="col-sm-8 mt-2">
+
+                <input ngModel class="datepicker form-control col-5" type="date" data-date-format="mm/dd/yyyy" name="Date" ngModel required minlength="4" #Date="ngModel" />
+                <input ngModel class=" form-control col-6" type="Time" data-date-format="mm/dd/yyyy" name="Time" ngModel required minlength="4" #Time="ngModel" />
+                <div *ngIf="Date.invalid && (Date.dirty || Date.touched)" class="mt-1">
+
+                    <div class="error-msg" *ngIf="Date.errors?.required">
+                        Date is required.
+                    </div>
+                </div>
+                <div *ngIf="Time.invalid && (Time.dirty || Time.touched)" class="mt-1">
+
+                    <div class="error-msg" *ngIf="Time.errors?.required">
+                        Time is required.
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+        <div class="form-group row">
+            <label for="inputDeliveryTime" class="col-sm-3 col-form-label">Report Number</label
+    >
+    <div class="col-sm-8">
+      <input
+      ngModel
+        type="text"
+        class="form-control"
+        id="inputDeliveryTime"
+        placeholder=""
+        name="ReportNo"
+        ngModel
+        required
+        minlength="4"
+        #ReportNo="ngModel"
+      />
+
+    </div>
+  </div>
+
+
+<div class="form-group row">
+  <label for="inputDeliveryTime" class="col-sm-3 col-form-label">Fine</label
+    >
+    <div class="col-sm-8">
+      <input
+      ngModel
+        type="text"
+        class="form-control"
+        id="inputDeliveryTime"
+        placeholder=""
+        name="Cost"
+        ngModel
+        required
+        minlength="4"
+        #Cost="ngModel"
+      />
+
+    </div>
+  </div>
+
+
+
+        <div mat-dialog-actions class="mt-3 button">
+            <button class="btn btn-lg btn-success" type="submit">Add</button>
+            <!-- <button class="btn btn-lg btn-danger" type="submit" [mat-dialog-close]="true">Cancle</button> -->
+        </div>
+    </form>
+
+
+</div>

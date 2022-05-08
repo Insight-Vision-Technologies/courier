@@ -1,0 +1,26 @@
+.common {
+    color: black;
+    font-size: 15px;
+}
+
+
+/* .courier-box {
+    box-shadow: rgb(255, 255, 255) 0px 3px 0px !important;
+    border-radius: 20px;
+     padding: 10px;
+}*/
+
+.list-group-item {
+    border: none!important;
+}
+
+.card-header {
+    background-color: #eb4844;
+    color: white;
+    font-size: 20px;
+}
+
+label {
+    color: rgb(0, 0, 0);
+    font-size: 2rem !important;
+}

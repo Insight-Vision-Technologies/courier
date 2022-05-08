@@ -1,0 +1,384 @@
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" />
+<div class="container">
+    <button mat-icon-button class="close-button" [mat-dialog-close]="true">
+    <mat-icon class="close-icon" color="warn">close</mat-icon>
+  </button>
+
+    <div mat-dialog-content class="row">
+
+
+        <div class="row">
+
+
+            <div class="col-sm-4">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+
+                            <div class="col-auto">
+                                <div class="icon icon-shape bg-yellow text-white rounded-circle shadow">
+                                    <img src="https://cdn-icons-png.flaticon.com/128/5191/5191745.png" alt="" style="width: 30px; color: white;">
+                                    <!-- <i class="fa-solid fa-truck"></i> -->
+                                </div>
+                            </div>
+                            <div class="col">
+                                <h5 class="card-title">Order ID</h5>
+                                <span class="h6 font-weight-bold mb-0">{{orderInfo.orderNumber}}</span>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-sm-4">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+
+                            <div class="col-auto">
+                                <div class="icon icon-shape bg-yellow text-white rounded-circle shadow">
+                                    <img src="https://cdn-icons-png.flaticon.com/128/1008/1008014.png" alt="" style="width: 30px; ">
+                                    <!-- <i class="fa-solid fa-truck"></i> -->
+                                </div>
+                            </div>
+                            <div class="col">
+                                <h5 class="card-title">Created</h5>
+                                <span class="h6 font-weight-bold mb-0">{{orderInfo.createdOn |date: "dd/MM/yyyy"}}</span>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="col-sm-4">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+
+                            <div class="col-auto">
+                                <div class="icon icon-shape bg-yellow text-white rounded-circle shadow">
+                                    <img src="https://cdn-icons-png.flaticon.com/128/5009/5009421.png" alt="" style="width: 30px;">
+                                    <!-- <i class="fa-solid fa-truck"></i> -->
+                                </div>
+                            </div>
+                            <div class="col">
+                                <h5 class="card-title">Status</h5>
+                                <span class="badge bg-dark rounded-pill" *ngIf="orderInfo.status==1">{{ 'Confirmed' }}</span>
+                                <span class="badge bg-secondary rounded-pill" *ngIf="orderInfo.status==2">{{ 'Ready For Pickup' }}</span>
+                                <!-- <span class="badge bg-primary rounded-pill" *ngIf="orderInfo.status==3">{{ 'Picked By Courier' }}</span> -->
+                                <span class="badge bg-warning rounded-pill" *ngIf="orderInfo.status==3">{{ 'On The Way' }}</span>
+                                <span class="badge bg-info rounded-pill" *ngIf="orderInfo.status==4">{{ 'Delivered' }}</span>
+                                <span class="badge bg-success rounded-pill" *ngIf="orderInfo.status==5">{{ 'Done' }}</span>
+                                <span class="badge bg-success rounded-pill" *ngIf="orderInfo.status==-1">{{ 'Cancle' }}</span>
+                                <span class="badge bg-success rounded-pill" *ngIf="orderInfo.status==-2">{{ 'Return' }}</span>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+
+        <div class="row text-center">
+            <!-- Team item-->
+            <div class="col-xl-4 col-sm-6 mb-5">
+                <div class="bg-white rounded shadow-sm py-5 px-4"><img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="" width="100" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm">
+                    <h5 class="mb-0">Sender</h5><span class="small text-uppercase text-muted">{{orderInfo.senderName}}</span>
+
+                </div>
+            </div>
+            <!-- End-->
+
+            <!-- Team item-->
+            <div class="col-xl-4 col-sm-6 mb-5">
+                <div class="bg-white rounded shadow-sm py-5 px-4"><img src="https://bootdey.com/img/Content/avatar/avatar6.png" alt="" width="100" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm">
+                    <h5 class="mb-0">Driver</h5><span class="small text-uppercase text-muted">{{orderInfo.driverName}}</span>
+
+                </div>
+            </div>
+            <!-- End-->
+
+            <!-- Team item-->
+            <div class="col-xl-4 col-sm-6 mb-5">
+                <div class="bg-white rounded shadow-sm py-5 px-4"><img src="../../../../assets/img/train.jpg" alt="" width="100" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm">
+                    <h5 class="mb-0">Courire</h5><span class="small text-uppercase text-muted">{{orderInfo.companyName}}</span>
+
+                </div>
+            </div>
+            <!-- End-->
+
+
+
+        </div>
+
+
+
+
+        <div class="row">
+            <div class="col-lg-6 col-lg-5">
+                <div class="card">
+                    <div class="p-4">
+                        <div class="d-flex flex-row">
+                            <div class="">
+                                <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="user" class="rounded-circle" width="100" />
+                            </div>
+                            <div class="pl-4">
+                                <h3>Sender</h3>
+                                <h5>{{orderInfo.senderName}}</h5>
+                                <h5>{{orderInfo.senderPhone}} </h5>
+                            </div>
+                        </div>
+                        <div class="row ">
+                            <div class="col">
+                                <img src="../../../../assets/img/house.png" alt="user" class="rounded-circle" width="40" />
+
+                            </div>
+                            <div class="col">
+                                <p class="locat">{{orderInfo.from}}</p>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="col-lg-6 col-lg-5">
+                <div class="card">
+                    <div class="p-4">
+                        <div class="d-flex flex-row">
+                            <div class="">
+                                <img src="https://bootdey.com/img/Content/avatar/avatar6.png" alt="user" class="rounded-circle" width="100" />
+                            </div>
+                            <div class="pl-4">
+                                <h3>Reciver</h3>
+                                <h5>{{orderInfo.reciverName}}</h5>
+                                <h5>{{orderInfo.reciverPhone}}</h5>
+                            </div>
+                        </div>
+                        <div class="row ">
+                            <div class="col">
+                                <img src="../../../../assets/img/house.png" alt="user" class="rounded-circle" width="40" />
+
+                            </div>
+                            <div class="col">
+                                <p class="locat">{{orderInfo.to}}</p>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+
+        </div>
+
+
+
+        <div class="row">
+            <hr>
+            <br>
+            <div class="col-md-12">
+                <div class="widget-head-color-box lazur-bg">
+                    <div class="row">
+                        <h3 class="text-center">ITEM DETAILS</h3>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <img src="../../../../assets/img/tajikistan.png" class="img-circle circle-border m-b-md" style="width: 50px" alt="profile" />
+                                        </div>
+                                        <div class="col-md-8">
+                                            <ul class="list-unstyled text-left text-black">
+                                                <li><b>Chargable Weight</b></li>
+                                                <li>{{orderInfo.amount}} Kg</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <img src="../../../../assets/img/tajikistan.png" class="img-circle circle-border m-b-md" style="width: 50px" alt="profile" />
+                                        </div>
+                                        <div class="col-md-8">
+                                            <ul class="list-unstyled text-left text-black">
+                                                <li><b>Type</b></li>
+                                                <li>{{orderInfo.type}}</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- <div class="col-md-4">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <img src="../../../../assets/img/tajikistan.png" class="img-circle circle-border m-b-md" style="width: 50px" alt="profile" />
+                                        </div>
+                                        <div class="col-md-8">
+                                            <ul class="list-unstyled text-left text-black">
+                                                <li><b>Service Type</b></li>
+                                                <li>{{orderInfo.deliveryTime}}</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div> -->
+                                <div class="col-md-4">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <img src="../../../../assets/img/tajikistan.png" class="img-circle circle-border m-b-md" style="width: 50px" alt="profile" />
+                                        </div>
+                                        <div class="col-md-8">
+                                            <ul class="list-unstyled text-left text-black">
+                                                <li><b>Recived Via:</b></li>
+                                                <li>WBN</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <img src="../../../../assets/img/tajikistan.png" class="img-circle circle-border m-b-md" style="width: 50px" alt="profile" />
+                                        </div>
+                                        <div class="col-md-8">
+                                            <ul class="list-unstyled text-left text-black">
+                                                <li><b>Payment Method</b></li>
+                                                <li *ngIf="orderInfo.paymentMethod==0">Cash</li>
+                                                <li *ngIf="orderInfo.paymentMethod==1">ٍvisa</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <img src="../../../../assets/img/tajikistan.png" class="img-circle circle-border m-b-md" style="width: 50px" alt="profile" />
+                                        </div>
+                                        <div class="col-md-8">
+                                            <ul class="list-unstyled text-left text-black">
+                                                <li><b>Service Charges Paid By:</b></li>
+                                                <li *ngIf="orderInfo.paymentBy=='0'">Sender</li>
+                                                <li *ngIf="orderInfo.paymentBy=='1'">Reciver</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="row">
+                                        <div class="col-md-2">
+                                            <img src="../../../../assets/img/tajikistan.png" class="img-circle circle-border m-b-md" style="width: 50px" alt="profile" />
+                                        </div>
+                                        <div class="col-md-10">
+                                            <ul class="list-unstyled text-left text-black">
+                                                <li><b>Item Description</b></li>
+                                                <li>{{orderInfo.description}}</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <img src="../../../../assets/img/tajikistan.png" class="img-circle circle-border m-b-md" style="width: 50px" alt="profile" />
+                                        </div>
+                                        <div class="col-md-8">
+                                            <ul class="list-unstyled text-left text-black">
+                                                <li><b>Attachments:</b></li>
+                                                <li>N/A</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <hr>
+            <br>
+            <div class="col-md-12">
+                <div class="widget-head-color-box lazur-bg p-lg">
+                    <div class="row">
+                        <h3 class="text-center">PAYMENT INFO</h3>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <img src="../../../../assets/img/tajikistan.png" class="img-circle circle-border m-b-md" style="width: 50px" alt="profile" />
+                                        </div>
+                                        <div class="col-md-8">
+                                            <ul class="list-unstyled text-left text-black">
+                                                <li><b>Payment Method</b></li>
+                                                <li>CASH</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <img src="../../../../assets/img/tajikistan.png" class="img-circle circle-border m-b-md" style="width: 50px" alt="profile" />
+                                        </div>
+                                        <div class="col-md-8">
+                                            <ul class="list-unstyled text-left text-black">
+                                                <li><b>Service Charges Paid By:</b></li>
+                                                <li>shopchange</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <img src="../../../../assets/img/tajikistan.png" class="img-circle circle-border m-b-md" style="width: 50px" alt="profile" />
+                                        </div>
+                                        <div class="col-md-8">
+                                            <ul class="list-unstyled text-left text-black">
+                                                <li><b>Fees:</b></li>
+                                                <li>PUBLIC FEES 10.00AED</li>
+                                                <li>ACTUAL FEES 19.00AED</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <img src="../../../../assets/img/tajikistan.png" class="img-circle circle-border m-b-md" style="width: 50px" alt="profile" />
+                                        </div>
+                                        <div class="col-md-8">
+                                            <ul class="list-unstyled text-left text-black">
+                                                <li><b>Payment Type:</b></li>
+                                                <li>CASH ON DELIVERY 0.00AED</li>
+                                                <li>TOTAL:19.00 AED</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

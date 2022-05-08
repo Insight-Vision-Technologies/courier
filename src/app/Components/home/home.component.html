@@ -1,0 +1,316 @@
+<app-header></app-header>
+
+<div>
+    <section id="home">
+        <div class="bg-holder" style="background-image:url(assets/img/gallery/header-bg.png);background-position:center;background-size:cover;">
+        </div>
+        <br>
+        <!--/.bg-holder-->
+        <div class="container">
+            <div class="row align-items-center min-vh-50 min-vh-sm-100">
+                <div class="col-md-7 col-lg-6 text-md-start text-center">
+                    <h1 class="text-light fs-6 fs-xl-8 font-cursive fw-normal mb-5 color:#ee4d7d">Your awesome<br />traffic permit <br />consultant.</h1>
+
+                    <a class="btn btn-primary btn-shadow" role="button" (click)="checkOrder()">Creating Order
+
+                </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================-->
+    <!-- <section> begin ============================-->
+    <app-ourfeatures></app-ourfeatures>
+
+
+    <!-- <section> close ============================-->
+    <!-- ============================================-->
+
+
+
+    <!-- ============================================-->
+    <!-- <section> how to apply begin ===============-->
+    <section>
+
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6 text-center mb-6 mb-md-0"><img class="w-100" src="assets/img/gallery/how-to-apply.png" alt="..." /></div>
+                <div class="col-md-6 text-center text-md-start mb-6 px-4">
+                    <h4 class="text-danger text-uppercase">How to apply</h4>
+                    <p class="my-5 fs-1 pe-xl-7">When applying for a traffic permit, there are certain requirements that you must meet that are included in the examination: requirements for professional knowledge, solid establishment, good reputation and financial resources. Important
+                        to remember is to confirm your application for a traffic permit by the company's company signer or CEO.</p>
+                </div>
+            </div>
+        </div>
+        <!-- end of .container-->
+
+    </section>
+    <!-- <section> close ============================-->
+    <!-- ============================================-->
+
+
+    <section class="bg-primary-gradient" id="faq">
+        <div class="bg-holder" style="background-image:url(assets/img/gallery/faq-bg.png);background-position:right;background-size:contain;">
+        </div>
+        <!--/.bg-holder-->
+
+        <div class="container">
+            <div class="row flex-center">
+                <div class="col-md-6">
+                    <h4 class="text-danger text-uppercase">faq</h4>
+                    <h1 class="font-cursive fw-normal mb-5">Questions and Answers <br class="d-none d-lg-block" />on Professional Traffic<br class="d-none d-lg-block" />Permits:</h1>
+                </div>
+                <div class="col-md-6"><img class="w-100" src="assets/img/gallery/faq.png" alt="..." /></div>
+            </div>
+            <div class="row flex-center py-4">
+
+                <!-- <mat-accordion>
+                    <mat-expansion-panel *ngFor="let item of faqList" class="col-md-6 accordion-item mb-2 rounded overflow-hidden">
+                        <mat-expansion-panel-header> -->
+                <!-- ///// new ///// -->
+                <!-- <mat-accordion>
+                    <mat-expansion-panel *ngFor="let item of faqList"
+                    class="col-md-6 accordion-item mb-2 rounded overflow-hidden" aria-controls="collapse6">
+                        <mat-expansion-panel-header >
+
+                           <mat-panel-title>
+                                {{item.questionSentence}}
+                            </mat-panel-title>
+
+                        </mat-expansion-panel-header>
+                        {{item.answerSentence}}
+                    </mat-expansion-panel>
+
+                </mat-accordion>
+                <div *ngFor="let item of faqList" class="col-md-6">
+                    <div class="accordion" id="accordionExample2">
+                        <div class="accordion-item mb-2 rounded overflow-hidden">
+                            <h2 class="accordion-header" id="">
+                                <button class="accordion-button px-4 collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse6" aria-expanded="true" aria-controls="collapse6">
+
+                                  <span class="mb-0 text-start fs-0 text-900 fw-medium">{{item.questionSentence}}</span></button>
+                            </h2>
+                            <div class="accordion-collapse collapse" id="collapse6" aria-labelledby="" data-bs-parent="#accordionExample">
+
+                </mat-accordion> -->
+
+                <!-- /////// old //////  -->
+                <div *ngFor="let item of faqList; let id=index;" class="col-md-6">
+                    <div class="accordion" [id]="'accordionExample'+id">
+                        <div class="accordion-item mb-2 rounded overflow-hidden">
+                            <h2 class="accordion-header" [id]="'heading'+id">
+                                <button class="accordion-button px-4 collapsed" type="button" data-bs-toggle="collapse" [attr.data-bs-target]="'#id'+id" aria-expanded="true" [attr.aria-controls]="'id'+id">
+                                    <span class="mb-0 text-start fs-0 text-900 fw-medium">
+                                        {{item.questionSentence}}</span>
+                                    </button>
+                            </h2>
+                            <div class="accordion-collapse collapse" [id]="'id'+id" [attr.aria-labelledby]="'heading'+id" [attr.data-bs-parent]="'#accordionExample'+id">
+
+                                <div class="accordion-body bg-primary-gradient px-4">{{item.answerSentence}}</div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ============================================-->
+    <!-- ============================================-->
+    <!-- <app-ourpartners></app-ourpartners> -->
+    <!-- ============================================-->
+    <!-- <section> begin ============================-->
+    <section id="costumersBusiness">
+
+        <div class="container">
+            <div class="row">
+                <div class="col-md-11 col-lg-6 col-xl-4 col-xxl-3">
+
+                    <h1 class="font fw-normal mb-4 ">Our Customers Business </h1>
+                </div>
+                <div class="col-xxl-9">
+                    <div class="position-relative offset-9 offset-sm-10 offset-lg-11 mb-3"><a class="carousel-control-prev carousel-icon z-index-2" href="#carouselExampleDark" role="button" data-bs-slide="prev"><span class="carousel-control-prev-icon" aria-hidden="true"></span><span class="visually-hidden">Previous</span></a>
+                        <a class="carousel-control-next carousel-icon z-index-2" href="#carouselExampleDark" role="button" data-bs-slide="next"><span class="carousel-control-next-icon" aria-hidden="true"></span><span class="visually-hidden">Next</span></a>
+                    </div>
+                    <div class="carousel slide" id="carouselExampleDark" data-bs-ride="carousel">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active" data-bs-interval="10000">
+                                <div class="row h-100 mx-1 mb-5 mt-3 gx-md-2 gx-lg-4">
+                                    <div class="col-md-4 mb-5 mb-md-0">
+                                        <div class="card card-span h-100 shadow-primary">
+                                            <div class="card-body my-3">
+                                                <div class="align-items-xl-center d-block d-xl-flex px-3 mt-3 align-self-end"><img class="img-fluid me-3 me-md-2 me-lg-3" src="assets/img/gallery/isak.png" width="50" alt="" />
+                                                    <div class="flex-1 align-items-center pt-2">
+                                                        <h6 class="mb-0">Isak Pettersson</h6>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 mb-5 mb-md-0">
+                                        <div class="card card-span h-100 shadow-primary">
+                                            <div class="card-body my-3">
+                                                <div class="align-items-xl-center d-block d-xl-flex px-3 mt-3 align-self-end"><img class="img-fluid me-3 me-md-2 me-lg-3" src="assets/img/gallery/simon.png" width="50" alt="" />
+                                                    <div class="flex-1 align-items-center pt-2">
+                                                        <h6 class="mb-0">Simon Sandberg</h6>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 mb-5 mb-md-0">
+                                        <div class="card card-span h-100 shadow-primary">
+                                            <div class="card-body my-3">
+                                                <div class="align-items-xl-center d-block d-xl-flex px-3 mt-3 align-self-end"><img class="img-fluid me-3 me-md-2 me-lg-3" src="assets/img/gallery/petter.png" width="50" alt="" />
+                                                    <div class="flex-1 align-items-center pt-2">
+                                                        <h6 class="mb-0">Pettersson</h6>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="carousel-item" data-bs-interval="2000">
+                                <div class="row h-100 mx-1 mb-5 mt-3 gx-md-2 gx-lg-4">
+                                    <div class="col-md-4 mb-5 mb-md-0">
+                                        <div class="card card-span h-100 shadow-primary">
+                                            <div class="card-body my-3">
+                                                <div class="align-items-xl-center d-block d-xl-flex px-3 mt-3 align-self-end"><img class="img-fluid me-3 me-md-2 me-lg-3" src="assets/img/gallery/isak.png" width="50" alt="" />
+                                                    <div class="flex-1 align-items-center pt-2">
+                                                        <h6 class="mb-0">Isak Pettersson</h6>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 mb-5 mb-md-0">
+                                        <div class="card card-span h-100 shadow-primary">
+                                            <div class="card-body my-3">
+                                                <div class="align-items-xl-center d-block d-xl-flex px-3 mt-3 align-self-end"><img class="img-fluid me-3 me-md-2 me-lg-3" src="assets/img/gallery/simon.png" width="50" alt="" />
+                                                    <div class="flex-1 align-items-center pt-2">
+                                                        <h6 class="mb-0">Simon Sandberg</h6>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 mb-5 mb-md-0">
+                                        <div class="card card-span h-100 shadow-primary">
+                                            <div class="card-body my-3">
+                                                <div class="align-items-xl-center d-block d-xl-flex px-3 mt-3 align-self-end"><img class="img-fluid me-3 me-md-2 me-lg-3" src="assets/img/gallery/petter.png" width="50" alt="" />
+                                                    <div class="flex-1 align-items-center pt-2">
+                                                        <h6 class="mb-0">Pettersson</h6>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <div class="row h-100 mx-1 mb-5 mt-3 gx-md-2 gx-lg-4">
+                                    <div class="col-md-4 mb-5 mb-md-0">
+                                        <div class="card card-span h-100 shadow-primary">
+                                            <div class="card-body my-3">
+                                                <div class="align-items-xl-center d-block d-xl-flex px-3 mt-3 align-self-end"><img class="img-fluid me-3 me-md-2 me-lg-3" src="assets/img/gallery/isak.png" width="50" alt="" />
+                                                    <div class="flex-1 align-items-center pt-2">
+                                                        <h6 class="mb-0">Isak Pettersson</h6>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 mb-5 mb-md-0">
+                                        <div class="card card-span h-100 shadow-primary">
+                                            <div class="card-body my-3">
+                                                <div class="align-items-xl-center d-block d-xl-flex px-3 mt-3 align-self-end"><img class="img-fluid me-3 me-md-2 me-lg-3" src="assets/img/gallery/simon.png" width="50" alt="" />
+                                                    <div class="flex-1 align-items-center pt-2">
+                                                        <h6 class="mb-0">Simon Sandberg</h6>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 mb-5 mb-md-0">
+                                        <div class="card card-span h-100 shadow-primary">
+                                            <div class="card-body my-3">
+                                                <div class="align-items-xl-center d-block d-xl-flex px-3 mt-3 align-self-end"><img class="img-fluid me-3 me-md-2 me-lg-3" src="assets/img/gallery/petter.png" width="50" alt="" />
+                                                    <div class="flex-1 align-items-center pt-2">
+                                                        <h6 class="mb-0">Pettersson</h6>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end of .container-->
+
+    </section>
+    <!-- <section> close ============================-->
+    <!-- ============================================-->
+
+
+
+    <!-- ============================================-->
+    <!-- <section> starts============================-->
+    <app-our-partners></app-our-partners>
+
+    <!-- <section> ends==============================-->
+    <!-- =============================================-->
+
+
+    <section>
+        <div class="bg-holder" style="background-image:url(assets/img/gallery/footer-bg.png);background-position:left;background-size:contain;padding:5px 3px;">
+        </div>
+        <!--/.bg-holder-->
+
+        <div class="container">
+            <div class="row min-vh-lg-50 min-vh-xl-75">
+                <div class="col-lg-6 col-xl-5 my-2 py-9 d-none d-lg-block">
+                    <div class="card card-span bg-transparent border-start border-primary border-5 mt-3">
+                        <div class="card-body">
+                            <p class="text-light fs-2 lh-lg px-lg-3">Contact with our support team in case of having any inquires!</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-xl-5 mb-3">
+                    <div class="card card-span shadow py-4 px-5">
+                        <div class="card-body">
+                            <form class="row g-3 align-items-center">
+                                <div class="mb-3">
+                                    <label class="form-label" for="formGroupExampleInput">Name</label>
+                                    <input class="form-control form-traffico-control" id="formGroupExampleInput" type="text" placeholder="Name" />
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label" for="formGroupExampleInput2">Email address</label>
+                                    <input class="form-control form-traffico-control" id="formGroupExampleInput2" type="text" placeholder="Your email address" />
+                                </div>
+                                <div class="col-12">
+                                    <button class="btn btn-primary btn-shadow" type="submit">GET STARTED
+                        <svg class="bi bi-arrow-right ms-2" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                          <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"></path>
+                        </svg>
+                      </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+</div>
+
+<app-footer></app-footer>

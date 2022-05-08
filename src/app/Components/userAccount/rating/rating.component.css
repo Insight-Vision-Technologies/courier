@@ -1,0 +1,49 @@
+.modal-dialog {
+    /* height: 50%; */
+    /* width: 50%; */
+    margin: auto
+}
+
+.modal-header {
+    color: white;
+    background-color: #ee4d47
+}
+
+textarea {
+    border: none;
+    box-shadow: none !important;
+    -webkit-appearance: none;
+    outline: 0px !important
+}
+
+.openmodal {
+    margin-left: 35%;
+    width: 25%;
+    margin-top: 25%
+}
+
+.icon1 {
+    color: #ee4d47
+}
+
+a {
+    margin: auto
+}
+
+input {
+    color: #ee4d47
+}
+
+.adiv {
+    background: #ee4d47;
+    border-radius: 15px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+    /* font-size: 12px; */
+    /* height: 46px */
+}
+
+ngb-rating {
+    color: #FFC107;
+    font-size: 80px;
+}

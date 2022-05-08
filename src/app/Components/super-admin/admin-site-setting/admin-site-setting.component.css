@@ -1,0 +1,226 @@
+* {
+    font-size: 20px;
+    color: black;
+}
+
+.btn-shadow {
+    background-color: #ec4155;
+    color: #ffffff;
+    box-shadow: 0 1px 10px 0 rgb(238 77 71);
+}
+
+::ng-deep .mat-tab-list .mat-tab-labels .mat-tab-label-active {
+    background-color: #EE4D47;
+    color: #ffffff;
+    box-shadow: 0 1px 10px 0 rgb(238 77 71);
+    border-radius: 5px;
+}
+
+::ng-deep .mat-tab-group.mat-primary .mat-ink-bar {
+    background-color: rgb(184, 39, 87) !important;
+}
+
+::ng-deep .mat-tab-label .mat-tab-label-content {
+    font-size: 20px;
+}
+
+a {
+    text-decoration: none !important;
+}
+
+.myform {
+    position: relative;
+    display: -ms-flexbox;
+    display: flex;
+    padding: 1rem;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    width: 100%;
+    pointer-events: auto;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid rgba(0, 0, 0, .2);
+    border-radius: 1.1rem;
+    outline: 0;
+    max-width: 500px;
+}
+
+.cc {
+    float: right;
+    margin-top: -32px;
+    /* position: relative; */
+    z-index: 2;
+    cursor: pointer;
+}
+
+.lbl {
+    color: black !important;
+    font-size: 16px;
+}
+
+input[type=file]::file-selector-button {
+    border: 1px solid wheat;
+    /* padding: .2em .4em; */
+    border-radius: .2em;
+    background-color: #EE4D47;
+    transition: 1s;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+input[type=file]::file-selector-button:hover {
+    background-color: #e9433d;
+    border: 1px solid wheat;
+}
+
+body {
+    color: #8e9194;
+    background-color: #f4f6f9;
+}
+
+.list-group {
+    display: flex;
+    flex-direction: column;
+    padding-left: 0;
+    margin-bottom: 0;
+    border-radius: 0.25rem;
+}
+
+.list-group-item-action {
+    width: 100%;
+    color: #4d5154;
+    text-align: inherit;
+}
+
+.list-group-item-action:hover,
+.list-group-item-action:focus {
+    z-index: 1;
+    color: #4d5154;
+    text-decoration: none;
+    background-color: #f4f6f9;
+}
+
+.list-group-item-action:active {
+    color: #8e9194;
+    background-color: #eef0f3;
+}
+
+.list-group-item {
+    position: relative;
+    display: block;
+    padding: 0.75rem 1.25rem;
+    background-color: #ffffff;
+    border: 1px solid #eef0f3;
+}
+
+.card-body {
+    padding: 1.5rem;
+    flex: 1 1 auto;
+}
+
+.tab-content>.tab-pane {
+    display: none;
+}
+
+.row {
+    display: flex;
+    margin-right: -15px;
+    margin-left: -15px;
+    flex-wrap: wrap;
+}
+
+.card-body1 {
+    padding-top: 1.5rem;
+    flex: 1 1 auto;
+}
+
+p {
+    font-family: Lato;
+}
+
+img {
+    height: 100%;
+    width: 100%;
+}
+
+.hoverable {
+    position: relative;
+    display: block;
+    cursor: pointer;
+    height: 200px;
+    width: 250px;
+}
+
+.hoverable .hover-text {
+    position: absolute;
+    display: none;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    font-size: 15px;
+}
+
+.hoverable .background {
+    position: absolute;
+    display: none;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: rgba(255, 255, 255, 0.5);
+    pointer-events: none;
+    z-index: 1;
+}
+
+.hoverable:hover .hover-text {
+    display: block;
+}
+
+.hoverable:hover .background {
+    display: block;
+}
+
+#fileInput1 {
+    display: none;
+}
+
+#fileInput2 {
+    display: none;
+}
+
+#fileInput3 {
+    display: none;
+}
+
+#fileInput4 {
+    display: none;
+}
+
+#fileInput5 {
+    display: none;
+}
+
+#fileInput6 {
+    display: none;
+}
+
+.error-msg {
+    color: red;
+    font-size: 15px;
+    line-height: 20px;
+}
+
+input.ng-invalid.ng-touched {
+    border: 1px solid red;
+}
+
+input.ng-valid {
+    border-color: #79B93C;
+    padding-right: calc(1.5em + 0.75rem);
+    background-image: url('~src/assets/img/right-mark.svg')!important;
+    background-repeat: no-repeat;
+    background-position: right calc(0.375em + 0.1875rem) center;
+    background-size: calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
+}

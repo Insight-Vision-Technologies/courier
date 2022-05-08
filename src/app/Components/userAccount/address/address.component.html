@@ -1,0 +1,83 @@
+<div class="contaner">
+    <div class="row">
+        <div class="col-md-12">
+            <h3>Address</h3>
+            <button type="button" class="btn btn-primary btn-shadow" (click)="addaddress()">
+      Add New Address
+    </button>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="table-responsive">
+            <table class="table table-hover ">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <!-- <th>Status</th> -->
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of addressUser">
+                        <td><span class="">{{item.addressDetails}}-{{item.city}}-{{item.country}}</span>
+                        </td>
+                        <td>
+                            <div class="btt">
+                                <button type="button" class="btn btn-primary btn-shadow mr-2" (click)="changeAddress(item.addressID)">
+                    Edit
+                  </button>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+
+        <form *ngIf="newAddress" #addressForm="ngForm" (ngSubmit)="addressForm.form.valid && addNew(addressForm)">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="country" class="control-label">Country <span class="text-danger">*</span></label>
+                        <input type="text" name="country" [(ngModel)]="newAddressINfo.country" #country="ngModel" [ngClass]="{ 'is-invalid':addressForm.submitted && country.invalid || country.touched }" class="form-control " placeholder="Country" id="email" required>
+                        <div *ngIf="addressForm.submitted && country.invalid || country.touched" class="invalid-feedback error-msg form-group">
+                            <div *ngIf="country.errors?.required">Country is required</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="city">City <span class="text-danger">*</span></label>
+                        <mat-select class="form-control" name="city" [(ngModel)]="newAddressINfo.city" #city="ngModel" [ngClass]="{ 'is-invalid':addressForm.submitted && city.invalid || city.touched }" required>
+                            <mat-option value="Dubai">Dubai</mat-option>
+                            <mat-option value="Abu Dhabi">Abu Dhabi</mat-option>
+                            <mat-option value="Sharjah">Sharjah</mat-option>
+                            <mat-option value="Ajman">Ajman</mat-option>
+                        </mat-select>
+                        <div *ngIf="addressForm.submitted && city.invalid || city.touched" class="invalid-feedback error-msg form-group">
+                            <div *ngIf="city.errors?.required">City is required</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label for="addressDetails" class="control-label">Address Details <span class="text-danger">*</span></label>
+                        <input [(ngModel)]="newAddressINfo.addressDetails" #addressDetails="ngModel" [ngClass]="{ 'is-invalid':addressForm.submitted && addressDetails.invalid || addressDetails.touched }" name="addressDetails" type="text" class="form-control " placeholder="Address"
+                            id="addressDetails" minlength="5" required>
+                        <div *ngIf="addressForm.submitted && addressDetails.invalid || addressDetails.touched" class="invalid-feedback error-msg form-group">
+                            <div *ngIf="addressDetails.errors?.required">Address is required</div>
+                            <div *ngIf="addressDetails.errors?.minlength">Address should be at least 5 characters long</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12 text-center">
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary">Save</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+    </div>
+</div>

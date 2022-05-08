@@ -1,0 +1,38 @@
+<div class="row p-3">
+    <div class="col-12">
+        <div mat-dialog-title>
+            <div mat-dialog-title class="">
+                <h3>Assign Direction TO another Driver</h3>
+            </div>
+            <!--Modal Content-->
+            <div mat-dialog-content class="">
+                <!-- Modal Header-->
+
+                <!-- Modal Body-->
+                <div class=" text-center"> <i class="far fa-file-alt fa-4x mb-3 animated rotateIn icon1"></i>
+                    <p style="color: black;">Choose Driver </p>
+
+                    <div class="form-group ">
+                        <p>{{from}}</p>
+                        <p>{{to}}</p>
+                        <label for="from ">From</label>
+                        <mat-select class="form-control " name="from " [(ngModel)]="driverId">
+
+                            <mat-option *ngFor="let item of DriverList" [value]="item.driverId">{{item.driverName}}</mat-option>
+                        </mat-select>
+                    </div>
+
+                </div>
+                <div class="">
+                    <button type="button" class="btn btn-danger" (click)="closePopup()">
+  Assign
+  </button>
+
+                    <button type="button" class="btn btn-warning" (click)="noAssign()">
+    Don't Assign
+    </button>
+                </div>
+            </div>
+        </div>
+
+    </div>

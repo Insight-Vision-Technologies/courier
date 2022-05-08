@@ -1,0 +1,8 @@
+.text-center {
+    text-align: center!important;
+    margin: 20px;
+    box-shadow: 0 1px 10px 0 rgb(238 77 71);
+}
+p{
+    font-size: 20px;
+}

@@ -1,0 +1,123 @@
+.btn-shadow {
+    background-color: #EE4D47;
+    color: #ffffff;
+    box-shadow: 0 1px 10px 0 rgb(238 77 71);
+}
+
+.fix-height {
+    height: 525px;
+}
+
+.svg-inline--fa {
+    vertical-align: 6px!important;
+}
+
+.courier-box {
+    box-shadow: rgb(238 77 71) 0px 3px 8px;
+    border-radius: 20px;
+    padding: 10px;
+}
+
+.example-container .mat-form-field+.mat-form-field {
+    margin-left: 8px;
+}
+
+input.example-right-align::-webkit-outer-spin-button,
+input.example-right-align::-webkit-inner-spin-button {
+    display: none;
+}
+
+input.example-right-align {
+    -moz-appearance: textfield;
+}
+
+.button {
+    display: flex;
+    justify-content: space-between;
+}
+
+.close-button {
+    float: right;
+    top: -24px;
+    right: -24px;
+}
+
+.close-icon {
+    transition: 1s ease-in-out;
+}
+
+.close-icon:hover {
+    transform: rotate(180deg);
+}
+
+ ::ng-deep .icon-outside .close-button {
+    float: right;
+    top: -52px;
+    right: -52px;
+}
+
+ ::ng-deep .icon-outside .mat-dialog-container {
+    overflow: unset
+}
+
+.title {
+    /* text-align: center; */
+    /* width: 100%; */
+    background-color: rgba(255, 99, 71, 0.384);
+    /* border-radius: 10%; */
+}
+
+
+/* Chrome, Safari, Edge, Opera */
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+
+/* Firefox */
+
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+::ng-deep .mat-form-field-underline {
+    display: none;
+}
+
+
+/* width */
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+
+/* Track */
+
+ ::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey;
+    border-radius: 10px;
+}
+
+
+/* Handle */
+
+ ::-webkit-scrollbar-thumb {
+    background: tomato;
+    border-radius: 10px;
+}
+
+
+/* Handle on hover */
+
+ ::-webkit-scrollbar-thumb:hover {
+    background: rgb(255, 164, 147);
+}
+
+label {
+    color: black;
+    font-size: 16px;
+}

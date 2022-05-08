@@ -1,0 +1,387 @@
+<div *ngIf="loaderService.isLoading | async" class="loader-container">
+    <mat-spinner class="mat-spinner-color" style="top: 50%; left: 50%;"></mat-spinner>
+</div>
+<div class="p-6 w-100">
+    <div>
+        <label>Pricing</label>
+    </div>
+
+
+
+    <div class="ss ">
+        <div class="input-group form-1 pl-0 mb-4 search ">
+            <div class="input-group-prepend ">
+                <span class="input-group-text purple lighten-3 fass btn-shadow " id="basic-text1 ">
+                    <i class="fas fa-search text-white " aria-hidden="true "></i></span>
+            </div>
+            <input class="form-control my-0 py-1 " type="text " (keyup)="applyFilter($event) " placeholder="Search " aria-label="Search " />
+        </div>
+
+        <!-- ///////////////////New Table ///////////////////// -->
+        <div>
+            <div class="row ">
+                <div class="col-12 ">
+                    <div class="card ">
+                        <div class="card-body ">
+                            <h4 class="card-title ">Area</h4>
+                            <div class="d-flex justify-content-between mb-2 ">
+                                <div class="d-flex flex-row w-50 ">
+                                    <mat-label>Pickup</mat-label>
+
+                                    <mat-select class="form-control " (selectionChange)="getPrice() " [(ngModel)]="fromm " name="dropdownOption ">
+                                        <mat-option *ngFor="let emirates of emirates " [value]="emirates.emirateEng ">
+                                            {{ emirates.emirateEng }}
+                                        </mat-option>
+                                    </mat-select>
+                                </div>
+                                <!-- <div class="d-flex flex-row w-50 ">
+                                    <mat-label> Time</mat-label>
+
+                                    <mat-select class="form-control " (selectionChange)="getPrice() " [(ngModel)]="durationTime " name="dropdownOption ">
+                                        <mat-option *ngFor="let Duration of Duration " [value]="Duration.duration ">
+                                            {{ Duration.duration }}
+                                        </mat-option>
+                                    </mat-select>
+                                </div> -->
+
+                            </div>
+                            <div>
+
+                                <div class="accordion d-block d-lg-none d-xl-none d-md-none " id="accordionExample">
+                                    <div class="card" *ngFor="let item of PriceComp; let id=index;">
+                                        <!-- <div class="card-header card-header-dark"> -->
+                                        <button class="btn fass vv text-left" data-bs-toggle="collapse" aria-expanded="true" [attr.aria-controls]="'collapseTwo'+id" [attr.data-bs-target]="'#collapseTwo'+id">
+                                            <i class="fa fa-plus "></i>
+                                            <!-- <span class="d-flex "> -->
+                                            <span class="ml-3 ">
+                                                Pickup
+                                            </span>
+                                            <span class="ml-3 ">{{ item.from }}</span>
+
+                                            <!-- </span> -->
+
+                                        </button>
+                                        <!-- </div> -->
+                                        <div class="collapse " [id]="'collapseTwo'+id" data-parent="#accordionExample ">
+                                            <div class="card-body p-0 fontSize">
+                                                <ol class="list-group">
+                                                    <li class="list-group-item d-flex justify-content-between align-items-start ">
+                                                        <div class="ms-2 me-auto ">
+                                                            <div class="fw-bold ">Drop</div>
+                                                        </div>
+                                                        <span class=" ">{{ item.to }}</span>
+                                                    </li>
+                                                    <li class="list-group-item d-flex justify-content-between align-items-start ">
+                                                        <div class="ms-2 me-auto ">
+                                                            <div class="fw-bold ">Delivery Time</div>
+                                                        </div>
+                                                        <span class=" ">{{ item.deliveryTime }}</span>
+                                                    </li>
+                                                    <li class="list-group-item d-flex justify-content-between align-items-start ">
+                                                        <div class="ms-2 me-auto ">
+                                                            <div class="fw-bold ">Price</div>
+                                                        </div>
+                                                        <span *ngIf="!item.Change ">{{ item.priceCost }} </span>
+                                                        <span *ngIf="item.Change " class="d-flex ">
+                                                            <input class="form-control " type="text "
+                                                                [(ngModel)]="item.priceCost " name="pric " />
+                                                            <button class="btn btn-sm btn-danger "
+                                                                (click)="changepriceApi(item) ">
+                                                                Save
+                                                            </button>
+                                                        </span>
+                                                    </li>
+                                                    <li class="list-group-item d-flex">
+                                                        <div class="ms-2 me-auto ">
+                                                            <div class="fw-bold ">Action</div>
+                                                        </div>
+                                                        <span class="badge-danger badge h1">Edit
+                                                        </span>
+                                                        <span class="float-right " *ngIf="!item.Change " (click)="changeprice(item) ">
+                                                            <i class="fas fa-pencil-alt "></i>
+                                                        </span>
+                                                    </li>
+                                                </ol>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
+                                </div>
+
+
+                                <div class="  d-none  d-xl-block d-lg-block d-md-block">
+                                    <table class=" table ">
+                                        <thead class="text-white fass">
+                                            <tr>
+                                                <th>No.</th>
+                                                <th>Pickup</th>
+                                                <th>Sending</th>
+                                                <th>delivery</th>
+                                                <th>Price</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr *ngFor="let Prices of PriceComp ; let id=index; ">
+                                                <td>{{id+1}}</td>
+
+                                                <td>{{ Prices.from }}</td>
+                                                <td>{{ Prices.to }}</td>
+                                                <td>{{ Prices.deliveryTime }}</td>
+                                                <td>
+                                                    <span *ngIf="!Prices.Change ">{{ Prices.priceCost }} </span>
+                                                    <span *ngIf="Prices.Change " class="d-flex ">
+                                                        <input class="form-control " type="text "
+                                                            [(ngModel)]="Prices.priceCost " name="pric " />
+                                                        <button class="btn btn-sm btn-danger "
+                                                            (click)="changepriceApi(Prices) ">
+                                                            Save
+                                                        </button>
+                                                    </span>
+                                                    <span class="float-right " *ngIf="!Prices.Change " (click)="changeprice(Prices) ">
+                                                        <i class="fas fa-pencil-alt "></i>
+                                                    </span>
+                                                </td>
+                                            </tr>
+
+
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <br>
+        <!-- ///////////////////New Table ///////////////////// -->
+
+        <div class="row ">
+            <div class="col-lg-6 ">
+                <div class="card ">
+                    <div class="card-body ">
+                        <h4 class="card-title ">Type</h4>
+                        <div class="table-responsive ">
+                            <table class="table ">
+                                <thead class="fass text-white ">
+                                    <tr>
+                                        <th>No.</th>
+                                        <th>Type</th>
+                                        <th>Price</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+
+                                    <tr *ngFor="let item of OrderTypeINfo ; let id=index; ">
+                                        <td>{{id+1}}</td>
+                                        <td>{{item.typeName}}</td>
+                                        <td>
+                                            <span *ngIf="!item.Change ">{{item.typeCost}}</span>
+
+                                            <span *ngIf="item.Change " class="d-flex ">
+                                                <input class="form-control " type="text " [(ngModel)]="item.typeCost "
+                                                    name="pric " />
+                                            </span>
+                                        </td>
+                                        <td>
+                                            <span *ngIf="item.Change " class="d-flex ">
+
+                                                <button class="btn btn-sm btn-danger " (click)="changetype(item) ">
+                                                    Save
+                                                </button>
+                                            </span>
+                                            <span class="float-right " *ngIf="!item.Change " (click)="changetype(item) ">
+                                                <i class="fas fa-pencil-alt "></i>
+                                            </span>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td></td>
+                                        <td> <input class="form-control " [(ngModel)]="OrderTypeINfo2.typeName " type="text " name="Typename " /></td>
+                                        <td> <input class="form-control " [(ngModel)]="OrderTypeINfo2.typeCost " type="text " name="Typecost " /></td>
+                                        <td><button class="btn btn-primary " (click)="addType() ">Add</button></td>
+
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 ">
+                <div class="card ">
+                    <div class="card-body ">
+                        <div>
+                            <h4 class="card-title float-left">Size</h4>
+                            <h4 class="card-title float-right" data-toggle="tooltip" data-placement="top" title="Explain Size Dimention"><i class="fa fa-question-circle" aria-hidden="true"></i>
+                            </h4>
+
+                        </div>
+                        <div class="table-responsive ">
+                            <table class="table ">
+                                <thead class="fass text-white ">
+                                    <tr>
+                                        <th>No.</th>
+                                        <th>Name</th>
+                                        <th>Price</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>first</td>
+                                        <td>
+                                            <span *ngIf="!first">{{sizeComp.firstPrice}}</span>
+
+                                            <span *ngIf="first" class="d-flex ">
+                                              <input class="form-control " type="text " [(ngModel)]="sizeComp.firstPrice"
+                                                  name="firstPrice " />
+                                          </span>
+                                        </td>
+                                        <td>
+                                            <span *ngIf="first" class="d-flex ">
+
+                                              <button class="btn btn-sm btn-danger " (click)="changeSize(1) ">
+                                                  Save
+                                              </button>
+                                          </span>
+                                            <span class="float-right " *ngIf="!first" (click)="changeSize(1) ">
+                                              <i class="fas fa-pencil-alt "></i>
+                                          </span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td>Percent</td>
+
+                                        <td>
+                                            <span *ngIf="!firstPercent">{{sizeComp.percent}}</span>
+
+                                            <span *ngIf="firstPercent" class="d-flex ">
+                                            <input class="form-control " type="text " [(ngModel)]="sizeComp.percent"
+                                                name="percent" />
+                                        </span>
+                                        </td>
+                                        <td>
+                                            <span *ngIf="firstPercent" class="d-flex ">
+
+                                            <button class="btn btn-sm btn-danger " (click)="changeSize(2) ">
+                                                Save
+                                            </button>
+                                        </span>
+                                            <span class="float-right " *ngIf="!firstPercent" (click)="changeSize(2) ">
+                                            <i class="fas fa-pencil-alt "></i>
+                                        </span>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <input type="time" step="3600000" class="form-control w-25" aria-label="Amount (to the nearest dollar)" name="monbeg" required [(ngModel)]="timetest" />
+
+                <h2>{{timetest}}</h2>
+                <h2>{{timetest2}}</h2>
+                <button (click)="hangepl()">erte</button>
+                <div class="card ">
+                    <div class="card-body ">
+                        <h4 class="card-title ">Dimention</h4>
+                        <div class="table-responsive ">
+                            <table class="table ">
+
+                                <tbody>
+
+                                    <tr>
+                                        <td>dimFirst</td>
+
+                                        <td>
+                                            <span *ngIf="!dimfirst">{{sizeComp.dimfirstPrice}}</span>
+
+                                            <span *ngIf="dimfirst" class="d-flex ">
+                                                <input class="form-control " type="text " [(ngModel)]="sizeComp.dimfirstPrice"
+                                                    name="dimfirstPrice " />
+                                            </span>
+                                        </td>
+                                        <td>
+                                            <span *ngIf="dimfirst" class="d-flex ">
+
+                                                <button class="btn btn-sm btn-danger " (click)="changeSize(3) ">
+                                                    Save
+                                                </button>
+                                            </span>
+                                            <span class="float-right " *ngIf="!dimfirst" (click)="changeSize(3) ">
+                                                <i class="fas fa-pencil-alt "></i>
+                                            </span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>dimPercent</td>
+
+                                        <td>
+                                            <span *ngIf="!dimpercentt">{{sizeComp.dimpercent}}</span>
+
+                                            <span *ngIf="dimpercentt" class="d-flex ">
+                                                  <input class="form-control " type="text " [(ngModel)]="sizeComp.dimpercent"
+                                                      name="dimpercent " />
+                                              </span>
+                                        </td>
+                                        <td>
+                                            <span *ngIf="dimpercentt" class="d-flex ">
+
+                                                  <button class="btn btn-sm btn-danger " (click)="changeSize(4) ">
+                                                      Save
+                                                  </button>
+                                              </span>
+                                            <span class="float-right " *ngIf="!dimpercentt" (click)="changeSize(4) ">
+                                                  <i class="fas fa-pencil-alt "></i>
+                                              </span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>DimenWeightComp</td>
+
+                                        <td>
+                                            <span *ngIf="!dimenWeightComp">{{sizeComp.dimenWeightComp}}</span>
+
+                                            <span *ngIf="dimenWeightComp" class="d-flex ">
+                                                <input class="form-control " type="text " [(ngModel)]="sizeComp.dimenWeightComp"
+                                                    name="dimenWeightComp " />
+                                            </span>
+                                        </td>
+                                        <td>
+                                            <span *ngIf="dimenWeightComp" class="d-flex ">
+
+                                                <button class="btn btn-sm btn-danger " (click)="changeSize(5) ">
+                                                    Save
+                                                </button>
+                                            </span>
+                                            <span class="float-right " *ngIf="!dimenWeightComp" (click)="changeSize(5) ">
+                                                <i class="fas fa-pencil-alt "></i>
+                                            </span>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <br />
+
+        <mat-icon (click)="addprice()" id="fixedbutton">add_circle</mat-icon>
+
+        <!-- <a href="#head"><img src="upbutton.png" ></a> -->
+    </div>
+</div>

@@ -1,0 +1,229 @@
+
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
+import { Router } from '@angular/router';
+import { ICAR } from 'src/app/Models/icar';
+import { CRUDTestService } from 'src/app/Services/crudtest.service';
+import { DialogAddPriceComponent } from '../dialog-add-price/dialog-add-price.component';
+import { UpdatecarComponent } from '../updatecar/updatecar.component';
+import { DialogCarComponent } from './../dialog-car/dialog-car.component';
+
+
+
+
+
+@Component({
+  selector: 'app-cars',
+  templateUrl: './cars.component.html',
+  styleUrls: ['./cars.component.css']
+})
+export class CarsComponent implements OnInit {
+ 
+  @ViewChild(MatSort) sort!: MatSort;
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
+  
+  displayedColumns: string[] = ['No.', 'CarPlate','Classification', 'Capacity ', 'edit','delete'];
+  ELEMENT_DATA:ICAR[]=[];
+  ProductList:ICAR={
+    Capacity:"editCap",
+    Classification:"class",
+    CarPlate:"plate"
+  }
+  ProductList2:ICAR={
+    Capacity:"",
+    Classification:"",
+    CarPlate:""
+  }
+  dataSource = new MatTableDataSource<ICAR>(this.ELEMENT_DATA);
+  dataSource2 : ICAR[]=[];
+  
+  constructor(public dialog: MatDialog,private CRUDService: CRUDTestService,private router: Router) {
+
+   }
+
+   ngOnInit() {
+this.getCar()
+
+  }
+  ngAfterViewInit() {
+    this.dataSource.paginator = this.paginator;
+
+    this.dataSource.sort = this.sort;
+  }
+
+  deleteCar(element:string){
+    this.CRUDService.deleteCar(element).subscribe(
+        res=>{
+this.getCar()
+
+          // console.log("res")
+          // console.log(res)
+        })
+// console.log(element)
+  }
+
+  
+  async getCar(){
+     
+    await this.CRUDService.getAllCarFakeApi().subscribe(
+      (response)=>{
+    console.log("befo"+response)
+
+  //   response.forEach(function (item) {  
+  //     if(item.Classification=='2'){
+
+  //       item.Classification='<i class="fas fa-car-side"></i>'
+
+  //     } 
+  // });  
+        this.dataSource.data=response 
+        this.dataSource2=response 
+    console.log("befo"+this.dataSource)
+
+
+      },
+      (err)=>{console.log(err)}
+    );
+
+this.dataSource
+
+  }
+  
+
+  updateCar(id:string){
+    this.router.navigateByUrl('Company/Dashboard/UpdateCar', { state: { carId:id  }});
+  
+    this.CRUDService.updatePost(this.ProductList,id).subscribe(data => {
+      // console.log(data);
+
+      this.getCar()
+    });
+    
+  }
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
+
+  addcar(){
+    const dialogRef = this.dialog.open(DialogCarComponent,
+      {
+        width: '700px',
+        disableClose:true,
+        // margin: '0 auto'
+        // disableClose: true,
+        // hasBackdrop: true,
+      });
+
+       // this.CRUDService.addProduct(this.ProductList).subscribe(
+    //   res=>{
+    //     console.log("res")
+    //     console.log(res)
+    //   }
+    // )
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
+  } 
+
+  
+ }
+
+///////////////////////////////////////////////////
+
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
+import { ICAR } from 'src/app/Models/icar';
+import { CRUDTestService } from 'src/app/Services/crudtest.service';
+import { DialogAddPriceComponent } from '../dialog-add-price/dialog-add-price.component';
+import { DialogCarComponent } from './../dialog-car/dialog-car.component';
+
+
+
+
+
+@Component({
+  selector: 'app-cars',
+  templateUrl: './cars.component.html',
+  styleUrls: ['./cars.component.css']
+})
+export class CarsComponent implements OnInit {
+ 
+  @ViewChild(MatSort) sort!: MatSort;
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
+  
+  displayedColumns: string[] = ['No.', 'CarPlate','Classification', 'Capacity ', 'edit','delete'];
+  ELEMENT_DATA:ICAR[]=[];
+  ProductList:ICAR[]=[]
+  dataSource = new MatTableDataSource<ICAR>(this.ELEMENT_DATA);
+  
+  constructor(public dialog: MatDialog,private CRUDService: CRUDTestService) {
+
+   }
+
+  async ngOnInit(): Promise<void> {
+
+    await this.CRUDService.getAllCarFakeApi().subscribe(
+      (response)=>{
+    console.log("befo"+this.dataSource)
+
+        this.dataSource.data=response as ICAR[]
+
+        this.ProductList=response
+        console.log(this.ProductList)
+       
+       
+          
+
+     
+
+      },
+      (err)=>{console.log(err)}
+    );
+
+    
+    // this.dataSource.data=this.ProductList as ICAR[]
+
+    console.log("sssss"+this.dataSource)
+  }
+  ngAfterViewInit() {
+    this.dataSource.paginator = this.paginator;
+
+    this.dataSource.sort = this.sort;
+  }
+
+
+
+  
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
+
+  addcar(){
+    const dialogRef = this.dialog.open(DialogCarComponent,
+      {
+        width: '700px',
+        disableClose:true,
+        // margin: '0 auto'
+        // disableClose: true,
+        // hasBackdrop: true,
+      });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
+  } 
+ }
+
+
+

@@ -1,0 +1,112 @@
+<div class="p-5 w-100 content">
+    <div class="content">
+        <button (click)="activeChange()" class="float-right btn" [ngClass]="activestatus == 'Active' ? 'btn-success' : 'btn-dark'">{{activestatus}}</button>
+        <br>
+        <button mat-raised-button matTooltip="Info about the action" aria-label="Button that displays a tooltip when focused or hovered over">
+  Action
+</button>
+        <mat-slider></mat-slider>
+
+        <div class="container mt-2">
+            <div class="row">
+
+                <div class="row">
+
+                    <div class="col-lg-4 col-md-6 col-sm-6">
+                        <div class="card card-stats">
+                            <div class="card-header card-header-success card-header-icon">
+                                <div class="card-icon">
+                                    <img src="https://img.icons8.com/external-nawicon-flat-nawicon/50/000000/external-open-box-delivery-nawicon-flat-nawicon.png" />
+                                    <!-- <i class="material-icons">store</i> -->
+                                </div>
+                                <p class="card-category">Total Orders</p>
+                                <h6 class="card-title">{{orderNumber}}</h6>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-sm-6">
+                        <div class="card card-stats">
+                            <div class="card-header card-header-danger card-header-icon">
+                                <div class="card-icon">
+                                    <!-- <i class="material-icons">info_outline</i> -->
+                                    <img src="https://img.icons8.com/external-nawicon-flat-nawicon/50/000000/external-tracking-delivery-nawicon-flat-nawicon-3.png" />
+                                </div>
+                                <p class="card-category">todays Order</p>
+                                <h6 class="card-title">{{orderHistoryNumber}}</h6>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-sm-6">
+                        <div class="card card-stats">
+                            <div class="card-header card-header-info card-header-icon">
+                                <div class="card-icon">
+                                    <img src="https://img.icons8.com/external-nawicon-flat-nawicon/50/000000/external-payment-delivery-nawicon-flat-nawicon.png" />
+                                    <!-- <i class="material-icons">account_circle</i> -->
+                                </div>
+                                <p class="card-category ">Collect Payment</p>
+                                <h6 class="card-title">{{PaymentCountNumber}} AED</h6>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+
+
+
+
+        <div class="row flex-grow">
+
+            <div class="col-lg-12 col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-warning" style="    background: linear-gradient(60deg, #ef5350, #e53935);
+                box-shadow: 0 1px 10px 0 rgb(238 77 71); ">
+                        <h4 class="card-title align pl-3" style="color: #eee">Orders</h4>
+                    </div>
+                    <div class="card-body table-responsive">
+                        <table class="table table-hover">
+                            <thead class="text-danger">
+                                <th>Order No.</th>
+                                <th class="xx">Order Date</th>
+                                <th class="xx">Shipped Date</th>
+                                <th class="xx">Pickup From</th>
+                                <th class="xx">Delivered To</th>
+                                <th>Status</th>
+                                <!-- <th class="xx">Assignee</th> -->
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let item of OrderInfo">
+
+                                    <td>{{item.orderNumber}}</td>
+                                    <td class="xx">{{item.createdOn | date:'dd/MM/yyyy'}} {{ item.createdOn | date: 'shortTime'}}</td>
+                                    <td class="xx">{{item.expectionDate | date:'dd/MM/yyyy'}} {{ item.expectionDate | date: 'shortTime'}}</td>
+                                    <td class="xx">{{item.from}}</td>
+                                    <td class="xx">{{item.to}}</td>
+                                    <td *ngIf="item.status==1"><span class="badge bg-dark rounded-pill">{{ 'Confirmed' }}</span></td>
+                                    <td *ngIf="item.status==2"><span class="badge bg-secondary rounded-pill">{{ 'Ready For Pickup' }}</span></td>
+                                    <!-- <td *ngIf="item.status==2"><span class="badge bg-primary rounded-pill">{{ 'Picked By Courier' }}</span></td> -->
+                                    <td *ngIf="item.status==3"><span class="badge bg-warning rounded-pill">{{ 'On The Way' }}</span></td>
+                                    <td *ngIf="item.status==4"><span class="badge bg-primary rounded-pill">{{ 'Delivered' }}</span></td>
+                                    <td *ngIf="item.status==5"><span class="badge bg-success rounded-pill ">{{ 'Done' }}</span></td>
+                                </tr>
+
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
+</div>

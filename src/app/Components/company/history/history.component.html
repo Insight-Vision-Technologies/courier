@@ -1,0 +1,50 @@
+<div class="pt-4 pl-3" (click)="home()"><i class="fas fa-arrow-left"></i></div>
+
+<div class="p-5 w-100">
+
+    <div>
+        <label>History</label>
+    </div>
+
+    <div class="table-responsive">
+
+        <table class="table bor table-bordered">
+            <thead class="thead-bck bor">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col"><i class="fas fa-align-justify mr-2"></i>orderNum</th>
+                    <th scope="col"><i class="fas fa-shopping-cart mr-2"></i>Name</th>
+                    <th scope="col"><i class="fas fa-tag mr-2"></i>status</th>
+                    <th scope="col"><i class="fas fa-at mr-2"></i>email</th>
+                    <th scope="col"><i class="fas fa-phone-alt mr-2"></i>phone</th>
+                    <th scope="col"><i class="fas fa-map-marker-alt mr-2"></i>address</th>
+                    <th scope="col"><i class="far fa-sticky-note mr-2"></i>Rate</th>
+                    <!-- <th>Details</th> -->
+
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of dataSource">
+                    <td>#</td>
+                    <td>{{item.orderNumber}}</td>
+                    <td>{{item.senderName}}</td>
+                    <td *ngIf="item.status==5"><span class="badge bg-success rounded-pill">{{ 'Done' }}</span></td>
+                    <td *ngIf="item.status==-1"><span class="badge bg-danger rounded-pill">{{ 'Cancle' }}</span></td>
+                    <td *ngIf="item.status==-2"><span class="badge bg-dark rounded-pill">{{ 'Return' }}</span></td>
+
+                    <td>{{item.senderEmail}}</td>
+                    <td>{{item.senderPhone}}</td>
+                    <td>{{item.senderCity}}</td>
+                    <td>{{item.rate}}</td>
+
+
+
+                    <!-- <td class="iconn"> <i class="fas fa-plus"></i></td> -->
+
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+
+</div>

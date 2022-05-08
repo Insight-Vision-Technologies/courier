@@ -1,0 +1,94 @@
+<mat-toolbar name="sss" class="mat-elevation-z8">
+    <!-- keep menu btn remove ngif -->
+
+    <button mat-icon-button *ngIf="sidenav.mode === 'over'" (click)="sidenav.toggle()">
+    <mat-icon *ngIf="!sidenav.opened"> menu </mat-icon>
+    <mat-icon *ngIf="sidenav.opened"> close </mat-icon>
+  </button>
+    <div class="logo">
+        <img width="40%" src="../../../../assets/img/gallery/IVT GoldLogo@16x.png" wight="80px" height="50px" alt="" routerLink="/" />
+    </div>
+    <span class="example-spacer"></span>
+
+    <img src="../../../../assets/img/train.jpg" width="45px" class="img-fluid rounded me-1" />
+    <span class="text-dark">{{ companyInfo.companyName }}</span>
+
+    <button (click)="pagehome()" mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+    <mat-icon>logout</mat-icon>
+  </button>
+</mat-toolbar>
+
+<mat-sidenav-container>
+    <mat-sidenav #sidenav="matSidenav" class="mat-elevation-z8">
+        <div class="rel" routerLink="oderNew">
+            <!-- <img class="avatar mat-elevation-z8" src="../../../../assets/img/gallery/IVT GoldLogo@16x.png" /> -->
+            <!-- <i class="fas fa-pen"></i> -->
+        </div>
+        <!-- <h4 class="name">Company Name</h4> -->
+        <!-- <p class="designation">Software Engineer</p> -->
+
+        <!-- <mat-divider></mat-divider> -->
+
+        <div class="generlinfo">
+            <button mat-button class="menu-button" (click)="home()">
+        <!-- <mat-icon> house</mat-icon> -->
+
+        <mat-icon>home</mat-icon>
+        <span>Dashboard</span>
+      </button>
+
+            <button mat-button class="menu-button" (click)="order()">
+        <mat-icon> checklist_rtl</mat-icon>
+        <span>Order </span>
+        <span class="badge bg-dark">New</span>
+      </button>
+
+            <button mat-button class="menu-button" (click)="Car()">
+        <mat-icon>directions_car_filled</mat-icon>
+        <span>Vehicle</span>
+      </button>
+
+            <button mat-button class="menu-button" (click)="driver()">
+        <mat-icon>people</mat-icon>
+        <span>Employee</span>
+      </button>
+
+            <button mat-button class="menu-button" (click)="financial()">
+        <mat-icon>
+          <i class="fa-solid fa-money-bill-1"></i>
+        </mat-icon>
+
+        <span>Finance</span>
+      </button>
+
+            <button mat-button class="menu-button" (click)="Billing()">
+        <mat-icon><i class="fa-solid fa-money-check-dollar"></i></mat-icon>
+
+        <span>Billing</span>
+      </button>
+
+            <button mat-button class="menu-button" (click)="pricing()">
+        <mat-icon>paid</mat-icon>
+        <span>Pricing</span>
+      </button>
+        </div>
+        <!-- <mat-divider></mat-divider> -->
+
+        <div class="settinginfo">
+            <button mat-button class="menu-button" (click)="settings()">
+        <mat-icon>settings</mat-icon>
+        <span>Setting</span>
+      </button>
+            <button mat-button class="menu-button" (click)="help()">
+        <mat-icon>help</mat-icon>
+        <span>Help</span>
+      </button>
+        </div>
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+        <div class="content mat-elevation-z9 pb-1">
+            <router-outlet></router-outlet>
+        </div>
+    </mat-sidenav-content>
+</mat-sidenav-container>

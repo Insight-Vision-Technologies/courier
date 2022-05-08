@@ -1,0 +1,83 @@
+<div class="pt-4 pl-3" (click)="home()"><i class="fas fa-arrow-left"></i></div>
+
+
+<div class="p-3 w-100">
+
+    <div>
+        <label>Car Details</label>
+    </div>
+
+    <div class="">
+
+        <div class="container d-flex flex-row justify-content-between  flex-sm-wrap flex-xs-wrap flex-wrap flex-xl-nowrap flex-lg-nowrap">
+            <div class="card w-100">
+                <div class=" card-header">
+                    Vehicle
+                </div>
+                <div class="card-body">
+                    <ul class="list-group">
+                        <li *ngFor="let item of DriverVehRecordInfi" class="list-group-item d-flex justify-content-between align-items-center">
+                            <span>{{item.driverName}}</span>
+                            <span>{{item.vehicleName}}</span>
+                            <span class="badge badge-primary badge-pill">{{item.beginDate | date: "shortDate"}}</span>
+                            <span *ngIf="item.endDate != null" class="badge badge-primary badge-pill">{{item.endDate | date: "shortDate"}}</span>
+                            <span *ngIf="item.endDate == null" class="badge badge-primary badge-pill">Current</span>
+                        </li>
+
+                    </ul>
+
+                </div>
+            </div>
+            <div class="card w-100">
+                <div class=" card-header ">
+
+                    <span>Reports</span>
+                    <span (click)="addReport()" class="float-right"><i class="fas fa-plus-square"></i></span>
+
+                </div>
+                <div class="card-body ">
+                    <ul class="list-group ">
+                        <li *ngFor="let item of reportInfo" (click)="showreport(item)" class="list-group-item d-flex justify-content-between align-items-center ">
+                            <span>{{item.vehicleName}}</span>
+                            <span class="badge badge-primary badge-pill">{{item.date | date: "shortDate"}} - {{item.time}}</span>
+                            <span>{{item.cost}} AED</span>
+                    </ul>
+
+                </div>
+            </div>
+        </div>
+
+        <br>
+
+        <div *ngIf="!report" class=" m-4 ">
+            <div class="card border-danger mb-xl-0 mb-lg-0 mb-md-3 mb-sm-3 mb-xs-3 ">
+                <div class="card-header ">
+                    Reports Details
+                </div>
+                <div class="card-body ">
+                    <ul class="list-group ">
+                        <li class="list-group-item d-flex justify-content-between align-items-center ">
+                            Driver Name
+                            <span class=" ">{{Reportitem.driverName}}</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between  align-items-center">
+                            Date
+                            <span class=" ">{{Reportitem.time | date: "shortDate"}}</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center ">
+                            Cost
+                            <span class=" ">{{Reportitem.cost}}$</span>
+                        </li>
+                    </ul>
+
+                </div>
+            </div>
+        </div>
+        <br>
+
+        <br>
+
+
+
+    </div>
+</div>

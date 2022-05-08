@@ -1,0 +1,112 @@
+<div class="p-5 w-100" id="invoice">
+    <div class="">
+        <img src="../../../../assets/img/fp.JPG" width="150px">
+        <img class="float-right" src="../../../../assets/img/aot.jpeg" width="150px">
+    </div>
+    <div>
+        <label>Invoice#{{orderDetails.orderNumber}}</label>
+    </div>
+    <div class="row common">
+        <div class="col-md-6">
+            <p><img src="/assets/img/bar-code.png"></p>
+        </div>
+        <div class="col-md-6">
+            <p class="align-date">Date: {{orderDetails.createdOn | date: "dd:MMM:yyyy"}}</p>
+        </div>
+    </div>
+
+    <div class="row common">
+        <div class="col-md-4">
+            <h3>From</h3>
+            <p><b>Name: </b>{{UserInfo.name}}</p>
+            <p><b>Address: </b>{{UserInfo.addressDetails}}</p>
+            <p><b>Phone: </b>{{UserInfo.phone}}</p>
+            <p><b>Email: </b>{{UserInfo.email}}</p>
+        </div>
+        <div class="col-md-4">
+            <h3>TO</h3>
+            <p><b>Name: </b>{{orderDetails.reciverName}}</p>
+            <p><b>Address: </b>{{orderDetails.reciverAddress}}</p>
+            <p><b>Phone: </b>{{orderDetails.reciverPhone}}</p>
+            <p><b>Email: </b>{{orderDetails.reciverEmail}}</p>
+        </div>
+        <div class="col-md-4">
+            <p><b>Courier Name: </b>{{orderDetails.companyName}}</p>
+            <p><b>Courier Email: </b>{{orderDetails.CompanyEmail}}</p>
+            <p *ngIf="orderDetails.paymentMethod==0"><b>Payment Type:</b>Cash</p>
+            <p *ngIf="orderDetails.paymentMethod==1"><b>Payment Type:</b>Visa</p>
+
+        </div>
+    </div>
+    <hr>
+    <div class="row common mt-2">
+        <div class="col-md-12">
+            <table class="table">
+                <tr>
+                    <th>#</th>
+                    <th>blah</th>
+                    <th>Qty</th>
+                    <th>Subtotal</th>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>Description</td>
+                    <td>{{orderPriceDetails.description}}</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Type</td>
+                    <td>{{orderDetails.type}}</td>
+                    <td>{{orderPriceDetails.typeCost}} DHS</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Time</td>
+                    <td>{{orderDetails.time}}</td>
+                    <td>{{orderPriceDetails.timeCost}} DHS</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Size</td>
+                    <td>{{orderDetails.amount}}</td>
+                    <td>{{orderPriceDetails.sizeCost}} DHS</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Dimenstion</td>
+                    <td>{{orderDetails.Dimenstion}}</td>
+                    <td>{{orderPriceDetails.sizeCost}} DHS</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>OrderCost</td>
+                    <td></td>
+                    <td>{{orderPriceDetails.orderCost}} DHS</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Total Cost</td>
+                    <td></td>
+                    <td>{{orderPriceDetails.totalCost}} DHS</td>
+                </tr>
+
+                <tr>
+
+                    <td colspan="2">
+                        <button class="btn btn-primary btn-color btn-shadow" (click)="printPage()">Send To Receiver</button>
+                    </td>
+                    <td>
+                        <button class="btn btn-primary btn-color btn-shadow" (click)="printPage()">Print</button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div>
+
+        </div>
+    </div>
+
+
+
+</div>

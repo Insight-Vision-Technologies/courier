@@ -1,0 +1,83 @@
+<div class="main-content">
+    <div class="container-fluid p-3">
+        <div class="row">
+            <div class="col-md-12">
+                <h3>Add new question for rating</h3>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <form #form="ngForm" (ngSubmit)="addRatingQuestionForm(form)" class="m-3 container-fluid" method="post" enctype="multipart/form-data">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="name">Write Question</label>
+                                <input type="text" class="form-control" name="name" minlength="5" [(ngModel)]="ratingQuestion.name" #name="ngModel" [ngClass]="{ 'is-invalid':form.submitted && name.invalid || name.touched }" placeholder="Write Question" required>
+                                <div *ngIf="form.submitted && name.invalid || name.touched" class="invalid-feedback error-msg form-group">
+                                    <div *ngIf="name.errors?.required">Question is required</div>
+                                    <div *ngIf="name.errors?.minlength">Question should be at least 5 characters long</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-12 text-center mb-3">
+                            <button type="submit " class="btn btn-block mybtn btn-primary tx-tfm">
+      Add
+    </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Question</th>
+
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let rating of ratingDetails; let i = index">
+                            <th scope="row">{{rating.ratingQsId}}</th>
+                            <td>{{rating.name}}</td>
+                            <td>
+                                <button type="button" class="btn btn-sm btn-outline-primary m-2" (click)="editRating(rating)">Edit  <i class='fas fa-edit'></i> </button>
+                                <button type="button" class="btn btn-sm btn-outline-primary m-2" (click)="deleteRating(rating.ratingQsId)">Delete <i class='fas fa-trash-alt'></i></button>
+                            </td>
+
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <!-- <pre *ngIf="rating">{{rating.value | json}}</pre> -->
+
+                <ng-container *ngIf="rating">
+                    <h2 class="py-4">Edit Rating Question</h2>
+                    <form [formGroup]="rating">
+                        <div class="form-group row">
+                            <label for="brand" class="col-sm-2 col-form-label">Question Name</label>
+                            <div class="col-sm-6">
+                                <input type="text" class="form-control" id="name" formControlName="name">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-4 offset-sm-2">
+                                <button type="submit" class="btn btn-primary mr-2" (click)="save()">Save</button>
+                                <button type="reset" class="btn btn-outline-primary" (click)="cancel()">Cancel</button>
+                            </div>
+                        </div>
+                    </form>
+                </ng-container>
+            </div>
+        </div>
+    </div>
+
+
+</div>

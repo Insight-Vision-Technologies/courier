@@ -1,0 +1,153 @@
+body {
+    margin-top: 20px;
+    background-color: #f7f7fc;
+}
+
+.timeline {
+    list-style-type: none;
+    position: relative
+}
+
+.timeline:before {
+    background: #dee2e6;
+    left: 9px;
+    width: 2px;
+    height: 100%
+}
+
+.timeline-item:before,
+.timeline:before {
+    content: " ";
+    display: inline-block;
+    position: absolute;
+    z-index: 1
+}
+
+.timeline-item:before {
+    background: #fff;
+    border-radius: 50%;
+    border: 3px solid #3b7ddd;
+    left: 0;
+    width: 20px;
+    height: 20px
+}
+
+.card {
+    margin-bottom: 24px;
+    box-shadow: 0 0 0.875rem 0 rgba(33, 37, 41, .05);
+}
+
+.card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: initial;
+    border: 0 solid transparent;
+    border-radius: .25rem;
+    font-size: 20px;
+}
+
+.card-body {
+    flex: 1 1 auto;
+    padding: 1.25rem;
+}
+
+.card-header:first-child {
+    border-radius: .25rem .25rem 0 0;
+}
+
+.card-header {
+    border-bottom-width: 1px;
+}
+
+.pb-0 {
+    padding-bottom: 0!important;
+}
+
+.card-header {
+    padding: 1rem 1.25rem;
+    margin-bottom: 0;
+    background-color: #fff;
+    border-bottom: 0 solid transparent;
+}
+
+.btn-shadow {
+    background-color: #ec4155;
+    color: #ffffff;
+    box-shadow: 0 1px 10px 0 rgb(238 77 71);
+}
+
+.courier-box {
+    box-shadow: rgb(238 77 71) 0px 3px 8px;
+    border-radius: 20px;
+    padding: 10px;
+}
+
+.scrolling-wrapper {
+    overflow-x: scroll !important;
+    overflow-y: hidden;
+    white-space: nowrap;
+}
+
+table {
+    width: 100%;
+}
+
+.btn-width {
+    width: 100px;
+}
+
+.font-size {
+    font-size: 15px;
+}
+
+.list-group-item {
+    border: none!important;
+}
+
+.fw-bold {
+    font-weight: 500 !important;
+}
+
+.card {
+    display: inline-block;
+    margin-right: 5px;
+}
+
+.btn-color {
+    color: white;
+}
+
+h4 {
+    font-weight: 400;
+    color: white;
+}
+
+label {
+    color: rgb(88, 88, 88);
+}
+
+.fa-arrow-left {
+    color: black;
+    cursor: pointer;
+}
+
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+
+.ScrollHide::-webkit-scrollbar {
+    display: none;
+}
+
+
+/* Hide scrollbar for IE, Edge and Firefox */
+
+.ScrollHide {
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
+}

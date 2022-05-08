@@ -1,0 +1,40 @@
+<div class="modal-header">
+    <h5 class="modal-title">Modal title</h5>
+    <button mat-icon-button class="close-button" [mat-dialog-close]="true">
+    <mat-icon class="close-icon" color="warn">close</mat-icon>
+  </button>
+
+</div>
+<form class="form-horizontal" #addressForm="ngForm" (ngSubmit)="updateAddress(addressForm)">
+    <div class="form-group">
+        <label for="inputEmail3" class=" control-label">Country</label>
+        <div class="">
+            <input type="email" class="form-control" id="inputEmail3" placeholder="" required ngModel name="country" [(ngModel)]="newAddressINfo.country">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="inputPassword3" class=" control-label">City</label>
+        <div class="">
+            <mat-select class="form-control " name="city" ngModel required>
+                <mat-option value="Dubai">Dubai</mat-option>
+                <mat-option value="Abu Dhabi">Abu Dhabi</mat-option>
+                <mat-option value="Sharjah">Sharjah</mat-option>
+                <mat-option value="Ajman">Ajman</mat-option>
+            </mat-select>
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <label for="inputPassword3" class=" control-label">Address Details</label>
+        <div class="">
+            <input type="text" class="form-control" id="inputPassword3" placeholder="Password" required ngModel name="addressDetails" [(ngModel)]="newAddressINfo.addressDetails">
+        </div>
+    </div>
+    <div class="form-group last">
+        <div class="col-sm-offset-3 col-sm-9">
+            <button type="submit" class="btn btn-success mr-2" [mat-dialog-close]="true">Save</button>
+            <button type="button" class="btn btn-primary ml-2" (click)="deleteAddress()" [mat-dialog-close]="true">Delete</button>
+        </div>
+    </div>
+</form>

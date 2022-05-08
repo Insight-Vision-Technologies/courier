@@ -1,0 +1,155 @@
+<!-- Start cover -->
+<div class="all">
+    <div class="firstPart">
+        <div class="cover">
+            <div class="text text-center">
+                <h1>Help</h1>
+            </div>
+        </div>
+        <!--Start Contact From-->
+
+        <div class="contact-us container">
+            <h1>Contact Us</h1>
+
+            <!-- <form class="mt-2 m-3 pb-4" #ContactForm="ngForm" (ngSubmit)="onSubmit(carInfo)"> -->
+            <form class="mt-2 m-3 pb-4" #ContactForm="ngForm" (ngSubmit)="onSubmit(ContactForm.value)" [formGroup]="form">
+                <div class="row">
+                    <div class="col-lg-6 col-md-6 col-sm-10 how">
+                        <div class="form-group form-1 pl-0">
+                            <input ngModel class="form-control my-0 py-1" formControlName="name" id="name" type="text" placeholder="Name" aria-label="name" required>
+                        </div>
+                        <div *ngIf="form.controls['name'].invalid && form.controls['name'].touched" class="error-msg form-group">
+                            <div *ngIf="form.controls['name'].errors?.required" class="error-msg form-group">
+                                Name is required.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6 col-md-6 col-sm-10 how">
+                        <div class="form-group form-1 pl-0">
+                            <input class="form-control my-0 py-1" type="email" formControlName="email" id="email" placeholder="Email" aria-label="email" required>
+                        </div>
+                        <div *ngIf="form.controls['email'].invalid && form.controls['email'].touched" class="error-msg form-group">
+                            <div *ngIf="form.controls['email'].errors?.required" class="error-msg form-group">
+                                Email is required.
+                            </div>
+                            <div *ngIf="form.controls['email'].errors?.email" class="error-msg form-group">Please, Enter Valid Email.</div>
+                        </div>
+                    </div>
+                    <div class="col-lg-12 col-md-12 col-sm-10 how">
+                        <div class="form-group form-1 pl-0">
+                            <input ngModel class="form-control my-0 py-1" formControlName="mobile" id="mobile" type="number" maxlength="12" placeholder="Mobile No." aria-label="mobile" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                                required>
+                        </div>
+                        <div *ngIf="form.controls['mobile'].touched && form.controls['mobile'].invalid" class="error-msg form-group">
+                            <div *ngIf="form.controls['mobile'].errors?.required" class="error-msg form-group">Mobile Number is required.</div>
+                            <div *ngIf="form.controls['mobile'].errors?.pattern" class="error-msg form-group">Please, Enter 12 digit Mobile Number(971555555555).</div>
+                        </div>
+                    </div>
+                    <div class="col-lg-12 col-md-12 col-sm-10 how">
+                        <div class="form-group form-1 pl-0">
+                            <textarea ngModel class="form-control my-0 py-1" formControlName="message" id="message" cols="10" rows="5" placeholder="Message..." aria-label="message" required></textarea>
+                        </div>
+                        <div *ngIf="form.controls['message'].invalid && form.controls['message'].touched" class="error-msg form-group">
+                            <div *ngIf="form.controls['message'].errors?.required" class="error-msg form-group">
+                                Message is required.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-12 col-md-12 col-sm-10 how text-center">
+                        <div mat-dialog-actions class="mt-1 button">
+                            <button class="btn btn-lg btn-primary btn-shadowLinear" type="submit" [disabled]="!form.valid">Submit</button>
+                        </div>
+                    </div>
+
+                </div>
+            </form>
+
+        </div>
+        <!--End Contact Form-->
+        <div class="faqs container">
+            <h1>FAQs</h1>
+            <mat-accordion>
+                <mat-expansion-panel hideToggle class="faq-border-radius">
+                    <mat-expansion-panel-header class="bg-faq">
+                        <mat-panel-title>
+                            FAQs
+                        </mat-panel-title>
+                        <mat-panel-description>
+                            Frequently Asked Questions
+                        </mat-panel-description>
+                    </mat-expansion-panel-header>
+                    <p>FAQs are some of the most helpful pages on a website..</p>
+                </mat-expansion-panel>
+
+                <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false" *ngFor="let i of faq">
+                    <mat-expansion-panel-header class="bg-faq">
+                        <mat-panel-title> {{ i.question }}</mat-panel-title>
+                        <mat-panel-description>
+                        </mat-panel-description>
+                    </mat-expansion-panel-header>
+                    <p>{{ i.answer }}</p>
+                </mat-expansion-panel>
+            </mat-accordion>
+        </div>
+
+        <!-- Start FAQs -->
+        <!-- <div class="faqs container">
+
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-10 how">
+                    <div>
+                        <a routerLink="/credit">sssssssss</a>
+                    </div>
+                    <div>
+                        <a routerLink="/booked">
+                            sssssssss
+              </a>
+                    </div>
+                    <div>
+                        <a routerLink="/cancel">
+                            sssssssss
+              </a>
+                    </div>
+                    <div>
+                        <a routerLink="/participants">
+                            sssssssss
+              </a>
+                    </div>
+                </div>
+                <div class="col-lg-1 col-md-1 col-sm-1 arrow">
+                    <div><i class="fas fa-chevron-right"></i></div>
+                    <div><i class="fas fa-chevron-right"></i></div>
+                    <div><i class="fas fa-chevron-right"></i></div>
+                    <div><i class="fas fa-chevron-right"></i></div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-10 how">
+                    <div>
+                        <a routerLink="/amend">sssssssss</a>
+                    </div>
+                    <div>
+                        <a routerLink="/voucher">
+                            sssssssss
+              </a>
+                    </div>
+                    <div>
+                        <a routerLink="/openTicket">sssssssss</a>
+                    </div>
+                    <div>
+                        <a routerLink="/bookBehalf">
+                            sssssssss
+              </a>
+                    </div>
+                </div>
+                <div class="col-lg-1 col-md-1 col-sm-1 arrow">
+                    <div><i class="fas fa-chevron-right"></i></div>
+                    <div><i class="fas fa-chevron-right"></i></div>
+                    <div><i class="fas fa-chevron-right"></i></div>
+                    <div><i class="fas fa-chevron-right"></i></div>
+                </div>
+            </div>
+        </div> -->
+        <!-- End FAQs -->
+    </div>
+
+</div>

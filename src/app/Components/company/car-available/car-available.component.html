@@ -1,0 +1,40 @@
+<div class="pt-4 pl-3" (click)="home()"><i class="fas fa-arrow-left"></i></div>
+<div class="p-5 w-100">
+
+    <div>
+        <label>Car Available</label>
+    </div><br>
+
+
+
+    <div class="table-responsive">
+
+        <table class="table bor ">
+            <thead class="thead-bck bor">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Type</th>
+                    <th scope="col">Plate</th>
+                    <th scope="col">CarDriver</th>
+                    <th></th>
+
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of dataSource">
+                    <td>#</td>
+                    <td><i class="fas {{item.CarType}}"></i></td>
+                    <td>{{item.CarPlate}}</td>
+
+                    <td>{{item.CarDriver}}</td>
+                    <td class=""><i class="fas fa-plus-circle"></i></td>
+                    <!-- ////////// To Select Order //////////////// -->
+
+
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+
+</div>

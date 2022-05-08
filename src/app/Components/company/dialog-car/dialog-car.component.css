@@ -1,0 +1,131 @@
+.example-container .mat-form-field+.mat-form-field {
+    margin-left: 8px;
+}
+
+
+/* .example-right-align { */
+
+
+/* text-align: right; */
+
+
+/* } */
+
+input.example-right-align::-webkit-outer-spin-button,
+input.example-right-align::-webkit-inner-spin-button {
+    display: none;
+}
+
+input[type="text"].ng-valid {
+    border-color: #79B93C;
+    padding-right: calc(1.5em + 0.75rem);
+    background-image: url('~src/assets/img/right-mark.svg')!important;
+    background-repeat: no-repeat;
+    background-position: right calc(0.375em + 0.1875rem) center;
+    background-size: calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
+}
+
+.error-msg {
+    color: red;
+    font-size: 15px;
+    line-height: 20px;
+}
+
+mat-select.ng-valid {
+    border-color: #79B93C;
+    padding-right: calc(1.5em + 0.75rem);
+    background-image: url('~src/assets/img/right-mark.svg')!important;
+    background-repeat: no-repeat;
+    background-position: right calc(0.375em + 0.1875rem) center;
+    background-size: calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
+}
+
+input.example-right-align {
+    -moz-appearance: textfield;
+}
+
+.button {
+    display: flex;
+    justify-content: space-between;
+}
+
+.close-button {
+    float: right;
+    top: -24px;
+    right: -24px;
+}
+
+.close-icon {
+    transition: 1s ease-in-out;
+}
+
+.close-icon:hover {
+    transform: rotate(180deg);
+}
+
+ ::ng-deep .icon-outside .close-button {
+    float: right;
+    top: -52px;
+    right: -52px;
+}
+
+ ::ng-deep .icon-outside .mat-dialog-container {
+    overflow: unset
+}
+
+.title {
+    /* text-align: center; */
+    /* width: 100%; */
+    background-color: rgba(255, 99, 71, 0.384);
+    /* border-radius: 10%; */
+}
+
+
+/* Chrome, Safari, Edge, Opera */
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+
+/* Firefox */
+
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+::ng-deep .mat-form-field-underline {
+    display: none;
+}
+
+
+/* width */
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+
+/* Track */
+
+ ::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey;
+    border-radius: 10px;
+}
+
+
+/* Handle */
+
+ ::-webkit-scrollbar-thumb {
+    background: tomato;
+    border-radius: 10px;
+}
+
+
+/* Handle on hover */
+
+ ::-webkit-scrollbar-thumb:hover {
+    background: rgb(255, 164, 147);
+}

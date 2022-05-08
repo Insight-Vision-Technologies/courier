@@ -1,0 +1,57 @@
+label {
+    color: black;
+}
+
+.ico {
+    color: white !important;
+    font-size: larger;
+}
+
+.fa-arrow-left {
+    color: black;
+    cursor: pointer;
+}
+
+.name {
+    align-self: center;
+    color: black;
+    align-items: center;
+}
+
+.card-text {
+    font-size: 20px;
+    color: black;
+    font-weight: 500;
+}
+
+.badgecur {
+    cursor: pointer;
+}
+
+.fa-pencil-alt {
+    color: rgb(255, 249, 239);
+    font-size: large;
+}
+
+.mat-expansion-panel:not([class*='mat-elevation-z']) {
+    box-shadow: none;
+}
+
+.lbl {
+    color: black;
+    font-size: 17px;
+}
+
+.fa-star {
+    color: black;
+    font-size: 17px;
+}
+
+#fixedbutton {
+    position: fixed;
+    bottom: 86px;
+    right: 102px;
+    color: tomato;
+    font-size: 4rem;
+    cursor: pointer;
+}

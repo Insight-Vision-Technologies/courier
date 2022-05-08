@@ -1,0 +1,50 @@
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top d-block" [style.background-color]="tableData" [class.header_change]="header_variable">
+    <div class="container">
+        <a class="navbar-brand" routerLink="/">
+            <img src="../../../assets/img/gallery/IVT GoldLogo@16x.png" height="50" alt="..." />
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"> </span></button>
+        <div class="collapse navbar-collapse border-top border-lg-0 mt-4 mt-lg-0" id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto pt-2 pt-lg-0 font-base">
+                <li class="nav-item px-2" data-anchor="data-anchor" routerLink="/">
+                    <a class="nav-link fw-medium active" aria-current="page">Home</a></li>
+                <li class="nav-item px-2">
+
+
+                    <div class="dropdown">
+                        <a class="nav-link">Resources</a>
+                        <div class="dropdown-content">
+                            <a routerLink="/trackingorder" routerLinkActive="active">Tracking order</a>
+                            <a routerLink="/Company/Register">Delivery Company</a>
+                            <a routerLink="/Profile" routerLinkActive="active">My Account</a>
+                            <!-- <a routerLink="/OrderSummary" >OrderSummary</a> -->
+                            <a routerLink="/DriverPages" routerLinkActive="active">Driver</a>
+                            <!-- <a routerLink="/Rating" routerLinkActive="active" >Ratting</a> -->
+                            <!-- <a routerLink="/test" routerLinkActive="active" >tesxt</a> -->
+
+                        </div>
+                    </div>
+                </li>
+
+                <!-- <li class="nav-item px-2" data-anchor="data-anchor"> -->
+                <!-- <a class="nav-link" routerLink="/Aboutus">About us</a></li> -->
+
+                <li class="nav-item px-2" data-anchor="data-anchor">
+                    <a class="nav-link" routerLink="/Feature">Features</a></li>
+                <li class="nav-item px-2" data-anchor="data-anchor">
+                    <a class="nav-link" routerLink="/MainPricing">Pricing</a></li>
+                <!-- <li class="nav-item px-2" data-anchor="data-anchor"><a class="nav-link" >Faq</a></li> -->
+            </ul>
+            <form class="ps-lg-5">
+                <!-- <a class="btn btn-primary order-1 order-lg-0" routerLink="/sign" routerLinkActive="active">Login</a> -->
+                <a class=" btn btn-primary order-1 order-lg-0 btn-shadow" routerLink="/sign" *ngIf="!isLogged">Login</a>
+                <a class=" btn btn-primary order-1 order-lg-0 " (click)="logout()" *ngIf="isLogged">Logout</a>
+
+            </form>
+
+            <form class="ps-lg-5">
+                <a *ngIf="isLogged" class="btn btn-primary order-1 order-lg-0 btn-shadow" (click)="Company()">Jion As Company</a></form>
+
+        </div>
+    </div>
+</nav>

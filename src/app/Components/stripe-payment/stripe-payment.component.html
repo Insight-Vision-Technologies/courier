@@ -1,0 +1,58 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <mat-card>
+                <div class="row">
+                    <div class="col-md-12">
+                        <address>
+              <mat-toolbar>
+                <p class="text-center">Collect Payment Intent</p>
+              </mat-toolbar>
+            </address>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <mat-card-content>
+                            <div [formGroup]="stripeTest">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <mat-form-field>
+                                            <mat-label>Product</mat-label>
+                                            <input matInput formControlName="name" />
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <mat-form-field>
+                                            <mat-label>Amount</mat-label>
+                                            <input matInput type="number" formControlName="amount" />
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <ngx-stripe-card></ngx-stripe-card>
+                                        <!-- <ng-container *ngIf="elementsOptions?.clientSecret as clientSecret">
+                                            <ngx-stripe-payment [clientSecret]="clientSecret">
+                                            </ngx-stripe-payment>
+                                        </ng-container> -->
+                                    </div>
+                                    <div class="col-md-12">
+                                        <!-- <mat-divider></mat-divider> -->
+                                        <span fxFlex></span>
+                                        <button mat-raised-button style="
+                        margin-top: 16px;
+                        background-color: #ee4d47;
+                        color: white;
+                      " (click)="pay()" [disabled]="paying">
+                      <span *ngIf="!paying">PAY</span>
+                      <span *ngIf="paying">PAYING</span>
+                    </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </mat-card-content>
+                    </div>
+                </div>
+            </mat-card>
+        </div>
+    </div>
+</div>

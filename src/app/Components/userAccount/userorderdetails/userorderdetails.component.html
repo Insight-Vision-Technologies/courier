@@ -1,0 +1,164 @@
+<div class="p-5 w-100">
+
+    <div>
+        <label>Details</label>
+        <label class="float-right">#{{orderDetails.orderNumber}}</label>
+    </div>
+    <div class="row common">
+
+        <div class="col-md-6 courier-box form-group">
+            <p class="fw-bold text-center">Sender Information</p>
+            <ul class="list-group font-size">
+                <li class="list-group-item d-flex justify-content-between align-items-start">
+                    <div class="ms-2 me-auto">
+                        <div class="fw-bold">Name</div>
+                    </div>
+                    <span class="">{{UserInfo.name}}</span>
+                </li>
+
+                <li class="list-group-item d-flex justify-content-between align-items-start">
+                    <div class="ms-2 me-auto">
+                        <div class="fw-bold">Email</div>
+                    </div>
+                    <span class="">{{UserInfo.email}}</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-start">
+                    <div class="ms-2 me-auto">
+                        <div class="fw-bold">Phone</div>
+                    </div>
+                    <span class="">{{UserInfo.phone}}</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-start">
+                    <div class="ms-2 me-auto">
+                        <div class="fw-bold">Address</div>
+                    </div>
+                    <span class="">{{UserInfo.country}}-{{UserInfo.city}}-{{UserInfo.addressDetails}}</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-start">
+                    <div class="ms-2 me-auto">
+                        <div class="fw-bold">Order Number</div>
+                    </div>
+                    <span class="">{{orderDetails.orderNumber}}</span>
+                </li>
+            </ul>
+        </div>
+        <div class="col-md-6 courier-box form-group">
+            <p class="fw-bold text-center">Receiver Information</p>
+            <ul class="list-group font-size">
+                <li class="list-group-item d-flex justify-content-between align-items-start">
+                    <div class="ms-2 me-auto">
+                        <div class="fw-bold">Name</div>
+                    </div>
+                    <span class="">{{orderDetails.reciverName}}</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-start">
+                    <div class="ms-2 me-auto">
+                        <div class="fw-bold">Email</div>
+                    </div>
+                    <span class="">{{orderDetails.reciverEmail}}</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-start">
+                    <div class="ms-2 me-auto">
+                        <div class="fw-bold">Phone</div>
+                    </div>
+                    <span class="">{{orderDetails.reciverPhone}}</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-start">
+                    <div class="ms-2 me-auto">
+                        <div class="fw-bold">Address</div>
+                    </div>
+                    <span class="">{{orderDetails.reciverAddress}}</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-start">
+                    <div class="ms-2 me-auto">
+                        <div class="fw-bold">Status</div>
+                    </div>
+                    <span class="badge bg-dark rounded-pill" *ngIf="orderDetails.status==0">{{ 'Confirmed' }}</span>
+                    <span class="badge bg-secondary rounded-pill" *ngIf="orderDetails.status==1">{{ 'Ready For Pickup' }}</span>
+                    <span class="badge bg-primary rounded-pill" *ngIf="orderDetails.status==2">{{ 'Picked By Courier' }}</span>
+                    <span class="badge bg-warning rounded-pill" *ngIf="orderDetails.status==3">{{ 'On The Way' }}</span>
+                    <span class="badge bg-info rounded-pill" *ngIf="orderDetails.status==4">{{ 'Delivered' }}</span>
+                    <span class="badge bg-success rounded-pill" *ngIf="orderDetails.status==5">{{ 'Received' }}</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="row common">
+        <div *ngIf="orderDetails.companyName" class="col-md-4 courier-box form-group">
+            <p class="fw-bold text-center">Courier Details</p>
+            <ul class="list-group font-size">
+                <li *ngIf="orderDetails.companyName" class="list-group-item d-flex justify-content-between align-items-start">
+                    <div class="ms-2 me-auto">
+                        <div class="fw-bold">Courier Name</div>
+                    </div>
+                    <span class="">{{orderDetails.companyName}}</span>
+                </li>
+                <li *ngIf="orderDetails.companyName" class="list-group-item d-flex justify-content-between align-items-start">
+                    <div class="ms-2 me-auto">
+                        <div class="fw-bold">Phone</div>
+                    </div>
+                    <span class="">{{orderPriceDetails.companyPhone}}</span>
+                </li>
+                <li *ngIf="DriverInfo.driverName" class="list-group-item d-flex justify-content-between align-items-start">
+                    <div class="ms-2 me-auto">
+                        <div class="fw-bold">Driver</div>
+                    </div>
+                    <span class="">{{DriverInfo.driverName}}</span>
+                </li>
+                <li *ngIf="DriverInfo.driverName" class="list-group-item d-flex justify-content-between align-items-start">
+                    <div class="ms-2 me-auto">
+                        <div class="fw-bold">Driver Phone</div>
+                    </div>
+                    <span class="">{{DriverInfo.driverPhone}}</span>
+                </li>
+
+            </ul>
+        </div>
+        <div class="col-md-8 courier-box form-group">
+            <p class="fw-bold text-center">Order Information</p>
+            <ul class="list-group font-size">
+                <li class="list-group-item d-flex justify-content-between align-items-start">
+                    <div class="ms-2 me-auto">
+                        <div class="fw-bold">Order Date</div>
+                    </div>
+                    <span class="">{{ orderDetails.createdOn | date: "short"}}</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-start">
+                    <div class="ms-2 me-auto">
+                        <div class="fw-bold">Deliver Date </div>
+                    </div>
+                    <span class="">{{orderDetails.createdOn |date: "short"}}</span>
+                    <!-- <span class="">{{ i.time}}</span> -->
+                </li>
+
+                <li class="list-group-item d-flex justify-content-between align-items-start">
+                    <div class="ms-2 me-auto">
+                        <div class="fw-bold">Status</div>
+                    </div>
+                    <span class="badge bg-dark rounded-pill" *ngIf="orderDetails.status==0">{{ 'Confirmed' }}</span>
+                    <span class="badge bg-secondary rounded-pill" *ngIf="orderDetails.status==1">{{ 'Ready For Pickup' }}</span>
+                    <span class="badge bg-warning rounded-pill" *ngIf="orderDetails.status==2">{{ 'On The Way' }}</span>
+                    <span class="badge bg-info rounded-pill" *ngIf="orderDetails.status==3">{{ 'Delivered' }}</span>
+                    <span class="badge bg-success rounded-pill" *ngIf="orderDetails.status==4">{{ 'Received' }}</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-start">
+                    <div class="ms-2 me-auto">
+                        <div class="fw-bold"> Order Cost</div>
+                    </div>
+                    <span class="">{{ orderDetails.orderCost}}</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-start">
+                    <div class="ms-2 me-auto">
+                        <div class="fw-bold"> Payment Method</div>
+                    </div>
+                    <span class="badge bg-primary rounded-pill" *ngIf="orderDetails.paymentStatus==0">{{ 'Unpaid' }}</span>
+                    <span class="badge bg-success rounded-pill" *ngIf="orderDetails.paymentStatus==1">{{ 'Paid' }}</span>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+    <div class="row common">
+        <div class="col-md-12"></div>
+    </div>
+</div>

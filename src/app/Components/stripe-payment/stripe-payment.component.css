@@ -1,0 +1,36 @@
+.mat-card {
+    padding: 0px !important;
+}
+
+.mat-card-header-text {
+    margin: 0px !important;
+}
+
+.mat-card-content,
+.mat-card-actions {
+    padding: 16px !important;
+}
+
+.mat-form-field {
+    display: block!important;
+    position: relative;
+    text-align: left;
+}
+
+.mat-toolbar-row,
+.mat-toolbar-single-row {
+    display: block;
+    box-sizing: border-box;
+    padding: 16px 16px;
+    width: 100%;
+    flex-direction: row;
+    align-items: center;
+    white-space: nowrap;
+    background-color: #EE4D47;
+    /* text-align: center; */
+    color: white;
+}
+
+.back-color {
+    background-color: #EE4D47;
+}

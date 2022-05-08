@@ -1,0 +1,361 @@
+<app-header [tableData]="bgColor"></app-header>
+<div class="p-5 w-100">
+    <div class="mat-elevation-z8 p-4 bb">
+        <h3 class="pt-3 text-center">Create Order</h3>
+        <form #CarForm="ngForm" (ngSubmit)="CarForm.form.valid && onSubmit(CarForm)">
+
+            <!-- <div class="d-flex flex-row justify-content-around flex-wrap"> -->
+            <div class="courier-box">
+                <div *ngIf="logged" class="card border-danger  mb-xl-0 mb-lg-0 mb-md-3 mb-sm-3 mb-xs-3">
+                    <div class="card-header">
+                        Sender Information
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group ">
+                                    <label for="name">Name <span class="text-danger">*</span></label>
+                                    <input name="name" type="text" minlength="3" [(ngModel)]="GuestOrder.name" #name="ngModel" [ngClass]="{ 'is-invalid':CarForm.submitted && name.invalid || name.touched }" class="form-control " placeholder="Enter Name" id="name" minlength="3" required>
+                                    <div *ngIf="CarForm.submitted && name.invalid || name.touched" class="invalid-feedback error-msg form-group">
+                                        <div *ngIf="name.errors?.required">Name is required</div>
+                                        <div *ngIf="name.errors?.minlength">Name should be at least 3 characters long</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group ">
+                                    <label for="phone">Phone <span class="text-danger">*</span></label>
+                                    <input type="text" #phone="ngModel" name="phone" minlength="12" maxLength="12" class="form-control " placeholder="Phone No." id="phone" [(ngModel)]="GuestOrder.phone" [ngClass]="{ 'is-invalid':CarForm.submitted && phone.invalid || phone.touched }" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                                        required>
+                                    <div *ngIf="CarForm.submitted && phone.invalid || phone.touched" class="invalid-feedback error-msg form-group">
+                                        <div *ngIf="phone.errors?.required">Phone is required</div>
+                                        <div *ngIf="phone.errors?.minlength">Phone should be (971)555555555</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group first">
+                                    <label for="email">Email <span class="text-danger">*</span></label>
+                                    <!-- <input ngModel name="email" type="email" class="form-control" placeholder="Enter Email" id="email" required> -->
+                                    <input type="email" name="email" [(ngModel)]="GuestOrder.email" #email="ngModel" [ngClass]="{ 'is-invalid':CarForm.submitted && email.invalid || email.touched }" class="form-control " placeholder="Email" id="email" email required>
+                                    <div *ngIf="CarForm.submitted && email.invalid || reciverEmail.touched" class="invalid-feedback error-msg form-group">
+                                        <div *ngIf="email.errors?.required">Email is required</div>
+                                        <div *ngIf="email.errors?.email">Must be a valid email address</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row ">
+                            <div class="col-md-6">
+                                <div class="form-group first ">
+                                    <label for="city">City <span class="text-danger">*</span></label>
+                                    <mat-select class="form-control" name="city" [(ngModel)]="GuestOrder.city" #city="ngModel" [ngClass]="{ 'is-invalid':CarForm.submitted && city.invalid || city.touched }" required>
+                                        <mat-option value="Dubai">Dubai</mat-option>
+                                        <mat-option value="Abu Dhabi">Abu Dhabi</mat-option>
+                                        <mat-option value="Sharjah">Sharjah</mat-option>
+                                        <mat-option value="Ajman">Ajman</mat-option>
+                                        <mat-option value="Fujairah">Fujairah</mat-option>
+
+                                    </mat-select>
+                                    <div *ngIf="CarForm.submitted && city.invalid || city.touched" class="invalid-feedback error-msg form-group">
+                                        <div *ngIf="city.errors?.required">City is required</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group first ">
+                                    <label for="addressDetails">Address <span class="text-danger">*</span></label>
+                                    <input [(ngModel)]="GuestOrder.addressDetails" #addressDetails="ngModel" [ngClass]="{ 'is-invalid':CarForm.submitted && addressDetails.invalid || addressDetails.touched }" name="addressDetails" type="text" class="form-control " placeholder="Address" id="addressDetails"
+                                        minlength="5" required>
+                                    <div *ngIf="CarForm.submitted && addressDetails.invalid || addressDetails.touched" class="invalid-feedback error-msg form-group">
+                                        <div *ngIf="addressDetails.errors?.required">Address is required</div>
+                                        <div *ngIf="addressDetails.errors?.minlength">Address should be at least 5 characters long</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <div class="card border-danger">
+                    <div class="card-header">
+                        Receiver Information
+                    </div>
+                    <div class="card-body">
+                        <div class=" row ">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label class="first " for="reciverName ">Name <span class="text-danger">*</span></label>
+                                    <input name="reciverName" type="text" minlength="3" [(ngModel)]="orderDetail.reciverName" #reciverName="ngModel" [ngClass]="{ 'is-invalid':CarForm.submitted && reciverName.invalid || reciverName.touched }" class="form-control " placeholder="Enter Name"
+                                        id="reciverName" minlength="3" required>
+                                    <div *ngIf="CarForm.submitted && reciverName.invalid || reciverName.touched" class="invalid-feedback error-msg form-group">
+                                        <div *ngIf="reciverName.errors?.required">Name is required</div>
+                                        <div *ngIf="reciverName.errors?.minlength">Name should be at least 3 characters long</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group ">
+                                    <label class="first " for="reciverPhone">Phone <span class="text-danger">*</span></label>
+                                    <input type="text" #reciverPhone="ngModel" name="reciverPhone" minlength="12" maxLength="12" class="form-control " placeholder="Phone No." id="reciverPhone" [(ngModel)]="orderDetail.reciverPhone" [ngClass]="{ 'is-invalid':CarForm.submitted && reciverPhone.invalid || reciverPhone.touched }"
+                                        oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" required>
+                                    <div *ngIf="CarForm.submitted && reciverPhone.invalid || reciverPhone.touched" class="invalid-feedback error-msg form-group">
+                                        <div *ngIf="reciverPhone.errors?.required">Phone is required</div>
+                                        <div *ngIf="reciverPhone.errors?.minlength">Phone should be (971)555555555</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group first ">
+                                    <label class="first" for="reciverEmail ">Email <span class="text-danger">*</span></label>
+                                    <input type="email" name="reciverEmail" [(ngModel)]="orderDetail.reciverEmail" #reciverEmail="ngModel" [ngClass]="{ 'is-invalid':CarForm.submitted && reciverEmail.invalid || reciverEmail.touched }" class="form-control " placeholder="Email" id="reciverEmail"
+                                        email required>
+                                    <div *ngIf="CarForm.submitted && reciverEmail.invalid || reciverEmail.touched" class="invalid-feedback error-msg form-group">
+                                        <div *ngIf="reciverEmail.errors?.required">Email is required</div>
+                                        <div *ngIf="reciverEmail.errors?.email">Must be a valid email address</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row ">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="reciverCity">City <span class="text-danger">*</span></label>
+                                    <mat-select class="form-control" name="reciverCity" [(ngModel)]="orderDetail.reciverCity" #reciverCity="ngModel" [ngClass]="{ 'is-invalid':CarForm.submitted && reciverCity.invalid || reciverCity.touched }" required>
+                                        <mat-option value="Dubai">Dubai</mat-option>
+                                        <mat-option value="Abu Dhabi">Abu Dhabi</mat-option>
+                                        <mat-option value="Sharjah">Sharjah</mat-option>
+                                        <mat-option value="Ajman">Ajman</mat-option>
+                                        <mat-option value="Fujairah">Fujairah</mat-option>
+                                    </mat-select>
+                                    <div *ngIf="CarForm.submitted && reciverCity.invalid || reciverCity.touched" class="invalid-feedback error-msg form-group">
+                                        <div *ngIf="reciverCity.errors?.required">City is required</div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group first ">
+                                    <label class="first " for="reciverAddress">Address <span class="text-danger">*</span></label>
+                                    <input [(ngModel)]="orderDetail.reciverAddress" #reciverAddress="ngModel" [ngClass]="{ 'is-invalid':CarForm.submitted && reciverAddress.invalid || reciverAddress.touched }" name="reciverAddress" type="text" class="form-control " placeholder="Address"
+                                        id="reciverAddress" minlength="5" required>
+                                    <div *ngIf="CarForm.submitted && reciverAddress.invalid || reciverAddress.touched" class="invalid-feedback error-msg form-group">
+                                        <div *ngIf="reciverAddress.errors?.required">Address is required</div>
+                                        <div *ngIf="reciverAddress.errors?.minlength">Address should be at least 5 characters long</div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+            <br>
+            <div class="courier-box">
+                <div class="card border-danger mb-xl-0 mb-lg-0 mb-md-3 mb-sm-3 mb-xs-3 ">
+                    <div class="card-header ">
+                        Order Details
+                    </div>
+                    <div class="card-body ">
+                        <!-- <div class="row ">
+                            <div class="col-md-6 ">
+                                <div class="form-group ">
+                                    <label class="first " for="from"> From</label>
+                                    <input ngModel name="from" type="text" class="form-control" placeholder=" " id="from">
+                                </div>
+                            </div>
+                            <div class="col-md-6 ">
+                                <div class="form-group ">
+                                    <label class="first " for="to">To</label>
+                                    <input ngModel name="to" type="text " class="form-control " placeholder=" " id="to">
+                                </div>
+                            </div>
+                        </div> -->
+                        <div class="row ">
+                            <div class="col-md-6 ">
+                                <div class="form-group ">
+                                    <label class="first " for="type">Order Type <span class="text-danger">*</span></label>
+                                    <mat-select class="form-control" name="type" [(ngModel)]="orderDetail.type" #type="ngModel" [ngClass]="{ 'is-invalid':CarForm.submitted && type.invalid || type.touched }" required>
+                                        <mat-option *ngFor="let item of types" [value]="item">{{item}}</mat-option>
+                                    </mat-select>
+                                    <div *ngIf="CarForm.submitted && type.invalid || type.touched" class="invalid-feedback error-msg form-group">
+                                        <div *ngIf="type.errors?.required">Type is required</div>
+                                    </div>
+                                    <!-- </mat-form-field> -->
+                                </div>
+                            </div>
+                            <div class="col-md-6 ">
+                                <div class="form-group ">
+                                    <label class="first " for="amount">Size <span class="text-danger">*</span></label>
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">KG</span>
+                                        </div>
+                                        <input name="amount" type="number" [(ngModel)]="orderDetail.amount" #amount="ngModel" [ngClass]="{ 'is-invalid':CarForm.submitted && amount.invalid || amount.touched }" class="form-control" aria-label="Amount (to the nearest dollar)">
+                                        <div class="input-group-append">
+                                            <span class="input-group-text">.00</span>
+                                        </div>
+                                        <div *ngIf="CarForm.submitted && amount.invalid || amount.touched" class="invalid-feedback error-msg form-group">
+                                            <div *ngIf="amount.errors?.required">Amount is required</div>
+                                            <div *ngIf="orderDetail.amount<=0">Amount should be greater than 0</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12 text-center">
+                                <div class="form-group">
+                                    <h5>Click Image</h5>
+                                    <webcam [height]="500" [width]="500" [trigger]="triggerObservable" (imageCapture)="handleImage($event)" *ngIf="showWebcam" [allowCameraSwitch]="allowCameraSwitch" [switchCamera]="nextWebcamObservable" [videoOptions]="videoOptions" [imageQuality]="1" (cameraSwitched)="cameraWasSwitched($event)"
+                                        (initError)="handleInitError($event)"></webcam><br>
+
+                                    <button type="button" class="actionBtn btn btn-primary form-group m-2" (click)="toggleWebcam();" *ngIf="showWebcam==true">Camera Off</button>
+                                    <button type="button" class="actionBtn btn btn-primary form-group m-2" (click)="toggleWebcam();" *ngIf="showWebcam==false">Camera On</button>
+                                    <button type="button" class="actionBtn btn btn-primary form-group m-2" (click)="triggerSnapshot();">Click Image</button>
+                                    <br>
+                                    <button type="button" class="actionBtn btn btn-primary  form-group" (click)="showNextWebcam(true);" [disabled]="!multipleWebcamsAvailable">Next Camera</button>
+                                    <br>
+                                    <input id="cameraSwitchCheckbox" type="checkbox" [(ngModel)]="allowCameraSwitch" [ngModelOptions]="{standalone: true}">
+                                    <label for="cameraSwitchCheckbox" class="label-size">Allow Camera Switch</label>
+                                    <br/><input id="deviceId" type="text" class="hidden-input" [(ngModel)]="deviceId" style="width: 500px" [ngModelOptions]="{standalone: true}">
+                                    <br>
+                                    <button type="button" (click)="showNextWebcam(deviceId);" class="btn btn-primary">Activate</button>
+                                </div>
+
+                                <div class="snapshot" *ngIf="webcamImage">
+                                    <h2>Nice one!</h2>
+                                    <img [src]="webcamImage.imageAsDataUrl" />
+                                </div>
+
+                                <h4 *ngIf="errors.length > 0">Messages:</h4>
+                                <ul *ngFor="let error of errors">
+                                    <li>{{error | json}}</li>
+                                </ul>
+                            </div>
+
+
+                        </div>
+                        <div class="row ">
+                            <div class="col-md-4 ">
+                                <div class="form-group ">
+                                    <label class="first " for="time">width</label>
+                                    <input name="width" type="number" [(ngModel)]="dimntionOrder.width" #width="ngModel" [ngClass]="{ 'is-invalid':CarForm.submitted && width.invalid || width.touched }" class="form-control" aria-label="width (to the nearest dollar)">
+
+
+                                </div>
+                            </div>
+                            <div class="col-md-4 ">
+                                <div class="form-group ">
+                                    <label class="first " for="time">height</label>
+                                    <input name="height" type="number" [(ngModel)]="dimntionOrder.height" #height="ngModel" [ngClass]="{ 'is-invalid':CarForm.submitted && height.invalid || height.touched }" class="form-control" aria-label="Amount (to the nearest dollar)">
+
+
+                                </div>
+                            </div>
+                            <div class="col-md-4 ">
+                                <div class="form-group ">
+                                    <label class="first " for="time">length</label>
+                                    <input name="length" type="number" [(ngModel)]="dimntionOrder.length" #length="ngModel" [ngClass]="{ 'is-invalid':CarForm.submitted && length.invalid || length.touched }" class="form-control" aria-label="Amount (to the nearest dollar)">
+
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row ">
+                            <div class="col-md-6 ">
+                                <div class="form-group ">
+                                    <label class="first " for="time">description</label>
+                                    <input name="description" type="text" [(ngModel)]="orderDetail.description" #description="ngModel" [ngClass]="{ 'is-invalid':CarForm.submitted && description.invalid || description.touched }" class="form-control" aria-label="Amount (to the nearest dollar)">
+
+
+                                </div>
+                            </div>
+                            <div class="col-md-6 ">
+                                <div class="form-group ">
+                                    <label class="first " for="time">OrderCost</label>
+                                    <input name="orderCost" type="number" [(ngModel)]="orderDetail.orderCost" #orderCost="ngModel" [ngClass]="{ 'is-invalid':CarForm.submitted && orderCost.invalid || orderCost.touched }" class="form-control" aria-label="Amount (to the nearest dollar)">
+
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <br>
+            <div *ngIf="!logged" class="card border-danger mb-xl-0 mb-lg-0 mb-md-3 mb-sm-3 mb-xs-3 ">
+                <div class="card-header ">
+                    Address
+                </div>
+                <div class="card-body ">
+                    <div class="row ">
+                        <div class="col-md-6 ">
+                            <div class="form-group ">
+                                <label class="first " for="fname ">Address :  <span class="text-danger">*</span></label>
+                                <div class="form-check " *ngFor="let item of addressUser">
+                                    <input class="form-check-input" type="radio" name="addressID" id="Classification" [value]="item.addressID" required ngModel checked ngModel="addressID" />
+                                    <label class="form-check-label first " for="addressID">
+                                      {{item.addressDetails}}-{{item.city}}-{{item.country}}
+                              </label>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+            <br>
+            <div class="card border-danger mb-xl-0 mb-lg-0 mb-md-3 mb-sm-3 mb-xs-3 ">
+                <div class="card-header ">
+                    Payment
+                </div>
+                <div class="card-body ">
+                    <div class="row ">
+                        <div class="col-md-6 ">
+                            <div class="form-group ">
+                                <label class="first " for="fname ">Payment By <span class="text-danger">*</span></label>
+                                <div class="form-check ">
+                                    <input class="form-check-input" type="radio" name="paymentBy" id="Classification" value="0" required ngModel (change)="onItemChange($event) " checked ngModel="paymentBy" />
+                                    <label class="form-check-label first " for="paymentBy ">
+                                  Sender
+                                </label>
+                                </div>
+                                <div class="form-check ">
+                                    <input class="form-check-input" type="radio" name="paymentBy" id="Classification" value="1" required ngModel (change)="onItemChange($event) " checked ngModel="paymentBy" />
+                                    <label class="form-check-label first " for="paymentBy ">
+                                  Reciver
+                                </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- <div class="col-md-6 ">
+                            <button *ngIf="btnpayment " class=" btn btn-primary jalign-middle" routerLink="/paymentbtn">Payment</button>
+                        </div> -->
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <button type="submit" class="btn btn-primary btn-shadow jalign-middle w-100">Create Order</button>
+                        </div>
+                        <div class="col-md-6">
+
+                            <!-- <button class=" btn btn-primary btn-shadow jalign-middle w-100 " routerLink="/ChoosePrice" routerLinkActive="active"> Next</button> -->
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+
+        </form>
+
+    </div>
+</div>

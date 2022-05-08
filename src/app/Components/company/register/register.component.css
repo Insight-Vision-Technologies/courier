@@ -1,0 +1,146 @@
+.btn-shadow {
+  background-color: #EE4D47;
+  color: #ffffff;
+  box-shadow: 0 1px 10px 0 rgb(238 77 71);
+}
+.courier-box{
+  box-shadow: rgb(238 77 71) 0px 3px 8px;
+  border-radius: 20px;
+  padding: 10px;
+}
+.container {
+    padding-top: 20px;
+    margin-top: 15px;
+    padding-bottom: 4.2rem;
+    /* background:rgba(0, 0, 0, 0.76); */
+}
+
+a {
+    text-decoration: none !important;
+}
+
+h1,
+h2,
+h3 {
+    font-family: 'Kaushan Script', cursive;
+}
+
+.myform {
+    position: relative;
+    display: -ms-flexbox;
+    display: flex;
+    padding: 1rem;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    width: 100%;
+    pointer-events: auto;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid rgba(0, 0, 0, .2);
+    border-radius: 1.1rem;
+    outline: 0;
+    max-width: 500px;
+}
+
+.tx-tfm {
+    text-transform: uppercase;
+}
+
+.mybtn {
+    border-radius: 50px;
+}
+
+.login-or {
+    position: relative;
+    color: #aaa;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.span-or {
+    display: block;
+    position: absolute;
+    left: 50%;
+    top: -2px;
+    margin-left: -25px;
+    background-color: #fff;
+    width: 50px;
+    text-align: center;
+}
+
+.hr-or {
+    height: 1px;
+    margin-top: 0px !important;
+    margin-bottom: 0px !important;
+}
+
+.google {
+    color: #666;
+    width: 100%;
+    height: 40px;
+    text-align: center;
+    outline: none;
+    border: 1px solid lightgrey;
+}
+
+form .error {
+    color: #ff0000;
+}
+
+.cc {
+    height: auto;
+    background: linear-gradient(180deg, rgb(255, 181, 168), rgb(148, 28, 4));
+}
+
+.cc {
+    height: 100% !important;
+    overflow-x: hidden;
+    height: fit-content;
+}
+
+.carddiv {
+    box-shadow: 20px 26px 2px 1px rgb(109, 76, 70);
+}
+
+.cardw {
+    width: 60%
+}
+
+.passIcon {
+    float: right;
+    margin-top: -32px;
+    /* position: relative; */
+    z-index: 2;
+    cursor: pointer;
+    padding-right: 10px;
+}
+
+.imgg {
+    width: 150px;
+    max-height: 150px;
+}
+
+input[type='file'] {
+    color: transparent;
+    width: 130px;
+    overflow-x: hidden;
+    font-size: 15px;
+}
+
+input[type=file]::file-selector-button {
+    border: 1px solid wheat;
+    padding: .2em .4em;
+    border-radius: .2em;
+    background-color: #EE4D47;
+    transition: 1s;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+input[type=file]::file-selector-button:hover {
+    background-color: #e9433d;
+    border: 1px solid wheat;
+}

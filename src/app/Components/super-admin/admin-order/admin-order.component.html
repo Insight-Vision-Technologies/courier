@@ -1,0 +1,62 @@
+<div class="container">
+    <br>
+    <br>
+    <h3>Order</h3>
+    <br>
+    <div class="input-group form-1 pl-0 mb-4 search">
+        <div class="input-group-prepend">
+            <span class="input-group-text purple lighten-3 fass btn-shadowLinear" id="basic-text1">
+                <i class="fas fa-search text-white" aria-hidden="true"></i></span>
+        </div>
+        <input ngModel class="form-control my-0 py-1 " type="text" placeholder="Search" aria-label="Search" required>
+    </div>
+
+    <div class="row flex-grow">
+        <div class="col-lg-12 col-md-12">
+
+            <div class="card-body table-responsive">
+                <table class="table table-hover">
+                    <thead class="card-headercard-header-warning" style="    background: linear-gradient(60deg, #ef5350, #e53935);
+                    box-shadow: 0 1px 10px 0 rgb(238 77 71); ">
+                        <th scope="col">Order ID</th>
+                        <th scope="col">Created</th>
+                        <th scope="col">Customer</th>
+                        <th scope="col">Company</th>
+                        <th scope="col">Driver</th>
+                        <th scope="col">Total</th>
+                        <th scope="col">Profit</th>
+                        <th scope="col">Status</th>
+                        <th scope="col">Updated</th>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of orderList" class="rounded bg-white">
+
+                            <td class="order-color" (click)="Viewdetails(item.orderId)">{{item.orderNumber}}</td>
+                            <td>{{ item.createdOn | date: 'dd/MM/yyyy'}} {{ item.createdOn | date: 'shortTime'}}</td>
+                            <td>{{item.senderName}}</td>
+                            <td>{{item.companyName}}</td>
+                            <td>{{item.driverName}} </td>
+
+
+                            <td>{{item.totalPrice}} DHS</td>
+                            <td>{{item.driverName}} DHS</td>
+                            <td>
+                                <span class="badge bg-primary rounded-pill" *ngIf="item.status==0">{{ 'Created' }}</span>
+                                <span class="badge bg-dark rounded-pill" *ngIf="item.status==1">{{ 'Confirmed' }}</span>
+                                <span class="badge bg-secondary rounded-pill" *ngIf="item.status==2">{{ 'Ready For Pickup' }}</span>
+                                <!-- <span class="badge bg-primary rounded-pill" *ngIf="item.status==3">{{ 'Picked By Courier' }}</span> -->
+                                <span class="badge bg-warning rounded-pill" *ngIf="item.status==3">{{ 'On The Way' }}</span>
+                                <span class="badge bg-info rounded-pill" *ngIf="item.status==4">{{ 'Delivered' }}</span>
+                                <span class="badge bg-success rounded-pill" *ngIf="item.status==5">{{ 'Done' }}</span>
+                                <span class="badge bg-danger rounded-pill" *ngIf="item.status==-1">{{ 'Cancle' }}</span>
+                                <span class="badge bg-success rounded-pill" *ngIf="item.status==-2">{{ 'Return' }}</span>
+                            </td>
+                            <td>{{item.updatedOn| date: 'dd/MM/yyyy'}}</td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+
+
+        </div>

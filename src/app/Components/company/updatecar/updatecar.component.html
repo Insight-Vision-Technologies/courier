@@ -1,0 +1,85 @@
+<div class="p-5 w-100 fix-height">
+
+    <div>
+        <label>Update Car</label>
+    </div>
+    <form #CarForm="ngForm" (ngSubmit)="onSubmit(carInfo)">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="inputCarPalte">Car Plate</label>
+                    <input name="CarPlate" type="text" class="form-control mt-2" id="inputCarPalte" placeholder="" [(ngModel)]="carInfo.carPlate" />
+                </div>
+            </div>
+
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="inputclassfication" class="mb-3">Classification</label>
+                    <br>
+                    <div class="form-check form-check-inline" name="classfication">
+                        <input class="form-check-input" type="radio" name="classfication" id="classfication" value="1" [(ngModel)]="carInfo.classfication" [checked]="carInfo.classfication=='1' ? true : false" #classfication="ngModel" />
+                        <label class="form-check-label" for="classfication">
+                        <i class="fas fa-car-side"></i>
+                      </label>
+                    </div>
+
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="classfication" id="classfication" value="2" [(ngModel)]="carInfo.classfication" [checked]="carInfo.classfication=='2' ? true : false" />
+                        <label class="form-check-label" for="classfication">
+        <i class="fas fa-truck-pickup"></i>
+      </label>
+                    </div>
+
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="classfication" id="classfication" value="3" [(ngModel)]="carInfo.classfication" [checked]="carInfo.classfication=='3' ? true : false" />
+                        <label class="form-check-label" for="classfication">
+        <i class="fas fa-truck"></i>
+      </label>
+                    </div>
+
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="classfication" id="classfication" value="4" [(ngModel)]="carInfo.classfication" [checked]="carInfo.classfication=='4' ? true : false" />
+                        <label class="form-check-label" for="classfication">
+        <i class="fas fa-motorcycle"></i>
+      </label>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label for="inputcapacity">capacity</label>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">KG</span>
+                        </div>
+                        <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)" name="capacity" [(ngModel)]="carInfo.capacity">
+                        <div class="input-group-append">
+                            <span class="input-group-text">.000</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <!--
+<div class="form-group row">
+<label for="inputDeliveryTime" class="col-sm-3 col-form-label">DeliveryTime</label
+  >
+  <div class="col-sm-8">
+    <input
+      type="text"
+      class="form-control"
+      id="inputDeliveryTime"
+      placeholder="DeliveryTime"
+    />
+  </div>
+</div> -->
+        <div mat-dialog-actions class="mt-3 button">
+            <button class="btn btn-lg btn-primary btn-shadow" type="submit">Add</button>
+            <!-- <button class="btn btn-lg btn-danger" type="submit" [mat-dialog-close]="true">Cancle</button> -->
+        </div>
+    </form>
+</div>

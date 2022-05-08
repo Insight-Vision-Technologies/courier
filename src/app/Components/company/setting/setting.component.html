@@ -1,0 +1,387 @@
+<div class="p-5 w-100">
+    <mat-tab-group>
+        <mat-tab>
+            <ng-template mat-tab-label>
+                <i class="fas fa-info-circle example-tab-icon ml-r"></i> Information
+            </ng-template>
+
+            <div class="container-fluid">
+                <form #form="ngForm" (ngSubmit)="logForm(form)" class="m-3 container-fluid" method="post" enctype="multipart/form-data">
+                    <input type="hidden" name="_method" value="put" />
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="hoverable" for="fileInput">
+                  <img
+                    [src]="
+                      url ? url : imageUrl + 'company_img/' + CompanyInfo.photo
+                    "
+                  />
+                  <div class="hover-text">Choose file</div>
+                  <div class="background"></div>
+                </label>
+                                <input id="fileInput" type="file" (change)="onSelectFile($event)" />
+                                <button *ngIf="url" class="btn btn-primary ml-5" (click)="delete()">
+                  Remove
+                </button>
+                            </div>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="form-group">
+                                <label class="lbl" for="companyName">Company name</label>
+                                <input type="text" name="companyName" class="form-control" id="companyName" [(ngModel)]="CompanyInfo.companyName" name="companyName" #companyName="ngModel" required />
+                                <div class="alert alert-danger" *ngIf="companyName.touched && !companyName.valid">
+                                    Please enter your first name
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="lbl" for="email">Email address</label>
+                                <input type="email" name="email" class="form-control" id="email" email="true" [(ngModel)]="CompanyInfo.email" #email="ngModel" required minlength="3" />
+                                <div *ngIf="email.invalid && (email.dirty || email.touched)" class="mt-1">
+                                    <div class="alert alert-danger" *ngIf="email.errors?.required">
+                                        email is required.
+                                    </div>
+                                    <div class="alert alert-danger" *ngIf="email.errors?.email">
+                                        example@cmv
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="lbl" for="phone"> Phone</label>
+                                <input matinput type="phone" name="phone" id="phone" class="form-control" [(ngModel)]="CompanyInfo.phone" #phone="ngModel" required minlength="4" />
+
+                                <div *ngIf="phone.invalid && (phone.dirty || phone.touched)" class="mt-1">
+                                    <div class="alert alert-danger" *ngIf="phone.errors?.required">
+                                        phone is required.
+                                    </div>
+                                    <div class="alert alert-danger" *ngIf="phone.errors?.minlength">
+                                        phone must be at least 4 characters long.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="lbl" for="country"> country</label>
+                                <input matinput type="country" name="country" id="country" class="form-control" [(ngModel)]="CompanyInfo.country" #country="ngModel" required minlength="4" />
+
+                                <div *ngIf="country.invalid && (country.dirty || country.touched)" class="mt-1">
+                                    <div class="alert alert-danger" *ngIf="country.errors?.required">
+                                        country is required.
+                                    </div>
+                                    <div class="alert alert-danger" *ngIf="country.errors?.minlength">
+                                        country must be at least 4 characters long.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="lbl" for="city"> city</label>
+                                <input matinput type="city" name="city" id="city" class="form-control" [(ngModel)]="CompanyInfo.city" #city="ngModel" required minlength="4" />
+
+                                <div *ngIf="city.invalid && (city.dirty || city.touched)" class="mt-1">
+                                    <div class="alert alert-danger" *ngIf="city.errors?.required">
+                                        city is required.
+                                    </div>
+                                    <div class="alert alert-danger" *ngIf="city.errors?.minlength">
+                                        city must be at least 4 characters long.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="lbl" for="License"> License</label>
+                                <input matinput type="License" name="License" id="License" class="form-control" ngModel #License="ngModel" required minlength="4" />
+
+                                <div *ngIf="License.invalid && (License.dirty || License.touched)" class="mt-1">
+                                    <div class="alert alert-danger" *ngIf="License.errors?.required">
+                                        License is required.
+                                    </div>
+                                    <div class="alert alert-danger" *ngIf="License.errors?.minlength">
+                                        License must be at least 4 characters long.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- <div class="form-group">
+                        <label class="lbl" for="photo">Company Image</label>
+                        <input id="photo" type="file" name="photo" id="photo" class="form-control" (change)="uploadImage($event)" required />
+                    </div> -->
+
+                    <div class="col-md-12 text-center mb-3">
+                        <button type="submit" class="btn btn-block mybtn btn-primary tx-tfm text-light btn-shadow">
+              Save Changes
+            </button>
+                    </div>
+                </form>
+            </div>
+        </mat-tab>
+
+        <mat-tab>
+            <ng-template mat-tab-label>
+                <i class="fas fa-bell example-tab-icon"></i> Notafication
+            </ng-template>
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-12 col-lg-10 col-xl-8 mx-auto">
+                        <div class="my-4">
+                            <h5 class="mb-0 mt-5">Notifications Settings</h5>
+                            <p>Select notification you want to receive</p>
+                            <hr class="my-4" />
+                            <strong class="mb-0">Security</strong>
+                            <p>Control security alert you will be notified.</p>
+                            <div class="list-group mb-5 shadow">
+                                <div class="list-group-item">
+                                    <div class="row align-items-center">
+                                        <div class="col">
+                                            <strong class="mb-0">Unusual activity notifications</strong
+                      >
+                      <p class="text-muted mb-0">
+                        Donec in quam sed urna bibendum tincidunt quis mollis
+                        mauris.
+                      </p>
+                    </div>
+                    <div class="col-auto">
+                      <div class="custom-control custom-switch">
+                        <input
+                          type="checkbox"
+                          class="custom-control-input"
+                          id="alert1"
+                          checked=""
+                        />
+                        <label
+                          class="custom-control-label"
+                          for="alert1"
+                        ></label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="list-group-item">
+                  <div class="row align-items-center">
+                    <div class="col">
+                      <strong class="mb-0"
+                        >Unauthorized financial activity</strong
+                      >
+                      <p class="text-muted mb-0">
+                        Fusce lacinia elementum eros, sed vulputate urna
+                        eleifend nec.
+                      </p>
+                    </div>
+                    <div class="col-auto">
+                      <div class="custom-control custom-switch">
+                        <input
+                          type="checkbox"
+                          class="custom-control-input"
+                          id="alert2"
+                        />
+                        <label
+                          class="custom-control-label"
+                          for="alert2"
+                        ></label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <hr class="my-4" />
+              <strong class="mb-0">System</strong>
+                                            <p>Please enable system alert you will get.</p>
+                                            <div class="list-group mb-5 shadow">
+                                                <div class="list-group-item">
+                                                    <div class="row align-items-center">
+                                                        <div class="col">
+                                                            <strong class="mb-0">Notify me about new features and updates</strong
+                      >
+                      <p class="text-muted mb-0">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                      </p>
+                    </div>
+                    <div class="col-auto">
+                      <div class="custom-control custom-switch">
+                        <input
+                          type="checkbox"
+                          class="custom-control-input"
+                          id="alert3"
+                          checked=""
+                        />
+                        <label
+                          class="custom-control-label"
+                          for="alert3"
+                        ></label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="list-group-item">
+                  <div class="row align-items-center">
+                    <div class="col">
+                      <strong class="mb-0"
+                        >Notify me by email for latest news</strong
+                      >
+                      <p class="text-muted mb-0">
+                        Nulla et tincidunt sapien. Sed eleifend volutpat
+                        elementum.
+                      </p>
+                    </div>
+                    <div class="col-auto">
+                      <div class="custom-control custom-switch">
+                        <input
+                          type="checkbox"
+                          class="custom-control-input"
+                          id="customSwitch2"
+                        />
+                        <label
+                          class="custom-control-label"
+                          for="customSwitch2"
+                        ></label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="list-group-item">
+                  <div class="row align-items-center">
+                    <div class="col">
+                      <strong class="mb-0"
+                        >Notify me about tips on using account</strong
+                      >
+                      <p class="text-muted mb-0">
+                        Donec in quam sed urna bibendum tincidunt quis mollis
+                        mauris.
+                      </p>
+                    </div>
+                    <div class="col-auto">
+                      <div class="custom-control custom-switch">
+                        <input
+                          type="checkbox"
+                          class="custom-control-input"
+                          id="customSwitch1"
+                        />
+                        <label
+                          class="custom-control-label"
+                          for="customSwitch1"
+                        ></label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </mat-tab>
+
+    <mat-tab>
+      <ng-template mat-tab-label>
+        <i class="fas fa-language example-tab-icon"></i> Langauge
+      </ng-template>
+
+      <div class="container-fluid">
+        <div class="form-check">
+          <input
+            class="form-check-input"
+            type="radio"
+            name="Payment"
+            id="Classification"
+            value="Sender"
+            ngModel
+            checked
+          />
+          <label class="form-check-label first" for="Payment "> English </label>
+        </div>
+        <div class="form-check">
+          <input
+            class="form-check-input"
+            type="radio"
+            name="Payment"
+            id="Classification"
+            value="Reciver"
+            ngModel
+            checked
+          />
+          <label class="form-check-label first" for="Payment "> Arabic </label>
+        </div>
+      </div>
+    </mat-tab>
+
+    <mat-tab>
+      <ng-template mat-tab-label>
+        <i class="fas fa-lock example-tab-icon"></i> Security
+      </ng-template>
+
+      <div class="container-xl px-4 mt-4">
+        <hr class="mt-0 mb-4" />
+        <div class="row">
+          <div class="col-lg-8">
+            <!-- Change password card-->
+            <div class="card mb-4">
+              <div class="card-header">Change Password</div>
+              <div class="card-body">
+                <form>
+                  <!-- Form Group (current password)-->
+                  <div class="mb-3">
+                    <label class="small mb-1" for="currentPassword"
+                      >Current Password</label
+                    >
+                    <input
+                      class="form-control"
+                      id="currentPassword"
+                      type="password"
+                    />
+                  </div>
+                  <!-- Form Group (new password)-->
+                  <div class="mb-3">
+                    <label class="small mb-1" for="newPassword"
+                      >New Password</label
+                    >
+                    <input
+                      class="form-control"
+                      id="newPassword"
+                      type="password"
+                    />
+                  </div>
+                  <!-- Form Group (confirm password)-->
+                  <div class="mb-3">
+                    <label class="small mb-1" for="confirmPassword"
+                      >Confirm Password</label
+                    >
+                    <input
+                      class="form-control"
+                      id="confirmPassword"
+                      type="password"
+                    />
+                  </div>
+                  <button class="btn btn-primary" type="button">Save</button>
+                </form>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <!-- Delete account card-->
+            <div class="card mb-4">
+              <div class="card-header">Delete Account</div>
+              <div class="card-body">
+                <p>
+                  Deleting your account is a permanent action and cannot be
+                  undone. If you are sure you want to delete your account,
+                  select the button below.
+                </p>
+                <button class="btn btn-danger-soft text-danger" type="button">
+                  I understand, delete my account
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </mat-tab>
+  </mat-tab-group>
+</div>

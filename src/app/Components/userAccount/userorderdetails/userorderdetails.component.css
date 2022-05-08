@@ -1,0 +1,12 @@
+.common{
+  color:black;
+  font-size:15px;
+}
+.courier-box{
+  box-shadow: rgb(238 77 71) 0px 3px 8px;
+  border-radius: 20px;
+  padding: 10px;
+}
+.list-group-item{
+  border:none!important;
+}

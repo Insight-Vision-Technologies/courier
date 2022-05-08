@@ -1,0 +1,192 @@
+table {
+    width: 100% !important;
+}
+
+table td {
+    font-size: medium;
+}
+
+tr {
+    font-size: calc(1.269rem + 0.228vw);
+}
+
+.mat-sort-header-container {
+    align-items: center;
+}
+
+.btn-shadow {
+    background-color: #ec4155;
+    color: #ffffff;
+    box-shadow: 0 1px 10px 0 rgb(238 77 71);
+}
+
+table.mat-table {
+    display: table;
+}
+
+.fass {
+    background-color: #ec4155;
+}
+
+.vv {
+    color: white !important;
+}
+
+#fixedbutton {
+    position: fixed;
+    bottom: 86px;
+    right: 102px;
+    color: tomato;
+    font-size: 4rem;
+    cursor: pointer;
+}
+
+mat-label {
+    color: black;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+input {
+    color: grey;
+    font-size: 1rem;
+}
+
+.mat-input-element {
+    caret-color: tomato !important;
+    border-color: tomato !important;
+}
+
+
+/*
+.ss {
+    width: 100%;
+} */
+
+label {
+    color: rgb(88, 88, 88);
+}
+
+.ds {
+    width: 100% !important;
+}
+
+.fass {
+    background-color: #ec4155;
+}
+
+.mat-header-cell {
+    background-color: #ec4155;
+    color: white;
+}
+
+.mat-cell {
+    font-size: 1.2rem;
+}
+
+.fa-trash-alt {
+    color: red;
+    /* font-size: 3vh !important; */
+    font-weight: 500 !important;
+    cursor: pointer;
+}
+
+.fa-pencil-alt {
+    color: rgb(54, 54, 233) !important;
+    /* font-size: 3vh !important; */
+    font-weight: 500 !important;
+    cursor: pointer;
+}
+
+th {
+    font-weight: 550;
+    font-size: 1.5rem;
+}
+
+.search {
+    width: 100%;
+}
+
+.loader-container {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    /* opacity: 0.8; */
+    z-index: 2;
+}
+
+th {
+    z-index: 0 !important;
+}
+
+.mat-spinner-color::ng-deep circle {
+    stroke: rgb(179, 52, 29) !important;
+}
+
+table.display {
+    margin: 0 auto;
+    width: 100%;
+    clear: both;
+    border-collapse: collapse;
+    table-layout: fixed;
+    word-wrap: break-word;
+}
+
+
+/* stroke: rgb(179, 52, 29) !important; */
+
+table.display {
+    margin: 0 auto;
+    width: 100%;
+    clear: both;
+    border-collapse: collapse;
+    table-layout: fixed;
+    word-wrap: break-word;
+}
+
+
+/* stroke {}: rgb(179, 52, 29) !important;
+
+} */
+
+.fa-chevron-down {
+    transition: .3s transform ease-in-out !important;
+}
+
+.card-header .collapsed .fa .fa-chevron-down {
+    transform: rotate(90deg) !important;
+}
+
+.fontSize {
+    font-size: 15px;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+
+/* Firefox */
+
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+input[type=number] {
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid #000000;
+    width: 20px;
+}
+
+textarea:focus,
+input:focus {
+    outline: none;
+}
+
+span {
+    color: black;
+}

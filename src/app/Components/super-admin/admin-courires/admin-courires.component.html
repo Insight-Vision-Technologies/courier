@@ -1,0 +1,47 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.27.0/feather.min.js" integrity="sha256-xHkYry2yRjy99N8axsS5UL/xLHghksrFOGKm9HvFZIs=" crossorigin="anonymous"></script>
+<div class="container">
+
+    <div class="row">
+        <br>
+        <br>
+        <h3>Courire</h3>
+        <br>
+        <div class="input-group form-1 pl-0 mb-4 search">
+            <div class="input-group-prepend">
+                <span class="input-group-text purple lighten-3 fass btn-shadowLinear" id="basic-text1">
+                <i class="fas fa-search text-white" aria-hidden="true"></i></span>
+            </div>
+            <input ngModel class="form-control my-0 py-1 " type="text" placeholder="Search" aria-label="Search" required>
+        </div>
+        <!-- Start col -->
+        <div *ngFor="let item of companyList" class="col-lg-6">
+            <div class="card m-b-30">
+                <div class="card-body py-5">
+                    <div class="row">
+                        <div class="col-lg-3 text-center">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT2qmzARZE6n04VEqr2ybj7Tq0H1VBUIw-dzw&usqp=CAU" class="img-fluid mb-3" alt="user" />
+                        </div>
+                        <div class="col-lg-9">
+                            <h4>{{item.companyName}}</h4>
+                            <p>{{item.email}}</p>
+                            <p>{{item.phone}}</p>
+
+
+                            <div class="Manage">
+                                <hr>
+                                <h5>Manage: </h5>
+
+                                <button type="button" class="btn btn-outline-info btn-circle btn-lg btn-circle"><i class="fa fa-ban"></i> </button>
+                                <button type="button" class="btn btn-outline-info btn-circle btn-lg btn-circle ml-2"><i class="fa fa-edit"></i> </button>
+                                <button type="button" class="btn btn-outline-info btn-circle btn-lg btn-circle ml-2" (click)="ViewFinace(item.companyId)"><i class="fa-solid fa-money-bill"></i> </button>
+                                <button type="button" class="btn btn-outline-info btn-circle btn-lg btn-circle ml-2" (click)="Viewdetails(item.companyId)"><i class="fa-solid fa-ellipsis"></i> </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End col -->
+
+    </div>
+</div>

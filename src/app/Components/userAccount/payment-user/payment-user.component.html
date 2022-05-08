@@ -1,0 +1,237 @@
+<div class="container py-5">
+
+    <h3>Payment Methods</h3>
+    <div class="row">
+
+        <!-- Payment method 1-->
+        <div class="d-flex align-items-center justify-content-between px-4">
+            <div class="d-flex align-items-center">
+                <i class="fab fa-cc-visa fa-2x cc-color-visa"></i>
+                <div class="ms-4">
+                    <div class="small">Visa ending in 1234</div>
+                    <div class="text-xs text-muted">Expires 04/24</div>
+                </div>
+            </div>
+            <div class="ms-4 small">
+                <div class="badge bg-light text-dark me-3">Default</div>
+                <a href="#!">Edit</a>
+            </div>
+        </div>
+        <hr>
+
+        <button class="btn btn-primary btn-shadow" type="button" (click)="addaddress()">Add New Payment Method</button>
+
+    </div>
+
+
+    <div class="card">
+
+
+
+        <div class="table-responsive">
+
+
+            <table class="table table-hover ">
+
+
+                <thead>
+                    <tr>
+                        <th></th>
+                        <!-- <th>Status</th> -->
+                        <th></th>
+                    </tr>
+                </thead>
+
+
+                <tbody>
+                    <tr *ngFor="let item of addressUser">
+                        <td><span class="">{{item.addressDetails}}-{{item.city}}-{{item.country}}</span>
+                        </td>
+                        <td>
+                            <div class="btt">
+                                <button type="button" class="btn btn-primary btn-shadow mr-2" (click)="changeAddress(item.addressID)">
+                    Edit
+                  </button>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+
+        <form *ngIf="newAddress" #addressForm="ngForm" (ngSubmit)="addressForm.form.valid && addNew(addressForm)">
+            <div class="row">
+
+
+                <div class="secure text-center margin-bottom-md">
+                    <h3 class="margin-bottom-md text-success">
+                        <span class="fs1 icon" aria-hidden="true" data-icon=""></span> Secure credit card payment<br>
+                        <small>This is a secure 128-bit SSL encrypted payment</small>
+                    </h3>
+
+                </div>
+
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="country" class="control-label">Name on Card <span class="text-danger">*</span></label>
+                        <input type="text" name="country" [(ngModel)]="newAddressINfo.country" #country="ngModel" [ngClass]="{ 'is-invalid':addressForm.submitted && country.invalid || country.touched }" class="form-control " placeholder="Your Name " id="email" required>
+                        <div *ngIf="addressForm.submitted && country.invalid || country.touched" class="invalid-feedback error-msg form-group">
+                            <div *ngIf="country.errors?.required">Your name</div>
+                        </div>
+                        <p class="help-block">As it appears on the card</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="city">Card Number <span class="text-danger">*</span></label>
+                        <input type="number" name="country" [(ngModel)]="newAddressINfo.country" #country="ngModel" [ngClass]="{ 'is-invalid':addressForm.submitted && country.invalid || country.touched }" class="form-control " placeholder="••••  ••••  ••••  •••• " id="email"
+                            required>
+                        <div *ngIf="addressForm.submitted && city.invalid || city.touched" class="invalid-feedback error-msg form-group">
+                            <div *ngIf="city.errors?.required">•••• •••• •••• ••••</div>
+
+                        </div>
+
+                        <p class="help-block">The 16 digits on the front of your credit card.</p>
+
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="country" class="control-label">Security Code <span class="text-danger">*</span></label>
+                        <input type="text" name="country" [(ngModel)]="newAddressINfo.country" #country="ngModel" [ngClass]="{ 'is-invalid':addressForm.submitted && country.invalid || country.touched }" class="form-control " placeholder="CVC" id="email" required>
+                        <div *ngIf="addressForm.submitted && country.invalid || country.touched" class="invalid-feedback error-msg form-group">
+                            <div *ngIf="country.errors?.required">CVC</div>
+                        </div>
+                        <p class="help-block">The last 3 digits displayed on the back of your credit card.</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="city">Expiration Date <span class="text-danger">*</span></label>
+                        <mat-select class="form-control" name="city" [(ngModel)]="newAddressINfo.city" #city="ngModel" [ngClass]="{ 'is-invalid':addressForm.submitted && city.invalid || city.touched }" required>
+                            <mat-option value="Dubai">Dubai</mat-option>
+                            <mat-option value="Abu Dhabi">Abu Dhabi</mat-option>
+                            <mat-option value="Sharjah">Sharjah</mat-option>
+                            <mat-option value="Ajman">Ajman</mat-option>
+                        </mat-select>
+                        <div *ngIf="addressForm.submitted && city.invalid || city.touched" class="invalid-feedback error-msg form-group">
+                            <div *ngIf="city.errors?.required">City is required</div>
+                        </div>
+                        <p class="help-block">The date your credit card expires. Find this on the front of your credit card.</p>
+
+                    </div>
+                </div>
+
+
+
+                <div class="action-wrapper text-center">
+                    <h4 class="notes margin-bottom-sm">
+                        You'll be charged <span class="text-stronger">$99/year</span>
+                    </h4>
+                    <div class="action-btn">
+                        <button class="btn btn-primary btn-lg">
+							Make Payment
+							<i class="fa fa-chevron-right"></i>
+						</button>
+                    </div>
+                </div>
+                <div class="col-md-12 text-center">
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary">Save</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+    </div>
+
+    <!--
+<div class="m-4">
+
+
+<div mat-dialog-content class="">
+    <div class="view-account">
+
+    	<div class="content-panel">
+        			<div class="billing">
+
+        				<form id="billing" class="form-horizontal" method="post" action="#" role="form">
+        					<div class="form-group">
+        						<label class="col-sm-6 control-label">Name on Card</label>
+        						<div class="col-sm-9">
+        							<input type="text" class="form-control" placeholder="Your name">
+        							<p class="help-block">As it appears on the card</p>
+        						</div>
+        					</div>
+        					<div class="form-group">
+        						<label class="col-sm-6 control-label">Card Number </label>
+        						<div class="col-sm-9">
+        							<input type="text" class="form-control" placeholder="••••  ••••  ••••  ••••">.....
+        							<p class="help-block">The 16 digits on the front of your credit card.</p>
+        						</div>
+        					</div>
+        					<div class="form-group">
+        						<label class="col-sm-6 control-label">Expiration Date</label>
+        						<div class="col-sm-9 form-inline">
+        							<select class="form-control">
+        								<option value="01">01</option>
+        								<option value="01">02</option>
+        								<option value="01">03</option>
+        								<option value="01">04</option>
+        								<option value="01">05</option>
+        								<option value="01">06</option>
+        								<option value="01">07</option>
+        								<option value="01">08</option>
+        							</select>
+        							<span class="divider">/</span>
+        							<select class="form-control">
+        								<option value="01">15</option>
+        								<option value="01">16</option>
+        								<option value="01">17</option>
+        								<option value="01">18</option>
+        								<option value="01">19</option>
+        								<option value="01">20</option>
+        								<option value="01">21</option>
+        								<option value="01">22</option>
+        								<option value="01">23</option>
+        								<option value="01">24</option>
+        								<option value="01">25</option>
+        							</select>
+        							<p class="help-block">The date your credit card expires. Find this on the front of your credit card.</p>
+        						</div>
+        					</div>
+        					<div class="form-group">
+        						<label class="col-sm-6 control-label">Security Code</label>
+        						<div class="col-sm-9">
+        							<input type="text" class="form-control" style="width: 120px;" placeholder="CVC">
+        							<p class="help-block">The last 3 digits displayed on the back of your credit card.</p>
+        						</div>
+        					</div>
+
+        					<hr>
+        					<div class="action-wrapper text-center">
+        						<h4 class="notes margin-bottom-sm">
+        								You'll be charged <span class="text-stronger">$99/year</span>
+        							</h4>
+        						<div class="action-btn">
+        							<button class="btn btn-success btn-lg">
+        								Make Payment
+        								<i class="fa fa-chevron-right"></i>
+        							</button>
+        						</div>
+        					</div>
+        				</form>
+        			</div>
+        		</div>
+
+    </div>
+</div>
+</div>
+
+ -->
+
+
+</div>

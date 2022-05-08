@@ -1,0 +1,170 @@
+@import url(https://fonts.googleapis.com/css?family=Calibri:400,300,700);
+body {
+    background: linear-gradient(to top, rgb(245, 147, 147) 1%, white 99%);
+    height: 100vh;
+    vertical-align: middle;
+    display: flex;
+    font-family: 'Calibri', sans-serif !important;
+    font-size: 14px
+}
+
+.error-msg {
+    color: red;
+    font-size: 15px;
+    line-height: 20px;
+}
+
+input.ng-invalid.ng-touched {
+    border: 1px solid red;
+}
+
+input.ng-valid {
+    border-color: #79B93C;
+    padding-right: calc(1.5em + 0.75rem);
+    background-image: url('~src/assets/img/right-mark.svg')!important;
+    background-repeat: no-repeat;
+    background-position: right calc(0.375em + 0.1875rem) center;
+    background-size: calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
+}
+
+.btn-shadow {
+    background-color: #EE4D47;
+    color: #ffffff;
+    box-shadow: 0 1px 10px 0 rgb(238 77 71);
+}
+
+.courier-box {
+    box-shadow: rgb(238 77 71) 0px 3px 8px;
+    border-radius: 20px;
+    padding: 10px;
+}
+
+.card {
+    margin: auto;
+    max-width: 450px;
+    box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19)
+}
+
+@media(max-width:768px) {
+    .card {
+        width: 90%
+    }
+}
+
+.upper {
+    padding: 6vh 6vh 3vh 6vh
+}
+
+.lower {
+    padding: 4vh 0 6vh;
+    text-align: center
+}
+
+.heading {
+    display: flex;
+    align-items: center;
+    vertical-align: middle
+}
+
+.heading p {
+    margin-bottom: 0
+}
+
+input {
+    border: 1px solid rgba(0, 0, 0, 0.137);
+    padding: 0.75rem;
+    outline: none;
+    width: 100%;
+    min-width: unset;
+    background-color: transparent
+}
+
+.form-element {
+    margin: 4vh 0
+}
+
+form .col-3,
+.col-9,
+.col-1,
+.col--11 {
+    padding: 0;
+    width: min-content
+}
+
+form .col-11 {
+    padding-left: 10px
+}
+
+form .col-1 {
+    display: flex;
+    align-items: center;
+    color: red;
+    font-size: 3vh;
+    justify-content: center
+}
+
+#code {
+    text-align: center
+}
+
+form .row {
+    margin: 0
+}
+
+hr {
+    margin: 0;
+    border-top: 2px solid rgba(0, 0, 0, .1)
+}
+
+#input-header {
+    color: grey
+}
+
+.invalid {
+    color: grey;
+    line-height: 1.2
+}
+
+.btn {
+    width: 50%;
+    background-color: rgb(255, 38, 0);
+    border-color: rgb(255, 38, 0);
+    color: white;
+    padding: 1.5vh 0
+}
+
+.btn:focus {
+    box-shadow: none;
+    outline: none;
+    box-shadow: none;
+    color: white;
+    -webkit-box-shadow: none;
+    /* -webkit-user-select: none; */
+    transition: none
+}
+
+.btn:hover {
+    color: white
+}
+
+input:focus::-webkit-input-placeholder {
+    color: transparent
+}
+
+input:focus:-moz-placeholder {
+    color: transparent
+}
+
+input:focus::-moz-placeholder {
+    color: transparent
+}
+
+input:focus:-ms-input-placeholder {
+    color: transparent
+}
+
+.error-msg {
+    color: red;
+    font-size: 15px;
+    line-height: 20px;
+}

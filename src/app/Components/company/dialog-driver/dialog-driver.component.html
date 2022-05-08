@@ -1,0 +1,111 @@
+<div class="m-4">
+    <button mat-icon-button class="close-button" [mat-dialog-close]="true">
+    <mat-icon class="close-icon" color="warn">close</mat-icon>
+  </button>
+    <h2 mat-dialog-title>Add New Driver</h2>
+
+    <form mat-dialog-content class="mt-2" #driverForm="ngForm" (ngSubmit)="onSubmit(driverForm)">
+
+        <div class="form-group row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="DriverName">Driver Name <span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" id="inputCarPalte" placeholder="" name="DriverName" [(ngModel)]="newDriver.driverName" [ngClass]="{ 'is-invalid':driverForm.submitted && DriverName.invalid || DriverName.touched }" required minlength="4" #DriverName="ngModel"
+                        placeholder="Driver Name" />
+                    <div *ngIf="driverForm.submitted && DriverName.invalid || DriverName.touched" class="invalid-feedback error-msg form-group">
+                        <div *ngIf="DriverName.errors?.required">Driver name is required</div>
+                        <div *ngIf="DriverName.errors?.minlength">Driver name should be at least 3 characters long</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="email">Email <span class="text-danger">*</span></label>
+                    <input type="email" class="form-control" email placeholder="Email" name="Email" [(ngModel)]="newDriver.email" [ngClass]="{ 'is-invalid':driverForm.submitted && Email.invalid || Email.touched }" required #Email="ngModel" />
+                    <div *ngIf="driverForm.submitted && Email.invalid || Email.touched" class="invalid-feedback error-msg form-group">
+                        <div *ngIf="Email.errors?.required">Email is required</div>
+                        <div *ngIf="Email.errors?.email">Must be a valid email address</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group ">
+                    <label for="phone">Phone <span class="text-danger">*</span></label>
+                    <input type="text" #phone="ngModel" name="phone" minlength="12" maxLength="12" class="form-control " placeholder="Phone No." id="phone" [(ngModel)]="newDriver.phone" [ngClass]="{ 'is-invalid':driverForm.submitted && phone.invalid || phone.touched }" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                        required>
+                    <div *ngIf="driverForm.submitted && phone.invalid || phone.touched" class="invalid-feedback error-msg form-group">
+                        <div *ngIf="phone.errors?.required">Phone is required</div>
+                        <div *ngIf="phone.errors?.minlength">Phone should be (971)555555555</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="DateOfBirth">Date Of Birth <span class="text-danger">*</span></label>
+                    <input [(ngModel)]="newDriver.dateOfBirth" [ngClass]="{ 'is-invalid':driverForm.submitted && DateOfBirth.invalid || DateOfBirth.touched }" class="datepicker form-control" type="date" data-date-format="mm/dd/yyyy" name="DateOfBirth" required #DateOfBirth="ngModel"
+                    />
+                    <div *ngIf="driverForm.submitted && DateOfBirth.invalid || DateOfBirth.touched" class="invalid-feedback error-msg form-group">
+                        <div *ngIf="DateOfBirth.errors?.required">Date is required</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="employee">Designation <span class="text-danger">*</span></label>
+                    <input [(ngModel)]="newDriver.employee" [ngClass]="{ 'is-invalid':driverForm.submitted && employee.invalid || employee.touched }" type="text" class="form-control" id="employee" placeholder="Designation" name="employee" required #employee="ngModel" />
+                    <div *ngIf="driverForm.submitted && employee.invalid || employee.touched" class="invalid-feedback error-msg form-group">
+                        <div *ngIf="employee.errors?.required">Designation is required</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="CarPlate">Assign Car <span class="text-danger">*</span></label>
+                    <mat-select class="form-control" name="CarPlate" #CarPlate="ngModel" [(ngModel)]="newDriver.carPlate" [ngClass]="{ 'is-invalid':driverForm.submitted && CarPlate.invalid || CarPlate.touched }" required>
+                        <mat-option *ngFor="let item of dataSource" value="{{item.vehicleId}}">{{item.carPlate}}</mat-option>
+                    </mat-select>
+                    <div *ngIf="driverForm.submitted && CarPlate.invalid || CarPlate.touched" class="invalid-feedback error-msg form-group">
+                        <div *ngIf="CarPlate.errors?.required">Car assign is required</div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="to">From <span class="text-danger">*</span></label>
+                    <mat-select class="form-control" name="from" [(ngModel)]="newDriver.from" [ngClass]="{ 'is-invalid':driverForm.submitted && from.invalid || from.touched }" required #from="ngModel">
+                        <mat-option *ngFor="let item of allEmirate" value="{{item}}">{{item}}</mat-option>
+                    </mat-select>
+                    <div *ngIf="driverForm.submitted && to.invalid || to.touched" class="invalid-feedback error-msg form-group">
+                        <div *ngIf="to.errors?.required">To is required</div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="inputcapacity">To <span class="text-danger">*</span></label>
+                    <mat-select class="form-control" name="to" [(ngModel)]="newDriver.to" [ngClass]="{ 'is-invalid':driverForm.submitted && to.invalid || to.touched }" required #to="ngModel">
+                        <mat-option *ngFor="let item of allEmirate" value="{{item}}">{{item}}</mat-option>
+                    </mat-select>
+                    <div *ngIf="driverForm.submitted && CarPlate.invalid || CarPlate.touched" class="invalid-feedback error-msg form-group">
+                        <div *ngIf="CarPlate.errors?.required">Car assign is required</div>
+                    </div>
+
+                </div>
+            </div>
+            <div>
+                <input type="checkbox" value="1" class=" btn btn-danger" (change)="onCheckboxChange($event)">
+                <span class="fw-bold ml-2">Reverse</span>
+
+            </div>
+            <div class="col-md-12">
+                <div class="form-group">
+                    <div mat-dialog-actions class="button justify-content-center">
+                        <button [disabled]="driverForm.invalid" class="btn btn-lg btn-success" type="submit">Add</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

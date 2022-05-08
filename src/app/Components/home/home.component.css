@@ -1,0 +1,11 @@
+.heading{
+    text-align: right;
+    padding-bottom: 2px;
+    font-size: 25px;
+    color: var(--black);
+}
+.btn-shadow {
+  background:linear-gradient(to right, #FF4E7D 0%, #ff6a5b 100%);
+  color: #ffffff;
+  box-shadow: 0 1px 10px 0 rgb(238 77 71);
+}

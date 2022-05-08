@@ -1,0 +1,160 @@
+<div class="p-5 w-100">
+
+    <div>
+        <h3>Update Driver</h3>
+    </div>
+
+    <form class="mt-2" #driverForm="ngForm" (ngSubmit)="onSubmit(driverInfo)">
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="DriverName">Driver Name</label>
+                    <input type="text" class="form-control" id="inputCarPalte" name="DriverName" [(ngModel)]="driverInfo.driverName" />
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="Email">Email</label>
+                    <input type="email" class="form-control" placeholder="Email" name="Email" [(ngModel)]="driverInfo.email" />
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="Phone">Phone</label>
+                    <input type="text" class="form-control" name="Phone" [(ngModel)]="driverInfo.phone" />
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="DateOfBirth">Date Of Birth</label>
+                    <input ngModel class="datepicker form-control" type="date" data-date-format="mm/dd/yyyy" name="DateOfBirth" [(ngModel)]="driverInfo.dateOfBirth" />
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="employee">Employee</label>
+                    <input ngModel type="text" class="form-control" id="employee" name="employee" [(ngModel)]="driverInfo.employee" />
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="CarPlate">Car Palte</label>
+                    <mat-select class="form-control" name="CarPlate" #CarPlate="ngModel" [(ngModel)]="driverInfo.carPlate" ngModel required (selectionChange)="carplateData($event.value)">
+                        <mat-option *ngFor="let item of dataSource" name="vehid" value="{{item.vehicleId}} ">{{item.carPlate}}</mat-option>
+
+                    </mat-select>
+                </div>
+            </div>
+            <!--
+            <div class="col-md-6 ">
+                <div class="form-group ">
+                    <label for="from ">From</label>
+                    <mat-select class="form-control " name="from " [(ngModel)]="driverInfo.from">
+                        <mat-option value="Dubai">Dubai</mat-option>
+                        <mat-option value="Abu Dhabi">Abu Dhabi</mat-option>
+                        <mat-option value="Sharjah">Sharjah</mat-option>
+                        <mat-option value="Ajman">Ajman</mat-option>
+                        <mat-option value="Fujairah">Fujairah</mat-option>
+                        <mat-option value="Ras Al Khaimah">Ras Al Khaimah</mat-option>
+                        <mat-option value="Umm Al Quwain">Umm Al Quwain</mat-option>
+                    </mat-select>
+                </div>
+            </div>
+            <div class="col-md-6 ">
+                <div class="form-group ">
+                    <label for="to ">To</label>
+                    <mat-select class="form-control " name="to " [(ngModel)]="driverInfo.to">
+
+                        <mat-option value="Dubai">Dubai</mat-option>
+                        <mat-option value="Abu Dhabi">Abu Dhabi</mat-option>
+                        <mat-option value="Sharjah">Sharjah</mat-option>
+                        <mat-option value="Ajman">Ajman</mat-option>
+                        <mat-option value="Fujairah">Fujairah</mat-option>
+                        <mat-option value="Ras Al Khaimah">Ras Al Khaimah</mat-option>
+                        <mat-option value="Umm Al Quwain">Umm Al Quwain</mat-option>
+                    </mat-select>
+                </div>
+            </div> -->
+
+            <div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':displayStyle}">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title">Assign Direction TO another Driver</h4>
+                        </div>
+                        <div class="modal-body">
+                            <p style="color: black;">Choose Driver </p>
+                            <div class="form-group ">
+                                <label for="from ">From</label>
+                                <mat-select class="form-control " name="from " [(ngModel)]="driverId">
+
+                                    <mat-option *ngFor="let item of DriverList" [value]="item.driverId">{{item.driverName}}</mat-option>
+                                </mat-select>
+                            </div>
+
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-danger" (click)="closePopup()">
+              Close
+              </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="d-flex w-100">
+                <div class="card flex-grow-1">
+                    <div class=" card-header ">
+
+                        <span>Directions</span>
+                        <span class="float-right" (click)="addnewDirection()"><i class="fas fa-plus-square"></i></span>
+
+                    </div>
+                    <div class="card-body ">
+                        <ul class="list-group ">
+                            <li *ngFor="let item of DirectionList" class="list-group-item d-flex justify-content-between align-items-center ">
+                                <span>{{item.from}}</span>
+                                <span>{{item.to}}</span>
+                                <span (click)="openPopup(item.directionID)"><i class="fas fa-trash-alt"></i>
+                                </span>
+                        </ul>
+
+                    </div>
+                </div>
+
+                <div *ngIf="newDirectionForm" class="card flex-grow-1">
+                    <div class=" card-header ">
+
+                        <span>New Directions</span>
+
+                    </div>
+                    <form #CarForm="ngForm" (ngSubmit)="addDirection(CarForm)" class="card-body ">
+                        <ul class="list-group ">
+                            <li class="list-group-item d-flex justify-content-between align-items-center ">
+                                <input type="text" class="form-control " placeholder="From" ngModel name="from" required #from="ngModel">
+                                <input type="text" class="form-control" placeholder="To" ngModel name="to" required #to="ngModel">
+                            </li>
+                        </ul>
+                        <div>
+                            <input type="checkbox" value="1" class=" btn btn-danger" (change)="onCheckboxChange($event)">
+                            <span class="fw-bold ml-2">Reverse</span>
+
+                        </div>
+                        <button class="btn btn-danger" type="submit"> ADD</button>
+                    </form>
+                </div>
+            </div>
+            <br>
+            <div class="col-md-12 ">
+                <div class="form-group text-center ">
+                    <div mat-dialog-actions class="justify-content-center ">
+                        <button [disabled]="driverForm.invalid " class="btn btn-lg btn-success " type="submit ">Save</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </form>
+
+</div>

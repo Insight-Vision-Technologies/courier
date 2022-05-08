@@ -1,0 +1,132 @@
+mat-toolbar {
+    background: linear-gradient(to right, #FF4E7D 0%, #ff6a5b 100%);
+    color: white;
+    box-shadow: rgb(238 77 71) 0px 3px 8px;
+}
+
+.dropdown-toggle,
+span .text-dark {
+    color: #fffefe;
+}
+
+.text-dark {
+    color: #fffefe!important;
+}
+
+.generlinfo,
+.settinginfo {
+    /* background-color: rgba(255, 255, 255);
+         */
+    background-color: #fdfafa;
+    border-radius: 3px;
+    border-radius: 3px;
+    border-width: 100%;
+    color: black;
+    /* margin: 10px; */
+    margin-right: 0ch;
+    padding: 2px;
+    margin-top: 5px;
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+}
+
+mat-sidenav {
+    display: flex;
+    flex-direction: column;
+    margin: 16px;
+    width: 200px;
+    height: auto;
+    border-right: none;
+    background: linear-gradient(to right, #FF4E7D 0%, #ff6a5b 100%);
+    /* color: white; */
+    border-radius: 10px;
+    padding: 16px;
+    text-align: center;
+    box-shadow: rgb(238 77 71) 0px 3px 8px;
+    /* overflow-x: hidden !important; */
+    /* overflow-y: hidden !important; */
+}
+
+.mat-drawer-inner-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.content {
+    height: auto;
+    border-radius: 10px;
+    margin: 16px;
+    margin-left: 32px;
+    /* display: flex; */
+    /* flex-direction: column; */
+    /* direction: ltr; */
+    /* justify-content: flex-start; */
+    align-items: center;
+    /* font-size: 2rem; */
+    color: lightgray;
+}
+
+label {
+    font-size: 2rem !important;
+}
+
+mat-sidenav-container {
+    height: calc(100vh - 65px);
+}
+
+.menu-button {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    font-size: 1rem;
+}
+
+mat-icon {
+    margin-right: 8px;
+}
+
+.avatar {
+    margin-top: 16px;
+    width: 50%;
+    height: auto;
+    border-radius: 50%;
+}
+
+.name {
+    margin-top: 8px;
+    font-weight: normal;
+    color: white;
+    size: 2rem !important;
+}
+
+.designation {
+    margin-top: 2px;
+    font-size: 0.7rem;
+    color: lightgrey;
+}
+
+mat-divider {
+    margin-top: 16px;
+    margin-bottom: 16px;
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+.example-spacer {
+    flex: 1 1 auto;
+}
+
+.logo {
+    cursor: pointer;
+}
+
+.fa-pen {
+    position: absolute;
+    top: 80px;
+    right: 40px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.rel {
+    position: relative;
+}

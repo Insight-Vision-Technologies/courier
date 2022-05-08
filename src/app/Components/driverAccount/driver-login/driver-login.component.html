@@ -1,0 +1,45 @@
+<!-- <div class="cc container bootstrap snippets bootdey">
+    <div class="row text-center">
+        <div class="w-75">
+            <div class="">
+                <img class="profile-img" src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="">
+                <form class="">
+                    <input type="text" class="form-control" placeholder="Email" required autofocus>
+                    <input type="password" class="form-control" placeholder="Password" required>
+                    <button class="btn btn-lg btn-primary btn-block" type="submit">
+                  Sign in</button>
+                    <label class="checkbox pull-left">
+                  <input type="checkbox" value="remember-me">
+                  Remember me
+              </label>
+                    <a href="#" class="pull-right need-help">Need help? </a><span class="clearfix"></span>
+                </form>
+            </div>
+            <a href="#" class="text-center new-account">Create an account </a>
+        </div>
+    </div>
+</div> -->
+
+<div class=" cc">
+    <div class="row mt-4 ">
+        <div class="col-md-5 mx-auto">
+            <div id="first" class="">
+                <div class="myform form carddiv">
+                    <img class="profile-img" src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="">
+                    <form class="form-signin" #form="ngForm" (ngSubmit)="logForm(form)" name="login">
+                        <input type="text" class="form-control" placeholder="Email" required autofocus name="email" ngModel #email="ngModel">
+                        <input type="password" class="form-control" placeholder="Password" required ngModel name="password" #password="ngModel">
+                        <button class="btn btn-lg btn-shadow btn-block" type="submit">
+                        Sign in</button>
+                        <label class="checkbox pull-left">
+                        <input type="checkbox" value="remember-me">
+                        Remember me
+                    </label>
+                        <a href="#" class="pull-right need-help">Need help? </a><span class="clearfix"></span>
+                    </form>
+
+                </div>
+            </div>
+
+        </div>
+    </div>

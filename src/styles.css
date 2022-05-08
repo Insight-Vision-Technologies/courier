@@ -1,0 +1,44 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import '~ngx-toastr/toastr';
+html,
+body {
+    height: 100%;
+}
+
+@media only screen and (min-width: 1200px) and (max-width: 1600px) {
+    .col-xxl-6 {
+        flex: 0 0 50%;
+        max-width: 50%;
+    }
+}
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.mat-drawer-inner-container {
+    overflow-x: hidden !important;
+    overflow-y: scroll !important;
+}
+
+.mat-drawer-inner-container::-webkit-scrollbar {
+    display: none !important;
+}
+
+.btn-shadowLinear {
+    background: linear-gradient(to right, #e91a55 0%, #ff6a5b 100%);
+    color: #ffffff;
+    box-shadow: 0 1px 10px 0 rgb(238 77 71);
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}

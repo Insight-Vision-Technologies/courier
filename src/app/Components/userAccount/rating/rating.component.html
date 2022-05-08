@@ -1,0 +1,27 @@
+<div class="row">
+    <div class="col-12">
+        <div class="modal-dialog">
+            <!--Modal Content-->
+            <div class="modal-content">
+                <!-- Modal Header-->
+                <div class="modal-header">
+                    <h3>Feedback Request</h3>
+                    <!--Close/Cross Button--><button [mat-dialog-close]="true" type="button" class="close" data-dismiss="modal" style="color: rgb(255, 255, 255);">&times;</button>
+                </div>
+                <!-- Modal Body-->
+                <div class="modal-body text-center"> <i class="far fa-file-alt fa-4x mb-3 animated rotateIn icon1"></i>
+                    <h3>Your opinion matters</h3>
+                    <h5>Give us Rate About Order <strong>{{data.orderName}}</strong></h5>
+                    <hr>
+                    <h6>Your Rating</h6>
+                    <ngb-rating [max]="5" [(rate)]="starRating" [readonly]="false" (rateChange)="readRate()"></ngb-rating>
+
+                    <br>
+                    <button class="btn btn-secondary mr-2" (click)="submitRate(0)">Submit</button>
+                    <button class="btn btn-danger" (click)="submitRate(1)">Don't Rate</button>
+
+                </div>
+            </div>
+        </div>
+
+    </div>

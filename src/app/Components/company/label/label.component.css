@@ -1,0 +1,61 @@
+.align-date {
+    text-align: right;
+    color: black;
+}
+
+.common {
+    font-size: 15px;
+    color: black;
+}
+
+.btn-color {
+    color: white;
+    background-color: #F37F69;
+    border-color: #F37F69;
+    float: right;
+}
+
+.list-group-item {
+    border: none!important;
+}
+
+.invoice {
+    margin: 0px auto;
+}
+
+.courier-box {
+    box-shadow: rgb(238 77 71) 0px 3px 8px;
+    border-radius: 20px;
+    padding: 10px;
+}
+
+.width-head {
+    width: 80px;
+}
+
+.line-height {
+    line-height: 5px;
+}
+
+hr:not([size]) {
+    height: 2px;
+    color: black;
+}
+
+label {
+    color: black;
+}
+
+hr {
+    margin: 0rem 0!important;
+    color: #EEEEEE;
+    background-color: currentColor;
+    border: 0;
+    opacity: 1;
+}
+
+@media print {
+    .mat-sidenav {
+        display: none;
+    }
+}

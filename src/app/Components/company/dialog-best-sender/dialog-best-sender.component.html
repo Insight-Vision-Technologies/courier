@@ -1,0 +1,32 @@
+
+<div class="m-4">
+    <button mat-icon-button class="close-button" [mat-dialog-close]="true">
+    <mat-icon class="close-icon" color="warn">close</mat-icon>
+  </button>
+
+
+<h2 mat-dialog-title>Add New Best Sender</h2>
+<div mat-dialog-actions class="mt-3 button">
+
+<!-- form starts -->
+
+<form mat-dialog-content [formGroup]="addbestsender" class="mt-2 ">
+
+    <div class="form-group row">
+        <label for="inputcapacity" class="col-sm-3 col-form-label">Sender Name</label>
+        <div class="col-sm-8">
+            
+            
+        </div>
+    </div>
+    </form>
+
+<!-- form ends -->
+
+
+    <button class="btn btn-sm btn-success" type="submit">Add</button>
+    <!-- <button class="btn btn-lg btn-danger" type="submit" [mat-dialog-close]="true">Cancle</button> -->
+</div>
+
+
+</div>

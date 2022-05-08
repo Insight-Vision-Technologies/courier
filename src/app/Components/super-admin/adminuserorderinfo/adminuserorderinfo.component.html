@@ -1,0 +1,86 @@
+<div class="m-3">
+    <button mat-icon-button class="close-button" [mat-dialog-close]="true">
+    <mat-icon class="close-icon" color="warn">close</mat-icon>
+</button>
+
+    <h2 mat-dialog-title>User Details</h2>
+
+    <div mat-dialog-content class="">
+
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+        <div class="container mb-4 main-container">
+            <div class="row">
+                <div class="col-lg-12 pb-5">
+                    <!-- Account Sidebar-->
+                    <div class="author-card pb-3">
+                        <!-- <div class="author-card-cover" style="background-image: url(https://bootdey.com/img/Content/flores-amarillas-wallpaper.jpeg);"><a class="btn btn-style-1 btn-white btn-sm" href="#" data-toggle="tooltip" title="" data-original-title="You currently have 290 Reward points to spend"><i class="fa fa-award text-md"></i>&nbsp;290 points</a></div> -->
+                        <div class="author-card-profile">
+                            <div class="author-card-avatar">
+                                <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="Daniel Adams">
+                            </div>
+                        </div>
+                        <div class="author-card-details">
+                            <h5 class="author-card-name text-lg">{{userList.name}}</h5>
+                            <span class="author-card-position">Joined {{userList.createOn | date:'d/M/yy'}}</span>
+                        </div>
+
+                    </div>
+                    <span class="author-card-position text-center">{{userList.addressDetails}}-{{userList.city}}-{{userList.country}}</span>
+
+                </div>
+
+            </div>
+        </div>
+        <div class="row">
+            <!-- Orders Table-->
+            <div class="col-lg-12 pb-5">
+                <div class="d-flex justify-content-end pb-3">
+                    <div class="form-inline">
+                        <label class="text-muted mr-3" for="order-sort">Sort Orders</label>
+                        <select class="form-control" id="order-sort">
+                        <option>All</option>
+                        <option>Delivered</option>
+                        <option>In Progress</option>
+                        <option>Delayed</option>
+                        <option>Canceled</option>
+                    </select>
+                    </div>
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-hover mb-0">
+                        <thead>
+                            <tr>
+                                <th>Order ID</th>
+                                <th>Order Date</th>
+                                <th>Delivery Date</th>
+                                <th>Status</th>
+                                <th>Pickup</th>
+                                <th>delivery</th>
+                                <th>Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let orderList of orderList">
+                                <td>{{orderList.orderNumber}}</td>
+                                <td class="xx">{{orderList.createdOn| date:'d/M/yy'}}</td>
+                                <td class="xx">{{orderList.expectionDate| date:'d/M/yy'}}</td>
+                                <td class="xx">{{orderList.from}}</td>
+                                <td><span class="badge bg-success">{{orderList.to}}</span></td>
+                                <td *ngIf="orderList.status==0"><span class="badge bg-danger rounded-pill">{{ 'pending' }}</span></td>
+                                <td *ngIf="orderList.status==1"><span class="badge bg-dark rounded-pill">{{ 'Confirmed' }}</span></td>
+                                <td *ngIf="orderList.status==2"><span class="badge bg-secondary rounded-pill">{{ 'Ready For Pickup' }}</span></td>
+                                <!-- <td *ngIf="orderList.status==2"><span class="badge bg-primary rounded-pill">{{ 'Picked By Courier' }}</span></td> -->
+                                <td *ngIf="orderList.status==3"><span class="badge bg-warning rounded-pill">{{ 'On The Way' }}</span></td>
+                                <td *ngIf="orderList.status==4"><span class="badge bg-primary rounded-pill">{{ 'Delivered' }}</span></td>
+                                <td *ngIf="orderList.status==5"><span class="badge bg-success rounded-pill">{{ 'Done' }}</span></td>
+                                <td class="xx">{{orderList.totalCost}}</td>
+
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,159 @@
+<div class="p-5 w-100">
+
+    <div>
+        <label>Details</label>
+    </div>
+    <div class="row common">
+        <!-- <div class="col-md-4 courier-box form-group">
+  <p class="fw-bold text-center">Sender Staff</p>
+    <ul class="list-group font-size">
+      <li class="list-group-item d-flex justify-content-between align-items-start">
+        <div class="ms-2 me-auto">
+          <div class="fw-bold">Fullname</div>
+        </div>
+        <span class="">md sobuj</span>
+      </li>
+      <li class="list-group-item d-flex justify-content-between align-items-start">
+        <div class="ms-2 me-auto">
+          <div class="fw-bold">Email</div>
+        </div>
+        <span class="">abc@gmail.com</span>
+      </li>
+      <li class="list-group-item d-flex justify-content-between align-items-start">
+        <div class="ms-2 me-auto">
+          <div class="fw-bold">Branch</div>
+        </div>
+        <span class="">Branch - 1</span>
+      </li>
+      <li class="list-group-item d-flex justify-content-between align-items-start">
+        <div class="ms-2 me-auto">
+          <div class="fw-bold">Status</div>
+        </div>
+        <span class="badge bg-success rounded-pill">active</span>
+      </li>
+    </ul>
+</div> -->
+        <div class="col-md-6 courier-box form-group">
+            <p class="fw-bold text-center">Sender Information</p>
+            <ul class="list-group font-size">
+                <li class="list-group-item d-flex justify-content-between align-items-start">
+                    <div class="ms-2 me-auto">
+                        <div class="fw-bold">Name</div>
+                    </div>
+                    <span class="">{{UserInfo.name}}</span>
+                </li>
+
+                <li class="list-group-item d-flex justify-content-between align-items-start">
+                    <div class="ms-2 me-auto">
+                        <div class="fw-bold">Email</div>
+                    </div>
+                    <span class="">{{UserInfo.email}}</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-start">
+                    <div class="ms-2 me-auto">
+                        <div class="fw-bold">Phone</div>
+                    </div>
+                    <span class="">{{UserInfo.phone}}</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-start">
+                    <div class="ms-2 me-auto">
+                        <div class="fw-bold">Address</div>
+                    </div>
+                    <span class="">{{UserInfo.addressDetails}}</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-start">
+                    <div class="ms-2 me-auto">
+                        <div class="fw-bold">Order Number</div>
+                    </div>
+                    <span class="">{{orderDetails.orderNumber}}</span>
+                </li>
+            </ul>
+        </div>
+        <div class=" col-md-6 courier-box form-group">
+            <p class="fw-bold text-center ">Receiver Information</p>
+
+            <ul class="list-group font-size">
+                <li class="list-group-item d-flex justify-content-between align-items-start">
+                    <div class="ms-2 me-auto">
+                        <div class="fw-bold">Name</div>
+                    </div>
+                    <span class="">{{orderDetails.reciverName}}</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-start">
+                    <div class="ms-2 me-auto">
+                        <div class="fw-bold">Email</div>
+                    </div>
+                    <span class="">{{orderDetails.reciverEmail}}</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-start">
+                    <div class="ms-2 me-auto">
+                        <div class="fw-bold">Phone</div>
+                    </div>
+                    <span class="">{{orderDetails.reciverPhone}}</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-start">
+                    <div class="ms-2 me-auto">
+                        <div class="fw-bold">Address</div>
+                    </div>
+                    <span class="">{{orderDetails.reciverAddress}}</span>
+                </li>
+                <!-- <li class="list-group-item d-flex justify-content-between align-items-start">
+                    <div class="ms-2 me-auto">
+                        <div class="fw-bold">Status</div>
+                    </div>
+                    <span class="badge bg-success rounded-pill">{{orderDetails.status}}</span>
+                </li> -->
+            </ul>
+        </div>
+    </div>
+    <div class="row common">
+        <div class="col-md-12 courier-box form-group">
+            <p class="fw-bold text-center">Order Information</p>
+            <ul class="list-group font-size">
+                <li class="list-group-item d-flex justify-content-between align-items-start">
+                    <div class="ms-2 me-auto">
+                        <div class="fw-bold">Order Date</div>
+                    </div>
+                    <!-- <span class="">{{ orderDetails.createdOn | date: "short"}}</span> -->
+                    <span class="">{{orderDetails.createdOn | date: "dd/MM/yyyy"}} {{orderDetails.createdOn | date: "shortTime"}}</span>
+
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-start">
+                    <div class="ms-2 me-auto">
+                        <div class="fw-bold">Deliver Date </div>
+                    </div>
+                    <span class="">{{orderDetails.expectionDate |date: "dd/MM/yyyy"}} {{orderDetails.expectionDate |date: "shortTime"}}</span>
+                    <!-- <span class="">{{ i.time}}</span> -->
+                </li>
+
+                <li class="list-group-item d-flex justify-content-between align-items-start">
+                    <div class="ms-2 me-auto">
+                        <div class="fw-bold">Status</div>
+                    </div>
+                    <span class="badge bg-dark rounded-pill" *ngIf="orderDetails.status==1">{{ 'Confirmed' }}</span>
+                    <span class="badge bg-secondary rounded-pill" *ngIf="orderDetails.status==2">{{ 'Ready For Pickup' }}</span>
+                    <span class="badge bg-warning rounded-pill" *ngIf="orderDetails.status==3">{{ 'On The Way' }}</span>
+                    <span class="badge bg-info rounded-pill" *ngIf="orderDetails.status==4">{{ 'Delivered' }}</span>
+                    <span class="badge bg-success rounded-pill" *ngIf="orderDetails.status==5">{{ 'Feedback' }}</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-start">
+                    <div class="ms-2 me-auto">
+                        <div class="fw-bold"> Order Cost</div>
+                    </div>
+                    <span class="">{{ orderDetails.orderCost}}</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-start">
+                    <div class="ms-2 me-auto">
+                        <div class="fw-bold"> Payment Method</div>
+                    </div>
+                    <span class="badge bg-primary rounded-pill" *ngIf="orderDetails.paymentStatus==0">{{ 'Unpaid' }}</span>
+                    <span class="badge bg-success rounded-pill" *ngIf="orderDetails.paymentStatus==1">{{ 'Paid' }}</span>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+    <div class="row common">
+        <div class="col-md-12"></div>
+    </div>
+</div>

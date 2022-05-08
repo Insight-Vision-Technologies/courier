@@ -1,0 +1,355 @@
+<button mat-icon-button class="close-button" [mat-dialog-close]="true">
+  <mat-icon class="close-icon" color="warn">close</mat-icon>
+</button>
+<div mat-dialog-content class="">
+    <div class="container">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="card-title mb-0">Edit Pricing</h5>
+            </div>
+            <div class="card-body">
+                <form #form="ngForm" (ngSubmit)="pricingForm(form)" method="post" enctype="multipart/form-data">
+                    <input type="hidden" name="_method" value="put" />
+                    <div class="row">
+                        <!-- <div *ngIf="comp.password!==comp.confirmPassword">Password must be same</div> -->
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="stepValueArray">Step value Array (Ex.0,150,200,300)</label
+                >
+                <input
+                  id="stepValueArray"
+                  type="text"
+                  name="stepValueArray"
+                  class="form-control"
+                  [(ngModel)]="pricing.stepValueArray"
+                  #stepValueArray="ngModel"
+                  [ngClass]="{
+                    'is-invalid':
+                      (form.submitted && stepValueArray.invalid) ||
+                      stepValueArray.touched
+                  }"
+                  placeholder="Enter step value array"
+                  required
+                  minlength="1"
+                />
+                <div
+                  *ngIf="
+                    (form.submitted && stepValueArray.invalid) ||
+                    stepValueArray.touched
+                  "
+                  class="invalid-feedback error-msg form-group"
+                >
+                  <div *ngIf="stepValueArray.errors?.required">
+                    Step value array is required
+                  </div>
+                  <div *ngIf="stepValueArray.errors?.minlength">
+                    Discount array should be at least 1 character long
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="discountArray">Discount array (Ex. 0,5,9,10)</label>
+                                <input id="discountArray" type="text" name="discountArray" class="form-control" [(ngModel)]="pricing.discountArray" #discountArray="ngModel" [ngClass]="{
+                    'is-invalid':
+                      (form.submitted && discountArray.invalid) ||
+                      discountArray.touched
+                  }" placeholder="Enter step value array" required minlength="1" />
+                                <div *ngIf="
+                    (form.submitted && discountArray.invalid) ||
+                    discountArray.touched
+                  " class="invalid-feedback error-msg form-group">
+                                    <div *ngIf="discountArray.errors?.required">
+                                        Step value array is required
+                                    </div>
+                                    <div *ngIf="discountArray.errors?.minlength">
+                                        Discount array should be at least 1 character long
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="costPerOrderArray">Cost per order array (Ex.0.0, 0.11, 0.1)</label
+                >
+                <input
+                  id="costPerOrderArray"
+                  type="text"
+                  name="costPerOrderArray"
+                  class="form-control"
+                  [(ngModel)]="pricing.costPerOrderArray"
+                  #costPerOrderArray="ngModel"
+                  [ngClass]="{
+                    'is-invalid':
+                      (form.submitted && costPerOrderArray.invalid) ||
+                      costPerOrderArray.touched
+                  }"
+                  placeholder="Enter step value array"
+                  required
+                  minlength="1"
+                />
+                <div
+                  *ngIf="
+                    (form.submitted && costPerOrderArray.invalid) ||
+                    costPerOrderArray.touched
+                  "
+                  class="invalid-feedback error-msg form-group"
+                >
+                  <div *ngIf="costPerOrderArray.errors?.required">
+                    Step value array is required
+                  </div>
+                  <div *ngIf="costPerOrderArray.errors?.minlength">
+                    Discount array should be at least 1 character long
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="orderType"
+                  >Order type (Ex. Orders/Month or Orders/Yearly)</label
+                >
+                <input
+                  id="orderType"
+                  type="text"
+                  name="orderType"
+                  class="form-control"
+                  [(ngModel)]="pricing.orderType"
+                  #orderType="ngModel"
+                  [ngClass]="{
+                    'is-invalid':
+                      (form.submitted && orderType.invalid) || orderType.touched
+                  }"
+                  placeholder="Enter order type monthly or yearly"
+                  required
+                  minlength="6"
+                />
+                <div
+                  *ngIf="
+                    (form.submitted && orderType.invalid) || orderType.touched
+                  "
+                  class="invalid-feedback error-msg form-group"
+                >
+                  <div *ngIf="orderType.errors?.required">
+                    Order type is required
+                  </div>
+                  <div *ngIf="orderType.errors?.minlength">
+                    Order type should be at least 6 characters long
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="include1">Include Service 1 Name</label>
+                                <input id="include1" type="text" name="include1" class="form-control" [(ngModel)]="pricing.include1" #include1="ngModel" [ngClass]="{
+                    'is-invalid':
+                      (form.submitted && include1.invalid) || include1.touched
+                  }" placeholder="Enter Include Service 1 Name" required minlength="1" />
+                                <div *ngIf="
+                    (form.submitted && include1.invalid) || include1.touched
+                  " class="invalid-feedback error-msg form-group">
+                                    <div *ngIf="include1.errors?.required">
+                                        Include Service 1 Name is required
+                                    </div>
+                                    <div *ngIf="include1.errors?.minlength">
+                                        Include Service 1 Name should be at least 1 characters long
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="include1Value">Include Service 1 Price</label>
+                                <input id="include1Value" type="number" name="include1Value" class="form-control" [(ngModel)]="pricing.include1Value" #include1Value="ngModel" [ngClass]="{
+                    'is-invalid':
+                      (form.submitted && include1Value.invalid) ||
+                      include1Value.touched
+                  }" placeholder="Enter Include Service 1 Price" required min="0" />
+                                <div *ngIf="
+                    (form.submitted && include1Value.invalid) ||
+                    include1Value.touched
+                  " class="invalid-feedback error-msg form-group">
+                                    <div *ngIf="include1Value.errors?.required">
+                                        Include Service 1 price is required
+                                    </div>
+                                    <div *ngIf="include1Value.errors?.min">
+                                        Include Service 1 price can not be less than 0
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="include2">Include Service 2 Name</label>
+                                <input id="include2" type="text" name="include2" class="form-control" [(ngModel)]="pricing.include2" #include2="ngModel" [ngClass]="{
+                    'is-invalid':
+                      (form.submitted && include2.invalid) || include2.touched
+                  }" placeholder="Enter Include Service 2 Name" required minlength="1" />
+                                <div *ngIf="
+                    (form.submitted && include2.invalid) || include2.touched
+                  " class="invalid-feedback error-msg form-group">
+                                    <div *ngIf="include2.errors?.required">
+                                        Include Service 2 Name is required
+                                    </div>
+                                    <div *ngIf="include2.errors?.minlength">
+                                        Include Service 2 Name should be at least 1 characters long
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="include2Value">Include Service 2 Price</label>
+                                <input id="include2Value" type="number" name="include2Value" class="form-control" [(ngModel)]="pricing.include2Value" #include2Value="ngModel" [ngClass]="{
+                    'is-invalid':
+                      (form.submitted && include2Value.invalid) ||
+                      include2Value.touched
+                  }" placeholder="Enter Include Service 2 Price" required min="0" />
+                                <div *ngIf="
+                    (form.submitted && include2Value.invalid) ||
+                    include2Value.touched
+                  " class="invalid-feedback error-msg form-group">
+                                    <div *ngIf="include2Value.errors?.required">
+                                        Include Service 2 price is required
+                                    </div>
+                                    <div *ngIf="include2Value.errors?.min">
+                                        Include Service 2 price can not be less than 0
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="include3">Include Service 3 Name</label>
+                                <input id="include3" type="text" name="include3" class="form-control" [(ngModel)]="pricing.include3" #include3="ngModel" [ngClass]="{
+                    'is-invalid':
+                      (form.submitted && include3.invalid) || include3.touched
+                  }" placeholder="Enter Include Service 3 Name" required minlength="1" />
+                                <div *ngIf="
+                    (form.submitted && include3.invalid) || include3.touched
+                  " class="invalid-feedback error-msg form-group">
+                                    <div *ngIf="include3.errors?.required">
+                                        Include Service 3 Name is required
+                                    </div>
+                                    <div *ngIf="include3.errors?.minlength">
+                                        Include Service 3 Name should be at least 1 characters long
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="include3Value">Include Service 3 Price</label>
+                                <input id="include3Value" type="number" name="include3Value" class="form-control" [(ngModel)]="pricing.include3Value" #include3Value="ngModel" [ngClass]="{
+                    'is-invalid':
+                      (form.submitted && include3Value.invalid) ||
+                      include3Value.touched
+                  }" placeholder="Enter Include Service 3 Price" required min="0" />
+                                <div *ngIf="
+                    (form.submitted && include3Value.invalid) ||
+                    include3Value.touched
+                  " class="invalid-feedback error-msg form-group">
+                                    <div *ngIf="include3Value.errors?.required">
+                                        Include Service 3 price is required
+                                    </div>
+                                    <div *ngIf="include3Value.errors?.min">
+                                        Include Service 3 price can not be less than 0
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="include4">Include Service 4 Name</label>
+                                <input id="include4" type="text" name="include4" class="form-control" [(ngModel)]="pricing.include4" #include4="ngModel" [ngClass]="{
+                    'is-invalid':
+                      (form.submitted && include4.invalid) || include4.touched
+                  }" placeholder="Enter Include Service 4 Name" required minlength="1" />
+                                <div *ngIf="
+                    (form.submitted && include4.invalid) || include4.touched
+                  " class="invalid-feedback error-msg form-group">
+                                    <div *ngIf="include4.errors?.required">
+                                        Include Service 4 Name is required
+                                    </div>
+                                    <div *ngIf="include4.errors?.minlength">
+                                        Include Service 4 Name should be at least 1 characters long
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="include4Value">Include Service 4 Price</label>
+                                <input id="include4Value" type="number" name="include4Value" class="form-control" [(ngModel)]="pricing.include4Value" #include4Value="ngModel" [ngClass]="{
+                    'is-invalid':
+                      (form.submitted && include4Value.invalid) ||
+                      include4Value.touched
+                  }" placeholder="Enter Include Service 4 Price" required min="0" />
+                                <div *ngIf="
+                    (form.submitted && include4Value.invalid) ||
+                    include4Value.touched
+                  " class="invalid-feedback error-msg form-group">
+                                    <div *ngIf="include4Value.errors?.required">
+                                        Include Service 4 price is required
+                                    </div>
+                                    <div *ngIf="include4Value.errors?.min">
+                                        Include Service 4 price can not be less than 0
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="include5">Include Service 5 Name</label>
+                                <input id="include5" type="text" name="include5" class="form-control" [(ngModel)]="pricing.include5" #include5="ngModel" [ngClass]="{
+                    'is-invalid':
+                      (form.submitted && include5.invalid) || include5.touched
+                  }" placeholder="Enter Include Service 5 Name" required minlength="1" />
+                                <div *ngIf="
+                    (form.submitted && include5.invalid) || include5.touched
+                  " class="invalid-feedback error-msg form-group">
+                                    <div *ngIf="include5.errors?.required">
+                                        Include Service 5 Name is required
+                                    </div>
+                                    <div *ngIf="include5.errors?.minlength">
+                                        Include Service 5 Name should be at least 1 characters long
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="include5Value">Include Service 5 Price</label>
+                                <input id="include5Value" type="number" name="include5Value" class="form-control" [(ngModel)]="pricing.include5Value" #include5Value="ngModel" [ngClass]="{
+                    'is-invalid':
+                      (form.submitted && include5Value.invalid) ||
+                      include5Value.touched
+                  }" placeholder="Enter Include Service 2 Price" required min="0" />
+                                <div *ngIf="
+                    (form.submitted && include5Value.invalid) ||
+                    include5Value.touched
+                  " class="invalid-feedback error-msg form-group">
+                                    <div *ngIf="include5Value.errors?.required">
+                                        Include Service 5 price is required
+                                    </div>
+                                    <div *ngIf="include5Value.errors?.min">
+                                        Include Service 5 price can not be less than 0
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12 text-center">
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-primary">
+                  Save changes
+                </button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

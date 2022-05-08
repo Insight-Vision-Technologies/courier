@@ -1,0 +1,163 @@
+<div class="m-3">
+    <button mat-icon-button class="close-button" [mat-dialog-close]="true">
+        <mat-icon class="close-icon" color="warn">close</mat-icon>
+    </button>
+    <h2 mat-dialog-title>Company Details</h2>
+
+    <div mat-dialog-content class="">
+        <div class="container">
+            <div class="main-body">
+
+                <div class="row gutters-sm">
+                    <div class="col-md-12 mb-3">
+
+                        <div class="row">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="d-flex flex-column align-items-center text-center">
+                                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSe8tu9tQwDWTcwOQp8DwYcE2jXYIV3_auMRqyTPNMaAggamCTPdwSqZRw84Go2JdTPdjE&usqp=CAU" alt="Admin" class="rounded-circle" width="150">
+                                        <div class="mt-3">
+                                            <h4>{{companyInfo.companyName}} Courire</h4>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row gutters-sm">
+
+                    <div class="col mt-3 card-board">
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                                <h6 class="mb-0">Name</h6>
+                                <span class="text-secondary">{{companyInfo.companyName}}</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                                <h6 class="mb-0">phone</h6>
+                                <span class="text-secondary">{{companyInfo.phone}}</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                                <h6 class="mb-0">Email</h6>
+                                <span class="text-secondary">{{companyInfo.email}}</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                                <h6 class="mb-0">City</h6>
+                                <span class="text-secondary">{{companyInfo.city}}</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                                <h6 class="mb-0">Address</h6>
+                                <span class="text-secondary">{{companyInfo.addressDetails}}-{{companyInfo.city}}-{{companyInfo.country}}</span>
+                            </li>
+
+                        </ul>
+                    </div>
+
+                    <div class="col mt-3 ml-3 card-board">
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                                <h6 class="mb-0">Total Order</h6>
+                                <span class="text-secondary">{{OrderCount}}</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                                <h6 class="mb-0">Income</h6>
+                                <span class="text-secondary">{{CountPayment}}</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                                <h6 class="mb-0">Plan</h6>
+                                <span class="text-secondary">0</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                                <h6 class="mb-0">Rating</h6>
+                                <span class="text-secondary">{{CountRate}}</span>
+                            </li>
+
+
+                        </ul>
+                    </div>
+
+
+
+                </div>
+
+                <br>
+                <br>
+
+                <div class="row gutters-sm">
+                    <hr>
+                    <div class="card mb-3">
+
+                        <div class="row flex-grow">
+
+                            <div class="col-lg-12 col-md-12">
+                                <div class="card">
+                                    <div class="card-headercard-header-warning" style="    background: linear-gradient(60deg, #ef5350, #e53935);
+              box-shadow: 0 1px 10px 0 rgb(238 77 71); ">
+                                        <h4 class="card-title" style="color: #eee; float: left;">Work Time</h4>
+                                    </div>
+                                    <div class="card-body table-responsive">
+                                        <table class="table table-hover">
+                                            <thead class="text-warning">
+                                                <th>Day</th>
+                                                <th class="xx">Time</th>
+
+
+                                            </thead>
+                                            <tbody>
+                                                <tr *ngFor="let item of timeTableList">
+                                                    <td>{{item.day}}</td>
+                                                    <td class="xx">{{item.start}} - {{item.end}}</td>
+
+                                                </tr>
+
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                    <div class="row gutters-sm">
+
+                        <div class="text-95 col-sm-6  d-sm-flex bold-text">
+                            <hr class="d-sm-none" />
+                            <div class="text-grey-m2">
+                                <div class="mt-1 mb-2 text-secondary-m1 text-600 text-125">
+                                    Order States
+                                </div>
+
+                                <div class="my-2"><i class="fa fa-car text-blue-m2 text-xs mr-1"></i> <span class="text-600 text-90">Deliverd:</span>{{CountCompanyOrderHistory}}</div>
+
+                                <div class="my-2"><i class="fa fa-truck text-blue-m2 text-xs mr-1"></i> <span class="text-600 text-90"> In Process:</span>{{OrderOnProcessCount}}</div>
+
+                                <div class="my-2"><i class="fa fa-circle text-blue-m2 text-xs mr-1"></i> <span class="text-600 text-90">Cancled:</span>{{OrderCancleCount}}</div>
+                            </div>
+                        </div>
+                        <div class="text-95 col-sm-6 d-sm-flex bold-text">
+                            <hr class="d-sm-none" />
+                            <div class="text-grey-m2">
+                                <div class="mt-1 mb-2 text-secondary-m1 text-600 text-125">
+                                    Company Info
+                                </div>
+
+                                <div class="my-2"><i class="fa fa-car text-blue-m2 text-xs mr-1"></i> <span class="text-600 text-90">Vehicles:</span>{{CompanyVehicalesCount}}</div>
+
+                                <div class="my-2"><i class="fa fa-users text-blue-m2 text-xs mr-1"></i> <span class="text-600 text-90"> Employees:</span>{{employeeCount}}</div>
+
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

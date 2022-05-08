@@ -1,0 +1,137 @@
+<div class="container-fluid bg-linear">
+    <div class="row mt-3">
+        <div class="col-md-5 mx-auto">
+            <div class="card-form card">
+                <div class="logo mb-3">
+                    <div class="col-md-12 mx-auto text-center">
+                        <h1>Signup</h1>
+                    </div>
+                </div>
+                <form #form="ngForm" (ngSubmit)="form.form.valid && logForm(form)">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="name">Name</label>
+                                <input id="name" type="text" name="name" class="form-control" [(ngModel)]="comp.name" #email="ngModel" [ngClass]="{ 'is-invalid':form.submitted && name.invalid || name.touched }" placeholder="Enter name" name="name" #name="ngModel" required minlength="3"
+                                />
+                                <div *ngIf="form.submitted && name.invalid || name.touched" class="invalid-feedback error-msg form-group">
+                                    <div *ngIf="name.errors?.required">Name is required</div>
+                                    <div *ngIf="name.errors?.minlength">Name should be at least 3 characters long</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="email">Email address</label>
+                                <input type="email" class="form-control" name="email" [(ngModel)]="comp.email" #email="ngModel" [ngClass]="{ 'is-invalid':form.submitted && email.invalid || email.touched }" placeholder="Enter email" email required>
+                                <div *ngIf="form.submitted && email.invalid || email.touched" class="invalid-feedback error-msg form-group">
+                                    <div *ngIf="email.errors?.required">Email is required</div>
+                                    <div *ngIf="email.errors?.email">Must be a valid email address</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group last mb-3">
+                                <label for="password">Password</label>
+                                <input type="password" [type]="hide? 'password':'text'" minlength="6" [(ngModel)]="comp.password" [ngClass]=" { 'is-invalid': form.submitted && password.invalid || password.touched }" class="form-control" placeholder="Your password" id="password" name="password"
+                                    required #password="ngModel" />
+                                <i class="material-icons cc" matsuffix (click)="hide=!hide ">
+                            {{hide ?  'visibility':'visibility_off'}}
+                           </i>
+                                <div *ngIf="form.submitted && password.invalid || password.touched" class="invalid-feedback error-msg form-group">
+                                    <div *ngIf="password.errors?.required">Password is required</div>
+                                    <div *ngIf="password.errors?.minlength">Password should be at least 6 characters long</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group last mb-3">
+                                <label for="confirmPassword">Confirm password</label>
+                                <input type="password" [type]="hideConfirm ? 'password' : 'text'" minlength="6" [(ngModel)]="comp.confirmPassword" [ngClass]=" { 'is-invalid': form.submitted && confirmPassword.invalid || confirmPassword.touched }" class="form-control" placeholder="confirm Password"
+                                    id="confirmPassword" name="confirmPassword" required #confirmPassword="ngModel" />
+                                <i class="material-icons cc" matsuffix (click)="hideConfirm = !hideConfirm">
+                            {{ hideConfirm ? "visibility" : "visibility_off" }}
+                          </i>
+                                <div *ngIf="form.submitted && confirmPassword.invalid || confirmPassword.touched" class="invalid-feedback error-msg form-group">
+                                    <div *ngIf="confirmPassword.errors?.required">Password is required</div>
+                                    <div *ngIf="comp.password!==comp.confirmPassword">Password must be same</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="phone">Phone</label>
+                                <input type="text" name="phone" id="phone" class="form-control" [(ngModel)]="comp.phone" [ngClass]="{ 'is-invalid':form.submitted && phone.invalid || phone.touched }" placeholder="Enter your phone" #phone="ngModel" required minlength="12" maxLength="12"
+                                    oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" />
+                                <div *ngIf="form.submitted && phone.invalid || phone.touched" class="invalid-feedback error-msg form-group">
+                                    <div *ngIf="phone.errors?.required">Phone is required</div>
+                                    <div *ngIf="phone.errors?.minlength">Phone should be (971)555555555</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group last mb-3">
+                                <label for="country">Country</label>
+                                <mat-select class="form-control " name="country" ngModel #country="ngModel">
+                                    <mat-option value="UAE">UAE</mat-option>
+                                    <mat-option value="Saudi">Saudi</mat-option>
+                                    <mat-option value="Iran">Iran</mat-option>
+                                    <mat-option value="Behrine">Behrine</mat-option>
+                                </mat-select>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group last mb-3">
+                                <label for="city">City</label>
+                                <mat-label></mat-label>
+                                <mat-select class="form-control " name="city" ngModel #city="ngModel">
+                                    <mat-option value="Dubai">Dubai</mat-option>
+                                    <mat-option value="Abu Dhabi">Abu Dhabi</mat-option>
+                                    <mat-option value="Sharjah">Sharjah</mat-option>
+                                    <mat-option value="Ajman">Ajman</mat-option>
+                                </mat-select>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="address">Address</label>
+                                <input type="text" id="address" [(ngModel)]="comp.addressDetails" [ngClass]="{ 'is-invalid':form.submitted && addressDetails.invalid || addressDetails.touched }" class="form-control" placeholder="addressDetails " name="addressDetails" #addressDetails="ngModel"
+                                    required minlength="5">
+                                <div *ngIf="form.submitted && name.invalid || name.touched" class="invalid-feedback error-msg form-group">
+                                    <div *ngIf="addressDetails.errors?.required">Address is required</div>
+                                    <div *ngIf="addressDetails.errors?.minlength">Address should be at least 5 characters long</div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-12 text-center mb-3 ">
+                        <button type="submit " class="btn btn-block mybtn btn-primary tx-tfm ">
+                        Get Started For Free
+                        </button>
+                    </div>
+                    <div class="col-md-12 ">
+                        <div class="form-group ">
+                            <p class="text-center ">
+                                <a id="signin " routerLink="/sign" routerLinkActive="active ">Already have an account?</a>
+                            </p>
+                        </div>
+                    </div>
+                    <!-- </div> -->
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+</div>

@@ -1,0 +1,65 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+body {
+    background-color: #eee;
+    font-family: 'Roboto', sans-serif
+}
+
+.main {
+    border-collapse: separate !important;
+    border-spacing: 0 11px !important
+}
+
+tr {
+    border: 1px solid #eee
+}
+
+.head th {
+    font-weight: 500
+}
+
+.form-check-input:focus {
+    border-color: #8bbafe;
+    outline: 0;
+    box-shadow: none
+}
+
+.btn {
+    height: 27px;
+    line-height: 11px;
+    color: #fff
+}
+
+.card-headercard-header-warning {
+    background: linear-gradient(60deg, #ffa726, #fb8c00);
+    border-radius: 3px;
+    margin-top: -20px;
+    padding: 15px;
+    box-shadow: 0 4px 20px 0px rgb(0 0 0 / 14%), 0 7px 10px -5px rgb(255 152 0 / 40%);
+    margin: 0px 15px 0;
+    padding: 0;
+    position: relative;
+    z-index: 3 !important;
+    color: #eee;
+    padding: 0.75rem 1.25rem;
+    margin-bottom: 0;
+    background-color: rgba(0, 0, 0, .03);
+    border-bottom: 1px solid rgba(0, 0, 0, .125);
+}
+
+.form-check-input {
+    width: 1.15em;
+    height: 1.15em;
+    margin-top: 3px
+}
+
+.order-color {
+    color: blue
+}
+
+
+.btn-success[_ngcontent-dbp-c426] {
+    text-decoration: none;
+    color: #fffefe;
+    background-color: #79b93c;
+    border-color: #ffffff;
+  }

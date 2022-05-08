@@ -1,0 +1,123 @@
+<div class="p-5 w-100">
+
+    <div>
+        <h2>Orders</h2>
+    </div>
+    <div class="container">
+        <div class="card-body">
+            <div class="steps d-flex flex-wrap flex-sm-nowrap justify-content-between padding-top-2x padding-bottom-1x">
+                <!-- <div class="step " [ngClass]="{'completed':this.orderInfo.status>=0}">
+                    <div class="step-icon-wrap">
+                        <div class="step-icon">
+                            <img src="https://img.icons8.com/external-nawicon-flat-nawicon/64/000000/external-check-delivery-nawicon-flat-nawicon.png" /></div>
+                    </div>
+                    <h4 class="step-title">Create Order</h4>
+                </div> -->
+                <div class="step " [ngClass]="{'completed':this.orderInfo.status>0}">
+                    <div class="step-icon-wrap">
+                        <div class="step-icon">
+                            <img src="https://img.icons8.com/external-nawicon-flat-nawicon/64/000000/external-package-delivery-nawicon-flat-nawicon-4.png" />
+                        </div>
+                    </div>
+                    <h4 class="step-title"> Confirmed Order </h4>
+                </div>
+                <div class="step " [ngClass]="{'completed':this.orderInfo.status>1}">
+                    <div class=" step-icon-wrap ">
+                        <div class="step-icon ">
+                            <img src="https://img.icons8.com/external-nawicon-flat-nawicon/64/000000/external-delivery-man-delivery-nawicon-flat-nawicon.png" />
+                        </div>
+                    </div>
+                    <h4 class="step-title ">Picking Order</h4>
+                </div>
+
+                <div class="step " [ngClass]="{'completed':this.orderInfo.status>2}">
+                    <div class="step-icon-wrap ">
+                        <div class="step-icon ">
+                            <img src="https://img.icons8.com/external-nawicon-flat-nawicon/64/000000/external-tracking-delivery-nawicon-flat-nawicon.png" />
+                        </div>
+                    </div>
+                    <h4 class="step-title ">On the Way</h4>
+
+                </div>
+
+                <div class="step " [ngClass]="{'completed':this.orderInfo.status>3}">
+                    <div class="step-icon-wrap ">
+                        <div class="step-icon ">
+                            <img src="https://img.icons8.com/external-nawicon-flat-nawicon/64/000000/external-package-delivery-nawicon-flat-nawicon-3.png" />
+                        </div>
+                    </div>
+                    <h4 class="step-title ">Product Delivered</h4>
+                </div>
+
+            </div>
+            <h2 *ngIf="this.orderInfo.paymentMethod==1" class="w-25 float-left ">paid</h2>
+            <h2 *ngIf="this.orderInfo.paymentMethod==0" class="w-25 float-left ">Cash {{this.orderInfo.totalCost}} DHS</h2>
+            <button *ngIf="this.orderInfo.status<4" class="btn btn-sm btn-primary w-25 float-right" (click)="next()">Next</button>
+
+        </div>
+    </div>
+
+    <div class="container-fluid p-0">
+        <h1 class="h3 mb-3">Orders</h1>
+        <div class="row">
+
+            <div class="col-xl-12">
+                <div class="card">
+                    <div class="card-header">
+                        <strong>Current Order</strong>
+                        <button class="btn btn-danger float-right" (click)="moreDetails()">More Details</button>
+                    </div>
+                    <div class="card-body">
+                        <div class="row g-0">
+                            <div class="col-sm-3 col-xl-12 col-xxl-3 text-center">
+                                <img src="../../../../assets/img/gallery/download.png" width="64" height="64" class="rounded-circle mt-2">
+                            </div>
+
+                        </div>
+
+                        <table class="table table-sm mt-2 mb-4">
+                            <tbody>
+                                <tr>
+                                    <th>Order No.</th>
+                                    <td>{{ orderInfo.orderNumber }}</td>
+
+                                </tr>
+                                <tr>
+                                    <th>Order Date</th>
+                                    <td>{{ orderInfo.createdOn | date: 'dd/MM/yyyy'}} {{ orderInfo.createdOn | date: 'shortTime'}}</td>
+                                </tr>
+                                <tr>
+                                    <th>Delivery Date</th>
+                                    <td>{{orderInfo.expectionDate |date: "dd/MM/yyyy"}} {{orderInfo.expectionDate |date: "shortTime"}}</td>
+                                </tr>
+                                <tr>
+                                    <th>Pickup From</th>
+                                    <td>{{ orderInfo.from }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Delivered To</th>
+                                    <td>{{ orderInfo.to }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Sender</th>
+                                    <td>{{ orderInfo.senderName }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Reciver</th>
+                                    <td>{{ orderInfo.reciverName }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Payment Status</th>
+                                    <td> <span class="badge bg-primary rounded-pill" *ngIf="orderInfo.paymentStatus==0">{{ 'Unpaid' }}</span>
+                                        <span class="badge bg-success rounded-pill" *ngIf="orderInfo.paymentStatus==1">{{ 'Paid' }}</span></td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

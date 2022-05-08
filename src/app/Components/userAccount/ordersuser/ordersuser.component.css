@@ -1,0 +1,95 @@
+.btn-shadow {
+  background:linear-gradient(to right, #FF4E7D 0%, #ff6a5b 100%);
+  color: #ffffff;
+  box-shadow: 0 1px 10px 0 rgb(238 77 71);
+}
+.scrolling-wrapper {
+  overflow-x: scroll !important;
+  overflow-y: hidden;
+  white-space: nowrap;
+}
+.font-size{
+  font-size:15px;
+}
+.list-group-item{
+  border:none!important;
+}
+.fw-bold {
+  font-weight: 500 !important;
+}
+.card {
+  display: inline-block;
+  margin-right: 5px;
+}
+.btn-color{
+color:white;
+background: linear-gradient(to right, #FF4E7D 0%, #ff6a5b 100%)!important;
+}
+table {
+width: 100%;
+}
+.btn-width{
+width:100px;
+}
+.courier-box{
+  box-shadow: rgb(238 77 71) 0px 3px 8px;
+  border-radius: 20px;
+  padding: 10px;
+}
+
+.card {
+    margin: 0 auto;
+    color: black;
+    font-size: 16px;
+}
+
+.cardhead {
+    font-weight: bold;
+}
+
+.com {
+    color: green;
+    font-size: 17px;
+    font-weight: normal !important;
+}
+
+.compname {
+    font-weight: bold;
+}
+
+label {
+    font-size: 15px !important;
+}
+
+.badge-success {
+    background-color: rgb(101, 218, 101);
+    color: rgb(0, 0, 0);
+}
+
+.badge-danger {
+    background-color: rgb(255, 179, 79);
+    color: rgb(0, 0, 0);
+}
+
+.badge-waiting {
+    background-color: rgba(255, 0, 0, 0.63);
+    color: rgb(0, 0, 0);
+}
+
+.card-header {
+    background-color: rgba(255, 175, 161, 0.753);
+}
+
+.footcard {
+    font-weight: bold;
+}
+
+label {
+    font-size: 20px;
+    color: black;
+}
+
+.rating {
+    font-size: 32px !important;
+    color: rgb(255, 187, 0);
+}

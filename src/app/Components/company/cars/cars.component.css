@@ -1,0 +1,133 @@
+table {
+    width: 100% !important;
+    overflow-x: auto;
+}
+
+.mat-sort-header-container {
+    align-items: center;
+}
+
+table.mat-table {
+    display: table;
+}
+
+#fixedbutton {
+    position: fixed;
+    bottom: 86px;
+    right: 102px;
+    color: tomato;
+    font-size: 4rem;
+    cursor: pointer;
+}
+
+mat-label {
+    color: rgba(255, 99, 71, 0.514);
+    font-size: 1rem;
+}
+
+input {
+    color: grey;
+    font-size: 1rem;
+}
+
+.mat-input-element {
+    caret-color: tomato !important;
+    border-color: tomato !important;
+}
+
+
+/*
+.ss {
+width: 100%;
+} */
+
+.btn-shadow {
+    background-color: #EE4D47;
+    color: #ffffff;
+    box-shadow: 0 1px 10px 0 rgb(238 77 71);
+}
+
+.courier-box {
+    box-shadow: rgb(238 77 71) 0px 3px 8px;
+    border-radius: 20px;
+    padding: 10px;
+}
+
+label {
+    color: rgb(88, 88, 88);
+    font-size: 2rem;
+}
+
+.ds {
+    width: 100% !important;
+}
+
+.mat-header-cell {
+    background-color: rgb(238 77 71);
+    color: white;
+}
+
+.mat-cell {
+    font-size: 1.2rem;
+}
+
+.fa-trash-alt {
+    color: red;
+    /* font-size: 3vh !important; */
+    font-weight: 500 !important;
+    cursor: pointer;
+}
+
+.fa-pencil-alt {
+    color: rgb(54, 54, 233) !important;
+    /* font-size: 3vh !important; */
+    font-weight: 500 !important;
+    cursor: pointer;
+}
+
+th {
+    font-weight: 550;
+    font-size: 1.5rem;
+}
+
+.fass {
+    background-color: rgb(238 77 71);
+}
+
+.search {
+    width: 100%;
+}
+
+.courier-box {
+    box-shadow: 5px -5px 15px rgb(238 77 71);
+    /* box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(219, 20, 20, 0.1004) 0px 6px 6px; */
+    border-radius: 20px !important;
+    padding: 10px;
+}
+
+.pagg-box {
+    box-shadow: rgb(238 77 71) 0px 6px 15px;
+}
+
+.loader-container {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    /* opacity: 0.8; */
+    z-index: 2;
+}
+
+th {
+    z-index: 0 !important;
+}
+
+.mat-spinner-color::ng-deep circle {
+    stroke: rgb(179, 52, 29) !important;
+}
+
+.fa-plus-square {
+    color: rgb(238, 77, 71) !important;
+    font-weight: 500 !important;
+    cursor: pointer;
+}

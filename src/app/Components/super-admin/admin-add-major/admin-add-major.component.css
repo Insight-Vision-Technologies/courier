@@ -1,0 +1,141 @@
+
+
+    .fileinput .img-thumbnail > img {
+        max-height: 100%;
+        max-width: 100%;
+        height: auto;
+        margin-right: auto;
+        margin-left: auto;
+        display: block;
+    }
+
+    .btn:not(:disabled):not(.disabled) {
+        cursor: pointer;
+    }
+    .fileinput .btn {
+        vertical-align: middle;
+    }
+    .btn:not(:last-child) {
+        margin-right: 0.5rem;
+    }
+    .btn-file {
+        overflow: hidden;
+        position: relative;
+        vertical-align: middle;
+    }
+    .btn-outline-secondary {
+        color: #4385b1;
+    }
+    [class*='btn-outline-'] {
+        border-width: 1px;
+    }
+    .btn {
+        font-size: .875rem;
+        position: relative;
+        transition: all .15s ease;
+        letter-spacing: .025em;
+        text-transform: none;
+        will-change: transform;
+    }
+    .btn:not(:disabled):not(.disabled) {
+        cursor: pointer;
+    }
+    .fileinput .btn {
+        vertical-align: middle;
+    }
+    .btn:not(:last-child) {
+        margin-right: 0.5rem;
+    }
+    .btn-file {
+        overflow: hidden;
+        position: relative;
+        vertical-align: middle;
+    }
+
+    .form-group {
+        margin-bottom: 1.5rem;
+    }
+    *, *::before, *::after {
+        box-sizing: border-box;
+    }
+    user agent stylesheet
+    div {
+        display: block;
+    }
+    .btn {
+        font-size: .875rem;
+        position: relative;
+        transition: all .15s ease;
+        letter-spacing: .025em;
+        text-transform: none;
+        will-change: transform;
+    }
+
+    .card-header:first-child {
+        border-radius: calc(0.375rem - 1px) calc(0.375rem - 1px) 0 0;
+    }
+    .border-0 {
+        border: 0 !important;
+    }
+    .card-header {
+        margin-bottom: 12px;
+        padding: 1.25rem 1.5rem;
+        border-bottom: 1px solid rgba(0, 0, 0, .05);
+        background-color: #fff;
+    }
+
+    .card-body{     
+           margin-bottom: 12px;
+    }
+    
+.pb-8 {
+    padding-bottom: 1.5rem !important;
+    padding-top: 1.5rem !important;
+}
+.row {
+    display: flex;
+    margin-right: -15px;
+    margin-left: -15px;
+    margin-bottom: -15px;
+    flex-wrap: wrap;
+}
+/* @media (min-width: 768px) */
+
+input[type="file" i] {
+    appearance: none;
+    background-color: initial;
+    cursor: default;
+    align-items: baseline;
+    color: inherit;
+    text-overflow: ellipsis;
+    white-space: pre;
+    text-align: start !important;
+    padding: initial;
+    border: initial;
+    overflow: hidden !important;
+}
+user agent stylesheet
+input {
+    writing-mode: horizontal-tb !important;
+   
+    text-rendering: auto;
+    color: -internal-light-dark(black, white);
+    letter-spacing: normal;
+    word-spacing: normal;
+    line-height: normal;
+    text-transform: none;
+    text-indent: 0px;
+    text-shadow: none;
+    display: inline-block;
+    text-align: start;
+    appearance: auto;
+    -webkit-rtl-ordering: logical;
+    cursor: text;
+    background-color: -internal-light-dark(rgb(255, 255, 255), rgb(59, 59, 59));
+    margin: 0em;
+    padding: 1px 2px;
+    border-width: 2px;
+    border-style: inset;
+    border-color: -internal-light-dark(rgb(118, 118, 118), rgb(133, 133, 133));
+    border-image: initial;
+}

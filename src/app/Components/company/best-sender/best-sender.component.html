@@ -1,0 +1,85 @@
+<div class="pt-4 pl-3" (click)="home()"><i class="fas fa-arrow-left"></i></div>
+<div class="p-5 w-100">
+    <div>
+        <label>Best Sender</label>
+    </div>
+    <br />
+    <div class="container">
+        <div class="row">
+            <div *ngFor="let c of Cards" class="mb-2 col-lg-6 col-md-12 col-sm-12 col-xs-12">
+                <div class="card">
+                    <div class="row no-gutters">
+                        <div class="col-auto">
+                            <img src="../../../../assets/img/gallery/petter.png" class="img-fluid mt-2 ml-4" alt="" />
+                        </div>
+                        <div class="col">
+                            <div class="card-block pt-2">
+                                <p class="card-text align-text-bottom pt-3 ml-2">
+                                    {{ c.userName }}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="row">
+                        <div class="col-1"></div>
+                        <div class="col-10">
+                            <mat-accordion>
+                                <mat-expansion-panel hideToggle>
+                                    <mat-expansion-panel-header>
+                                        <mat-panel-title class="fw-bold">
+                                            <p class="card-text ml-2">
+                                                #Order
+                                                <span class="badge badge-danger badgecur">{{
+                          c.OrderNumber
+                        }}</span>
+                                            </p>
+                                        </mat-panel-title>
+                                    </mat-expansion-panel-header>
+                                    <div *ngFor="let cs of c.Orderhistory" class="row">
+                                        <div class="col-4">
+                                            <span class="lbl"> Date : </span>
+                                            <span class="lbl">{{ cs.OrderDate }}</span>
+                                        </div>
+                                        <div class="col-4">
+                                            <span class="lbl"> Price : </span>
+                                            <span class="lbl">{{ cs.OrderPrice }}</span>
+                                        </div>
+                                        <div class="col-4">
+                                            <span class="lbl">Rate : </span>
+                                            <span class="lbl">{{ cs.OrderRate }} <i class="far fa-star"></i
+                      ></span>
+                                        </div>
+                                    </div>
+                                </mat-expansion-panel>
+                            </mat-accordion>
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-1"></div>
+                        <div class="col-10">
+                            <p class="card-text ml-2">
+                                <i class="fas fa-tag"></i> Discount : {{ c.Discount }}
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-1"></div>
+                        <div class="col-10 text-right">
+                            <button type="button" class="btn btn-primary w-25 mb-2" (click)="EditSender()">
+                             <i class="fas fa-pencil-alt"></i>
+                             </button>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+           
+        </div>
+    </div>
+  
+  
+    <mat-icon (click)="addbestsender()" id="fixedbutton">add_circle</mat-icon>
+    
+    
+</div>

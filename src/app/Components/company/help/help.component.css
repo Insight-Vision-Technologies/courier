@@ -1,0 +1,297 @@
+.btn-shadow {
+  background-color: #EE4D47;
+  color: #ffffff;
+  box-shadow: 0 1px 10px 0 rgb(238 77 71);
+}
+.firstPart {
+    background-color: #fafafa;
+    padding-bottom: 2em;
+}
+
+.bg-faq {
+    background-color: #fafafa;
+}
+
+.faq-border-radius {
+    border-top-left-radius: 10px!important;
+    border-top-right-radius: 10px!important;
+}
+
+
+/* // Start cover */
+
+.cover {
+    background-image: url(../../../../assets/img/faq-banner.jpg);
+    height: 340px;
+    background-size: cover;
+}
+
+.cover .text {
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    height: 340px;
+    flex-direction: column;
+}
+
+.cover h1 {
+    color: white;
+    font-size: 3em;
+    font-weight: 500;
+}
+
+.cover .search {
+    width: 50%;
+    height: 3em;
+}
+
+.cover .search input {
+    height: 3em;
+}
+
+.cover .icon {
+    background-color: #ff5722;
+    width: 8em;
+}
+
+.cover .icon i {
+    margin-left: 1.5em;
+    color: white;
+    font-size: 1.5em;
+}
+
+
+/* //End cover
+//--------------------------
+//Start ContactUS */
+
+.control-label.required:after {
+    color: red;
+    content: "*";
+    position: absolute;
+    margin-left: 5px;
+    top: 7px;
+}
+
+input.ng-invalid.ng-touched {
+    border: red 2px solid;
+}
+
+textarea.ng-invalid.ng-touched {
+    border: red 2px solid;
+}
+
+.error-msg {
+    color: red;
+    font-size: 15px;
+    line-height: 20px;
+}
+
+.fix-error-icon {
+    top: 27px;
+}
+
+.contact-us {
+    width: 80%;
+    margin: auto;
+    line-height: 2.5em;
+    /* // height: 18em; */
+}
+
+.contact-us h1 {
+    font-weight: 600;
+    font-size: 1em;
+    text-align: center;
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+.fass {
+    background-color: #F37F69;
+}
+
+.search {
+    width: 70%;
+}
+
+
+/* //End ContactUS
+//--------------------------
+//Start FAQs */
+
+.faqs {
+    width: 80%;
+    margin: auto;
+    line-height: 2.5em;
+    /* // height: 18em; */
+}
+
+.faqs h1 {
+    font-weight: 600;
+    font-size: 1em;
+    text-align: center;
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+.faqs .how a {
+    color: #4f4b4b;
+    font-size: 1.1em;
+}
+
+.faqs .how a:hover {
+    color: #f44f1b;
+    text-decoration: none;
+}
+
+.faqs .arrow i {
+    color: gray;
+}
+
+
+/*
+//End FAQs
+//Start Browse by category */
+
+.browse h1 {
+    font-weight: 600;
+    font-size: 2em;
+    text-align: center;
+    margin-top: 2.5em;
+}
+
+.browse .category {
+    margin: auto;
+}
+
+.browse .category .card {
+    border: 0em transparent;
+    margin-top: 2em;
+    transition: 0.3s;
+}
+
+.browse .category .card:hover {
+    box-shadow: 0 4px 5px rgba(0, 0, 0, 0.15);
+    transform: translate(0, -10px);
+}
+
+.browse .category .card img {
+    width: 5em;
+    display: block;
+    margin: auto;
+    margin-top: 1em;
+}
+
+.browse .category .card .main {
+    font-size: 1.2em;
+}
+
+.browse .category .card .sub {
+    color: gray;
+    font-size: 0.9em;
+}
+
+
+/*
+//End Browse by category
+//Start find */
+
+.helpFind {
+    margin-top: 4em;
+}
+
+.helpFind .find {
+    font-size: 1.2em;
+    font-weight: 600;
+}
+
+.helpFind .ask {
+    border: 0.1em solid #f44f1b;
+    width: 11em;
+    margin: auto;
+    margin-top: 2em;
+    padding: 0.7em;
+}
+
+.helpFind .ask i {
+    color: #f44f1b;
+    font-size: 1.5em;
+}
+
+.helpFind .ask span {
+    font-size: 1.2em;
+    color: #f44f1b;
+    font-weight: 600;
+}
+
+
+/* //End find */
+
+@media only screen and (max-width: 768px) {
+    /* //   body {
+    //     height: 500em;
+    //   } */
+    .firstPart .cover .search .icon {
+        width: 4em;
+    }
+    .firstPart .cover .search .icon i {
+        font-size: 0.8em;
+        margin-left: 1em;
+    }
+    .faqs {
+        /* // height: 20em; */
+        width: 90%;
+    }
+    .faqs .how a {
+        font-size: 0.75em;
+    }
+    .browse .category .card .sub {
+        font-size: 0.8em;
+    }
+}
+
+@media only screen and (max-width: 479px) {
+    .firstPart .cover h1 {
+        font-size: 1.5em;
+    }
+    .cover .search {
+        width: 75%;
+        height: 1.5em;
+    }
+    .cover .search input {
+        height: 2em;
+    }
+    .faqs h1 {
+        font-size: 1.5em;
+    }
+    .faqs .row .how {
+        width: 90%;
+    }
+    .faqs .row .how a {
+        font-size: 0.75em;
+    }
+    .faqs .row .arrow {
+        width: 5%;
+    }
+    .browse h1 {
+        font-size: 1.5em;
+    }
+}
+
+.all:lang(ar) {
+    direction: rtl;
+}
+
+
+/* // @media only screen and (max-width: 350px) { */
+
+.arrow {
+    display: none;
+}
+
+
+/* // } */
+
+.mat-form-field+.mat-form-field {
+    margin-left: 8px;
+}

@@ -1,0 +1,88 @@
+<div class="p-5 w-100">
+    <h3 class="text-center mt-5">Available Areas</h3>
+    <div class="container">
+        <form #form="ngForm" (ngSubmit)="form.form.valid && availableCities(form)">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="countryName">Country Name</label>
+                        <input type="text" class="form-control" name="countryName" [(ngModel)]="availableArea.countryName" #countryName="ngModel" [ngClass]="{ 'is-invalid':form.submitted && countryName.invalid || countryName.touched }" placeholder="Country Name" required>
+                        <div *ngIf="form.submitted && countryName.invalid || countryName.touched" class="invalid-feedback error-msg form-group">
+                            <div *ngIf="countryName.errors?.required">Country name is required</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="cityNames">Cities Name(Ex.dubai,sharjah,ajman)</label>
+                        <input type="text" class="form-control" name="cityNames" [(ngModel)]="availableArea.cityNames" #cityNames="ngModel" [ngClass]="{ 'is-invalid':form.submitted && cityNames.invalid || cityNames.touched }" placeholder="Cities Name(using comma(,))" required>
+                        <div *ngIf="form.submitted && cityNames.invalid || cityNames.touched" class="invalid-feedback error-msg form-group">
+                            <div *ngIf="cityNames.errors?.required">Cities names is required</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12 text-center mb-3">
+                    <button type="submit " class="btn btn-block mybtn btn-primary tx-tfm">
+            Submit
+          </button>
+                </div>
+            </div>
+        </form>
+        <div class="row">
+            <div class="col-md-12">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Country Name</th>
+                            <th scope="col">Cities Name</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let area of areaDetails; let i = index">
+                            <th scope="row">{{area.availableAreaId}}</th>
+                            <td>{{area.countryName}}</td>
+                            <td>{{area.cityNames}}</td>
+                            <td>
+                                <button type="button" class="btn btn-sm btn-outline-primary m-2" (click)="editArea(area)">Edit  <i class='fas fa-edit'></i> </button>
+                                <button type="button" class="btn btn-sm btn-outline-primary m-2" (click)="deleteArea(area.availableAreaId)">Delete <i class='fas fa-trash-alt'></i></button>
+                            </td>
+
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <pre *ngIf="area">{{area.value | json}}</pre>
+
+                <ng-container *ngIf="area">
+                    <h4 class="py-4">Edit Available Areas</h4>
+                    <form [formGroup]="area">
+                        <div class="form-group row">
+                            <label for="countryName" class="col-sm-2 col-form-label">Country Name</label>
+                            <div class="col-sm-6">
+                                <input type="text" class="form-control" id="countryName" formControlName="countryName">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="cityNames" class="col-sm-2 col-form-label">Cities Name</label>
+                            <div class="col-sm-6">
+                                <input type="text" class="form-control" id="cityNames" formControlName="cityNames">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-4 offset-sm-2">
+                                <button type="submit" class="btn btn-primary mr-2" (click)="save()">Update</button>
+                                <button type="reset" class="btn btn-outline-primary" (click)="cancel()">Cancel</button>
+                            </div>
+                        </div>
+                    </form>
+                </ng-container>
+            </div>
+        </div>
+
+    </div>
+</div>

@@ -1,0 +1,117 @@
+table {
+    width: 100%;
+}
+
+map {
+    width: 100%;
+}
+
+label {
+    color: rgb(255, 255, 255);
+    font-size: 2rem !important;
+}
+
+.ico {
+    color: white !important;
+    font-size: larger;
+}
+
+.fa-arrow-left {
+    color: black;
+    cursor: pointer;
+}
+
+table {
+    overflow-x: scroll;
+    width: 90% !important;
+}
+
+.mat-sort-header-container {
+    align-items: center;
+}
+
+table.mat-table {
+    display: table;
+}
+
+#fixedbutton {
+    position: fixed;
+    bottom: 86px;
+    right: 102px;
+    color: rgb(255, 255, 255);
+    font-size: 4rem;
+    cursor: pointer;
+}
+
+mat-label {
+    color: rgb(255, 255, 255);
+    font-size: 1rem;
+}
+
+input {
+    color: rgb(255, 255, 255);
+    font-size: 1rem;
+}
+
+.mat-input-element {
+    caret-color: rgb(255, 255, 255) !important;
+    border-color: rgb(255, 255, 255) !important;
+}
+
+
+/*
+.ss {
+    width: 100%;
+} */
+
+label {
+    color: rgb(88, 88, 88);
+}
+
+.ds {
+    width: 90% !important;
+}
+
+.mat-header-cell {
+    background-color: rgb(238 77 71);
+    color: white;
+}
+
+.mat-cell {
+    font-size: 1.2rem;
+}
+
+.fa-trash-alt {
+    color: red;
+    font-weight: 500 !important;
+    cursor: pointer;
+}
+
+.fa-plus-square {
+    color: rgb(238, 77, 71) !important;
+    font-weight: 500 !important;
+    cursor: pointer;
+}
+
+th {
+    font-weight: 550;
+    font-size: 1.2rem;
+}
+
+.fass {
+    background-color: #F37F69;
+}
+
+.search {
+    width: 70%;
+}
+
+td {
+    width: 950px;
+}
+
+.courier-box {
+    box-shadow: rgb(238 77 71) 0px 3px 8px;
+    border-radius: 20px;
+    padding: 10px;
+}

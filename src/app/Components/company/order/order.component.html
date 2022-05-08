@@ -1,0 +1,197 @@
+<div class="p-5 w-100">
+
+    <div>
+        <label>Orders</label>
+    </div>
+    <div class="row mb-2">
+        <div class="col-md-4 form-group">
+            <button class=" btn-color form-control btn-shadow" (click)="allOrders('all')">
+        All Orders
+    </button>
+        </div>
+        <div class="col-md-4 form-group">
+            <button class=" btn-color form-control btn-shadow" (click)="allOrders('today')">
+                Today Orders
+            </button>
+
+        </div>
+        <div class="col-md-4 form-group">
+            <button class=" btn-color form-control btn-shadow" (click)="allOrders('received')">
+      Received Orders
+  </button>
+        </div>
+
+
+    </div>
+    <div class="row">
+        <div class="col-md-12 form-group">
+            <input ngModel class="form-control btn-shadow" type="text" [(ngModel)]="filterTerm" placeholder="Search" aria-label="Search" required>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4 courier-box form-group" *ngFor="let i of filteredArray | slice: lowValue : highValue | filter:filterTerm">
+            <ul class="list-group font-size">
+                <li class="list-group-item d-flex justify-content-between align-items-start">
+                    <div class="ms-2 me-auto">
+                        <div class="fw-bold">Order Number</div>
+                    </div>
+                    <span class="">{{ i.orderNumber }}</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-start">
+                    <div class="ms-2 me-auto">
+                        <div class="fw-bold">Creations Date</div>
+                    </div>
+                    <span class="">{{ i.createdOn | date: 'dd/MM/yyyy'}} {{ i.createdOn | date: 'shortTime'}}</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-start">
+                    <div class="ms-2 me-auto">
+                        <div class="fw-bold">Expection Date </div>
+                    </div>
+                    <span class="">{{i.expectionDate |date: "dd/MM/yyyy"}} {{i.expectionDate |date: "shortTime"}}</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-start">
+                    <div class="ms-2 me-auto">
+                        <div class="fw-bold">From</div>
+                    </div>
+                    <span class="">{{ i.from }}</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-start">
+                    <div class="ms-2 me-auto">
+                        <div class="fw-bold">To</div>
+                    </div>
+                    <span class="">{{ i.to }}</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-start">
+                    <div class="ms-2 me-auto">
+                        <div class="fw-bold">Status</div>
+                    </div>
+                    <span class="badge bg-dark rounded-pill" *ngIf="i.status==1">{{ 'Confirmed' }}</span>
+                    <span class="badge bg-secondary rounded-pill" *ngIf="i.status==2">{{ 'Ready For Pickup' }}</span>
+                    <!-- <span class="badge bg-primary rounded-pill" *ngIf="i.status==3">{{ 'Picked By Courier' }}</span> -->
+                    <span class="badge bg-warning rounded-pill" *ngIf="i.status==3">{{ 'On The Way' }}</span>
+                    <span class="badge bg-info rounded-pill" *ngIf="i.status==4">{{ 'Delivered' }}</span>
+                    <span class="badge bg-success rounded-pill" *ngIf="i.status==5">{{ 'Done' }}</span>
+                    <span class="badge bg-success rounded-pill" *ngIf="i.status==-1">{{ 'Cancle' }}</span>
+                    <span class="badge bg-success rounded-pill" *ngIf="i.status==-2">{{ 'Return' }}</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-start">
+                    <div class="ms-2 me-auto">
+                        <div class="fw-bold">Sender</div>
+                    </div>
+                    <span class="">{{ i.senderName }}</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-start">
+                    <div class="ms-2 me-auto">
+                        <div class="fw-bold">Receiver</div>
+                    </div>
+                    <span class="">{{ i.reciverName }}</span>
+                </li>
+
+                <li class="list-group-item d-flex justify-content-between align-items-start">
+                    <div class="ms-2 me-auto">
+                        <div class="fw-bold"> Payment Status</div>
+                    </div>
+                    <span class="badge bg-primary rounded-pill" *ngIf="i.paymentStatus==0">{{ 'Unpaid' }}</span>
+                    <span class="badge bg-success rounded-pill" *ngIf="i.paymentStatus==1">{{ 'Paid' }}</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-start">
+                    <div class="ms-2 me-auto">
+                        <div class="fw-bold">Total Cost</div>
+                    </div>
+                    <span class="">{{ i.totalPrice }}</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-start">
+                    <div class="ms-2 me-auto">
+                        <div class="fw-bold">DriverName</div>
+                    </div>
+                    <span class="">{{ i.driverName }}</span>
+
+                </li>
+
+                <li class="list-group-item d-flex justify-content-between align-items-start">
+                    <div class="ms-2 me-auto">
+                        <div class="fw-bold">
+                            <a (click)="details(i.orderId)" class="btn btn-primary btn-width form-control btn-shadow">Details</a>
+                        </div>
+                    </div>
+                    <!-- <span class="">
+                      <a (click)="details(i.orderId)" class="btn btn-primary btn-shadow btn-width form-control">Details</a>
+                    </span> -->
+                    <span class="">
+            <!-- <button class="btn btn-primary btn-width form-control" data-bs-toggle="modal" data-bs-target="#deliveryModal">Delivery</button> -->
+            <button mat-button (click)="openTempDialogForDelivery(i.orderNumber,i.orderId)" class="btn btn-primary btn-width form-control btn-shadow">Delivery</button>
+            <ng-template  #dialogRefForDelivery let-mydata>
+              <div class="row">
+                <div class="col-md-12">
+                  <h5>Do you want deliver?</h5>
+                </div>
+              </div>
+              <!-- <mat-select class="form-control" name="CarPlate" #CarPlate="ngModel" ngModel required [(ngModel)]="cart">
+
+                <mat-option *ngFor="let item of drivers"  value="{{item.driverId}}">{{item.vehicle.carPlate}}</mat-option>
+
+          </mat-select> -->
+          <select class="form-control" class="form-control" name="CarPlate" #CarPlate="ngModel" ngModel required [(ngModel)]="cart">
+            <option *ngFor="let item of driversList" [value]="item.driverId">{{item.driverName}}</option>
+          </select>
+
+          <br>
+          <br>
+              <div class="row">
+                <div class="col-md-6">
+                  <button mat-button mat-dialog-close="I am from dialog land..." class="btn-shadow btn btn-primary btn-width form-control ml-2">Close</button>
+                </div>
+                <div class="col-md-6">
+                  <button mat-button mat-dialog-close="{{cart}}" (click)="driver(cart,orderId)" class="btn-shadow btn btn-primary btn-width form-control mr-2">Confirm</button>
+                </div>
+              </div>
+            </ng-template>
+          </span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-start">
+                    <div class="ms-2 me-auto">
+                        <div class="fw-bold">
+                            <a (click)="invoice(i.orderId)" class="btn btn-primary btn-shadow btn-width form-control">Invoice</a>
+                        </div>
+                    </div>
+                    <span class="">
+            <a href="/Company/Dashboard/order/label/{{ i.orderId}}" class="btn btn-primary btn-shadow btn-width form-control">Label</a>
+          </span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-start">
+                    <!-- <div class="ms-2 me-auto">
+                        <div class="fw-bold">
+                            <a href="/Company/Dashboard/order/label/{{ i.orderId}}" class="btn btn-primary btn-shadow btn-width form-control">Label</a>
+                        </div>
+                    </div> -->
+                    <span class="">
+            <!-- <button mat-button (click)="openTempDialogForReturn()" class="btn btn-primary btn-width form-control btn-shadow">Return</button>
+            <ng-template #dialogRefForReturn let-mydata>
+              <div class="row">
+                <div class="col-md-12">
+                  <h5>Do you want Cancel?</h5>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <button mat-button mat-dialog-close="I am from dialog land..." class="btn-shadow btn btn-primary btn-width form-control ml-2">Close</button>
+                </div>
+                <div class="col-md-6">
+                  <button mat-button mat-dialog-close="I am from dialog land..." (click)="invoice(i.orderId)" class="btn-shadow btn btn-primary btn-width form-control mr-2">Confirm</button>
+                </div>
+              </div>
+            </ng-template> -->
+          </span>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-md-12">
+            <mat-paginator #paginator [length]="filteredArray.length" [pageSize]="pageSize" (page)="pageEvent = onPaginateChangeAll($event)">
+            </mat-paginator>
+        </div>
+    </div>
+</div>
