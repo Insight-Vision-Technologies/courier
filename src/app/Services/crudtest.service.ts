@@ -6,7 +6,7 @@ import { ICAR } from './../Models/icar';
 import { map } from 'rxjs/operators';
 import { CarsComponent } from '../Components/company/cars/cars.component';
 import { Faq } from './../Models/faq';
-import { IDriver, IDriverCompany } from '../Models/idriver';
+import { IDriver, IDriverCompany, IDriverRegister } from '../Models/idriver';
 import { IEmirates } from '../Models/iemirates';
 import { IResponse } from '../Models/iresponse';
 import { IListPrice, IPriceComp } from '../Models/iprice-comp';
@@ -39,6 +39,16 @@ export class CRUDTestService {
     );
   }
 
+  AddVehicale(postData: ICAR) {
+
+
+    console.log(postData);
+    return this.http.post(
+      `${environment.Api_core}/vehicle/AddVehicale`,
+      postData
+    );
+  }
+
   updatePost(postData: ICAR, id: number) {
     console.log(postData);
     return this.http.put(
@@ -60,6 +70,15 @@ getAllPrices(): Observable<IResponse<IPriceComp[]>> {
     );
   }
 
+  RegisterDriver(postData: IDriverRegister) {
+
+
+    console.log(postData);
+    return this.http.post(
+      `${environment.Api_core}/Driver/RegisterDriver`,
+      postData
+    );
+  }
   getVehicaleDriver(): Observable<IResponse<ICAR[]>> {
 
     return this.http.get<IResponse<ICAR[]>>(`${environment.Api_core}/vehicle/GetVehDriver/`+this.idd);

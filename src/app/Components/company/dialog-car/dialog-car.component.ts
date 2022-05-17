@@ -3,6 +3,8 @@ import { NgForm } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
 import { ICAR } from 'src/app/Models/icar';
+import { IClassfication } from 'src/app/Models/iclassfication';
+import { AdminService } from 'src/app/Services/admin.service';
 import { CRUDTestService } from 'src/app/Services/crudtest.service';
 
 @Component({
@@ -14,44 +16,81 @@ export class DialogCarComponent implements OnInit {
   compID =  localStorage.getItem('compId');
 
   newCar:ICAR={
-    capacity:"",
+    capacity:0,
     classfication:"",
     carPlate:"",
-    CompanyId:1,
-    size: '',
-    Dimension: 0,
+    companyId:0,
+     size: 0,
+    dimension: 0,
+    vehicleClassficactionID:0
   }
   car:ICAR={
-    capacity:"",
+    capacity:0,
     classfication:"",
     carPlate:"",
-    CompanyId:0,
-     size: '',
-    Dimension: 0,
+    companyId:0,
+     size: 0,
+    dimension: 0,
+    vehicleClassficactionID:0
   }
+  classfication:IClassfication[]=[]
+
+  maxcap:number=0;
+  mincap:number=0;
+  dimension:number=0;
+  vehicleClassfiID:number=0;
+
 
   tsts:string='test';
   constructor(public dialogRef: MatDialogRef<DialogCarComponent>,
     private CRUDService: CRUDTestService,
+    private AdminService: AdminService,
     private toster:ToastrService
-    ) { }
+    ) {
+      this.getInfo();
 
-  ngOnInit(): void { }
+    }
 
+     ngOnInit() {
+      // this.getInfo();
 
+    }
+
+    ngAfterViewInit() {
+
+    }
+
+    getInfo(){
+      this.AdminService.getClassfication().subscribe(
+        (response) => {
+          if (response.returnObject.length != 0) {
+            console.log(response.returnObject)
+
+            this.classfication=response.returnObject
+
+          }
+
+          else {
+          console.log("no data")
+          }      },
+        (err) => {
+          console.log(err)
+        }
+      );
+    }
 
   async onSubmit(form:NgForm){
 
-    this.newCar.size=form.value.capacity
+    this.newCar.size=0
     // this.newCar.size=form.value.size
-    this.newCar.Dimension=form.value.Dimension
-    this.newCar.classfication=form.value.classfication
+    this.newCar.dimension=0
+    this.newCar.vehicleClassficactionID=this.vehicleClassfiID
     this.newCar.carPlate=form.value.carPlate
-    this.newCar.CompanyId=1
+    this.newCar.companyId=1
     console.log(this.newCar)
-    if(this.compID) this.newCar.CompanyId=parseInt(this.compID)
+    if(this.compID) this.newCar.companyId=parseInt(this.compID)
 
-     await this.CRUDService.addVehicle(this.newCar)
+     await this.CRUDService.AddVehicale(this.newCar)
       .subscribe(
       res=>{
         console.log("res")
@@ -66,6 +105,23 @@ export class DialogCarComponent implements OnInit {
 
      }
     )
+
+  }
+
+  fromData(event:any){
+
+    console.log(event)
+    console.log(event.value)
+    this.vehicleClassfiID=event
+    this.classfication.forEach(element => {
+
+      if(element.vehicleClassficactionID==event){
+    this.maxcap=element.capacityMax
+    this.mincap=element.capacityMin
+    this.dimension=element.dimention
+
+      }
+    });
 
   }
 }

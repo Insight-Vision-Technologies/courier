@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
-import { IDriver } from 'src/app/Models/idriver';
+import { IDriver, IDriverRegister } from 'src/app/Models/idriver';
 import { CRUDTestService } from 'src/app/Services/crudtest.service';
 import { ICAR } from 'src/app/Models/icar';
 
@@ -30,13 +30,45 @@ export class DialogDriverComponent implements OnInit {
     to:'',
     reverse:false,
     vehicle:{
-      capacity:"",
+      capacity:0,
     classfication:"",
     carPlate:"",
-    CompanyId:0,
-    size: '',
-    Dimension: 0,
+    companyId:0,
+     size: 0,
+    dimension: 0,
+    vehicleClassficactionID:0
+    }
+  }
 
+  newDriverRegister:IDriverRegister={
+    password: '',
+    confirmPassword: '',
+    country: '',
+    city: '',
+    addressDetails: '',
+    addressDefult: 0,
+    userID: '',
+    role: '',
+    driverName : '',
+    email : '',
+    phone : '',
+    dateOfBirth :'',
+    employee : '',
+    carPlate : '',
+    vehicleId : 1,
+    companyId:1,
+    driverId:0,
+    from:'',
+    to:'',
+    reverse:false,
+    vehicle:{
+      capacity:0,
+    classfication:"",
+    carPlate:"",
+    companyId:0,
+     size: 0,
+    dimension: 0,
+    vehicleClassficactionID:0
     }
   }
   constructor(public dialogRef: MatDialogRef<DialogDriverComponent>,
@@ -94,8 +126,17 @@ export class DialogDriverComponent implements OnInit {
     this.newDriver.to=form.value.to
     this.newDriver.vehicleId=form.value.CarPlate
     this.newDriver.employee=form.value.employee
-    console.log(this.newDriver)
-     await this.CRUDService.addDriver(this.newDriver)
+
+    if(this.compID) this.newDriverRegister.companyId=parseInt(this.compID)
+    this.newDriverRegister.role='Driver'
+    this.newDriverRegister.confirmPassword=this.newDriverRegister.password
+    this.newDriverRegister.userID='52'
+    this.newDriverRegister.vehicleId=form.value.CarPlate
+
+
+    console.log(this.newDriverRegister)
+
+     await this.CRUDService.RegisterDriver(this.newDriverRegister)
       .subscribe(
       res=>{
         console.log("res")

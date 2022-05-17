@@ -92,4 +92,25 @@ getUserCompany(){
    // console.log(this.UserModel.Role);
    }
 }
+
+getUserDriver(){
+  this.token = localStorage.getItem('token');
+ //  console.log(this.token);
+
+
+   if (this.token){
+   // console.log('this.tt');
+
+    this.tt = jwtDecode(this.token);
+   this.UserModel= this.tt
+   this.UserRole= this.tt
+   // console.log(this.tt);
+   // console.log(this.tt.UserId);
+   console.log(this.tt.DriverId);
+    localStorage.removeItem('driverId');
+    localStorage.setItem('driverId',this.tt.DriverId);
+   // console.log(this.tt.Role[1]);
+   // console.log(this.UserModel.Role);
+   }
+}
 }
