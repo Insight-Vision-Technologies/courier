@@ -7,7 +7,8 @@ export interface ICompany {
     country : string
     city : string
     addressDetails?:string
-    userID:string
+    userID:string,
+    password?:string,
 
 }
 
