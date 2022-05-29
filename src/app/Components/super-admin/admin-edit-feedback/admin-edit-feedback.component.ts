@@ -18,6 +18,7 @@ export class AdminEditFeedbackComponent implements OnInit {
   formData: FormData = new FormData();
   ratingDetails: any;
   deletedRatingQs: any;
+  editForm:boolean = true;
   constructor(public dialog: MatDialog,
   private SuperadminService: SuperadminService, private CRUDService: CRUDTestService,
     private toster:ToastrService,private route: ActivatedRoute,private router: Router) { }
@@ -32,6 +33,7 @@ export class AdminEditFeedbackComponent implements OnInit {
   rating!: FormGroup;
 
   editRating(rating: RatingQuestions) {
+    this.editForm = true;
     console.log(rating,rating.ratingQsId,rating.name);
     this.rating = new FormGroup({
       ratingQsId: new FormControl(rating.ratingQsId),
@@ -76,6 +78,7 @@ export class AdminEditFeedbackComponent implements OnInit {
         console.log("res")
         this.toster.success('Item Updated successfully','succes',{timeOut : 2000,closeButton:true,progressBar:true})
       // window.location.reload();
+          this.editForm = false;
       this.getRatingDetails();
         console.log(res)
       },
@@ -88,14 +91,15 @@ export class AdminEditFeedbackComponent implements OnInit {
   }
 
   cancel() {
-  // this.rating = null;
+    this.rating.reset;
+  this.editForm = false;
   }
 getRatingDetails() {
     this.SuperadminService.getAllRatingQuestion().subscribe(response => {
       console.log("res", response)
       console.log(response);
-         if (response!= null) {
-           this.ratingDetails = response;
+         if (response.result!= null) {
+           this.ratingDetails = response.result;
            let rating = [];
            for (let i = 0; i < this.ratingDetails.length;i++){
              rating.push({ratingQsId:this.ratingDetails[i].ratingQsId,name:this.ratingDetails[i].name});

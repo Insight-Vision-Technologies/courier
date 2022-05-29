@@ -4,14 +4,23 @@ import { Options, LabelType } from '@angular-slider/ngx-slider';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { AdminEditPricingComponent } from '../admin-edit-pricing/admin-edit-pricing.component';
 import { SuperadminService } from 'src/app/Services/superadmin.service';
-
+import { environment } from 'src/environments/environment';
+import { IIncludeServices } from 'src/app/Models/iinclude-services';
+import { CRUDTestService } from 'src/app/Services/crudtest.service';
+import { ToastrService } from 'ngx-toastr';
+import { NgForm } from '@angular/forms';
+import { ActivatedRoute,Router } from '@angular/router';
+import { FormControl, FormGroup } from '@angular/forms';
 @Component({
   selector: 'app-admin-pricing',
   templateUrl: './admin-pricing.component.html',
   styleUrls: ['./admin-pricing.component.css']
 })
 export class AdminPricingComponent implements OnInit {
-
+  formData: FormData = new FormData();
+   includeServiceDetails: any;
+  deletedIncludeService: any;
+  editForm:boolean=true;
   includeService1: any;
   include1Price: any;
    includeService2: any;
@@ -44,13 +53,22 @@ export class AdminPricingComponent implements OnInit {
     ceil: 0,
 
   };
-   constructor(public dialog: MatDialog,private SuperadminService: SuperadminService) { }
+   constructor( private CRUDService: CRUDTestService,
+    private toster:ToastrService,public dialog: MatDialog,private SuperadminService: SuperadminService) { }
 
   async ngOnInit(){
     await this.getAdminPricingData();
+    await this.getIncludeServiceDetails();
     this.bgColor = '#ff695b5e';
 
   }
+    includeServices: IIncludeServices = {
+      includeServicesId: 0,
+      serviceName: '',
+      servicePrice:0
+  }
+  includeService!: IIncludeServices[];
+  service!: FormGroup;
   getAdminPricingData() {
        this.SuperadminService.getAdminPricing().subscribe(response => {
          if (response.returnObject.length != 0) {
@@ -195,5 +213,116 @@ export class AdminPricingComponent implements OnInit {
     }
     }
   }
+addIncludeServiceForm(form: NgForm) {
+    console.log("formValue",form.value);
+  //  this.formData.append("RatingQsId");
+  this.formData.append("ServiceName", form.value.serviceName);
+  this.formData.append("ServicePrice", form.value.servicePrice);
+    console.log(this.formData);
+    this.SuperadminService.AddIncludeService(this.formData)
+      .subscribe(
+      res=>{
+        console.log("res")
+        this.toster.success('Item added successfully','succes',{timeOut : 2000,closeButton:true,progressBar:true})
+//window.location.reload();
+         this.getIncludeServiceDetails();
+        console.log(res)
+      },
+      error => {
+        console.error(error);
+        console.log(error);
 
+     }
+    )
+  }
+  editIncludeService(service: IIncludeServices) {
+    this.editForm = true;
+    console.log(service,service.includeServicesId,service.serviceName,service.servicePrice);
+    this.service = new FormGroup({
+      includeServicesId: new FormControl(service.includeServicesId),
+      serviceName: new FormControl(service.serviceName),
+      servicePrice:new FormControl(service.servicePrice),
+    });
+  }
+
+ deleteIncludeService(id:any) {
+    this.SuperadminService.deleteIncludeService(id).subscribe(response => {
+      console.log("res", response)
+      console.log(response);
+         if (response.returnObject.length != 0) {
+          // this.includeServiceDetails = response;
+           this.toster.success('Item Deleted successfully','succes',{timeOut : 2000,closeButton:true,progressBar:true})
+           console.log("deleted successfully");
+          // window.location.reload();
+           this.getIncludeServiceDetails();
+           //this.router.navigate(['Admin/Dashboard/AdmineditFeatures']);
+           }
+         else {
+          //this.includeServiceDetails = response;
+ console.log("no data")
+         }
+      },
+      error => {
+        console.error(error);
+        console.log(error);
+
+     })
+}
+  save() {
+    let index = this.includeService.findIndex(rating => rating.includeServicesId === this.service.value.id);
+    this.includeService[index] = this.service.value;
+    // console.log(this.ratingQs[index],this.ratingQs[index].ratingQsId,this.ratingQs[index].name);
+    let id:string = this.includeService[index].includeServicesId as unknown as string;
+    let ServicePrice:string = this.includeService[index].servicePrice as unknown as string;
+    this.formData.append("IncludeServicesId",id);
+    this.formData.append("ServiceName", this.includeService[index].serviceName);
+    this.formData.append("ServicePrice", ServicePrice);
+    this.SuperadminService.UpdateIncludeService(this.formData)
+      .subscribe(
+      res=>{
+        console.log("res")
+        this.toster.success('Item Updated successfully','succes',{timeOut : 2000,closeButton:true,progressBar:true})
+      // window.location.reload();
+      this.service.reset
+          this.editForm = false;
+      this.getIncludeServiceDetails();
+        console.log(res)
+      },
+      error => {
+        console.error(error);
+        console.log(error);
+
+     }
+    )
+  }
+
+  cancel() {
+  this.service.reset
+    this.editForm = false;
+  }
+getIncludeServiceDetails() {
+    this.SuperadminService.getAllIncludeService().subscribe(response => {
+      console.log("res", response)
+      console.log(response);
+         if (response.result!= null) {
+           this.includeServiceDetails = response.result;
+           console.log("I am include service details ",this.includeServiceDetails);
+           let service = [];
+           for (let i = 0; i < this.includeServiceDetails.length;i++){
+             service.push({includeServicesId:this.includeServiceDetails[i].includeServicesId,serviceName:this.includeServiceDetails[i].serviceName,servicePrice:this.includeServiceDetails[i].servicePrice});
+           }
+           this.includeService = service;
+          //  this.ratingDetails.Name = this.ratingDetails[0].Name;
+         }
+         else {
+          this.includeServiceDetails = response;
+ console.log("no data")
+         }
+      },
+      error => {
+        console.error(error);
+        console.log(error);
+
+     })
+}
 }

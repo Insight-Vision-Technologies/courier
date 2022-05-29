@@ -1,7 +1,7 @@
 <div class="p-5 w-100">
     <h3 class="text-center mt-5">Available Areas</h3>
     <div class="container">
-        <form #form="ngForm" (ngSubmit)="form.form.valid && availableCities(form)">
+        <form #form="ngForm" (ngSubmit)="form.form.valid && addAvailableCities(form);form.resetForm()">
             <div class="row">
                 <div class="col-md-6">
                     <div class="form-group">
@@ -55,10 +55,10 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-12">
-                <pre *ngIf="area">{{area.value | json}}</pre>
+            <div class="col-md-12" *ngIf="editForm">
+                <!-- <pre *ngIf="area">{{area.value | json}}</pre> -->
 
-                <ng-container *ngIf="area">
+                <ng-container ng-show="area">
                     <h4 class="py-4">Edit Available Areas</h4>
                     <form [formGroup]="area">
                         <div class="form-group row">
