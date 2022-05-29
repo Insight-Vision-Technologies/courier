@@ -1,11 +1,12 @@
 export interface ICAR {
-    classfication:string,
+  classfication:string,
 
-    carPlate:string,
-    capacity:string,
-    vehicleId?:number,
-    CompanyId:number,
-    size:string,
-    Dimension:number
+  carPlate:string,
+  capacity:number,
+  vehicleId?:number,
+  companyId:number,
+  size:number,
+  dimension:number
+  vehicleClassficactionID:number
 
 }

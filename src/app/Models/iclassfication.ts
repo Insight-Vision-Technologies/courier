@@ -1,5 +1,5 @@
 export interface IClassfication {
-   vehicleClassficactionID: number
+  vehicleClassficactionID: number
    classficactionName: string
    capacityMin: number
    capacityMax: number

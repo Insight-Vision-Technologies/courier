@@ -124,6 +124,17 @@ UserInfo: IUser={
 
         });
       }
+
+      else if(this.authService.tt.Role =='Driver'){
+      console.log('hfhfh');
+      this.authService.getUserDriver()
+
+      this.router.navigate(['/DriverPages/DriverDashboard'])
+      .then(() => {
+          window.location.reload();
+
+        });
+      }
     // this.router.navigateByUrl('/')
     //////////ErrorTest/////
     // this.router.navigate(['/'])

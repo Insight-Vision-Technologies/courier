@@ -29,12 +29,13 @@ export class UpdateDriverComponent implements OnInit {
     from: '',
     to: '',
     vehicle: {
-      capacity: '',
-      size: '',
-      Dimension: 0,
-      classfication: '',
-      carPlate: '',
-      CompanyId: 1,
+      capacity:0,
+    classfication:"",
+    carPlate:"",
+    companyId:0,
+     size: 0,
+    dimension: 0,
+    vehicleClassficactionID:0
     },
   };
   newDirection: boolean = false;

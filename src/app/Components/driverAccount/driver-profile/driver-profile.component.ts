@@ -22,13 +22,13 @@ export class DriverProfileComponent implements OnInit {
     from: '',
     to: '',
     vehicle: {
-      classfication: '',
-      carPlate: '',
-      capacity: '',
-      vehicleId: 0,
-      CompanyId: 0,
-      size: '',
-      Dimension: 0,
+      capacity:0,
+    classfication:"",
+    carPlate:"",
+    companyId:0,
+     size: 0,
+    dimension: 0,
+    vehicleClassficactionID:0
     },
   };
   settingBool:boolean=false

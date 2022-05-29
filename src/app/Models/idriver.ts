@@ -1,21 +1,21 @@
 import { ICAR } from "./icar";
 
 export interface IDriver {
-    driverName : string,
-    email : string,
-    phone : string,
-    dateOfBirth : string,
-    employee : string,
-    carPlate : string,
-    companyId : number,
-    driverId : number,
-    vehicleId:number
-    vehicle:ICAR,
-    from:string,
-    to:string,
-    reverse?:boolean
-    rate? :number
-    companyName? :string
+  driverName: string;
+  email: string;
+  phone: string;
+  dateOfBirth: string;
+  employee: string;
+  carPlate: string;
+  companyId: number;
+  driverId: number;
+  vehicleId: number;
+  vehicle: ICAR;
+  from: string;
+  to: string;
+  reverse?: boolean;
+  rate?: number;
+  companyName?: string;
 }
 
 export interface IDriverCompany {
@@ -39,4 +39,31 @@ export interface IDriverOrder {
   from:string,
   to:string
 orderNum:number
+}
+
+export interface IDriverRegister {
+  password: string;
+  confirmPassword: string;
+  country: string;
+  city: string;
+  addressDetails: string;
+  addressDefult: number;
+  userID: string;
+  role: any;
+
+  driverName: string;
+  email: string;
+  phone: string;
+  dateOfBirth: string;
+  employee: string;
+  carPlate: string;
+  companyId: number;
+  driverId: number;
+  vehicleId: number;
+  vehicle: ICAR;
+  from: string;
+  to: string;
+  reverse?: boolean;
+  rate?: number;
+  companyName?: string;
 }

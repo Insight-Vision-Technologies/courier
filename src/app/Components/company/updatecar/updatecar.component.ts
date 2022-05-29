@@ -13,12 +13,13 @@ import { ToastrService } from 'ngx-toastr';
 export class UpdatecarComponent implements OnInit {
   id: number = 0;
   carInfo: ICAR = {
-    capacity: '',
-    classfication: '',
-    carPlate: '',
-    CompanyId: 1,
-    size: '',
-    Dimension: 0,
+    capacity:0,
+    classfication:"",
+    carPlate:"",
+    companyId:0,
+     size: 0,
+    dimension: 0,
+    vehicleClassficactionID:0
   };
 
   dd: string = 'ddd';

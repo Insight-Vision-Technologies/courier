@@ -32,12 +32,13 @@ export class CarsComponent implements OnInit {
   ];
   ELEMENT_DATA: ICAR[] = [];
   ProductList: ICAR = {
-    capacity: '',
-    size: '',
-    Dimension: 0,
-    classfication: 'class',
-    carPlate: 'plate',
-    CompanyId:1
+    capacity:0,
+    classfication:"",
+    carPlate:"",
+    companyId:0,
+     size: 0,
+    dimension: 0,
+    vehicleClassficactionID:0
   };
   ProductList2: ICAR[] = [];
   dataSource = new MatTableDataSource<ICAR>(this.ELEMENT_DATA);
