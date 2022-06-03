@@ -28,8 +28,8 @@ export class AdmineditFeaturesComponent implements OnInit {
     this.SuperadminService.getAllFeatures().subscribe(response => {
       console.log("res", response)
       console.log(response);
-         if (response!=null) {
-           this.allFeatures = response;
+         if (response.result!=null) {
+           this.allFeatures = response.result;
            }
          else {
           this.allFeatures = response;

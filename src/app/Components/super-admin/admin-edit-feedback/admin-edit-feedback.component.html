@@ -54,7 +54,7 @@
                 </table>
             </div>
         </div>
-        <div class="row">
+        <div class="row" *ngIf="editForm">
             <div class="col-md-12">
                 <!-- <pre *ngIf="rating">{{rating.value | json}}</pre> -->
 
@@ -62,13 +62,13 @@
                     <h2 class="py-4">Edit Rating Question</h2>
                     <form [formGroup]="rating">
                         <div class="form-group row">
-                            <label for="brand" class="col-sm-2 col-form-label">Question Name</label>
+                            <label for="brand" class="col-md-2 col-form-label">Question Name</label>
                             <div class="col-sm-6">
                                 <input type="text" class="form-control" id="name" formControlName="name">
                             </div>
                         </div>
                         <div class="form-group row">
-                            <div class="col-sm-4 offset-sm-2">
+                            <div class="col-md-4 offset-sm-2">
                                 <button type="submit" class="btn btn-primary mr-2" (click)="save()">Save</button>
                                 <button type="reset" class="btn btn-outline-primary" (click)="cancel()">Cancel</button>
                             </div>

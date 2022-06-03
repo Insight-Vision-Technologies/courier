@@ -199,4 +199,48 @@ export class SuperadminService {
       `${environment.Api_core}/AvailableAreas/DeleteAvailableArea/`+id
     );
    }
+
+  AddIncludeService(formData: FormData): Observable<any> {
+    let headers = new HttpHeaders();
+    headers.append('Accept', 'application/json');
+    const httpOptions = {
+      headers: headers,
+    };
+    console.log('here');
+    console.log(formData);
+    return this.http.post(
+      `${environment.Api_core}/IncludeServices/AddIncludeService`,
+      formData,
+      httpOptions
+    );
+  }
+  UpdateIncludeService(formData: FormData): Observable<any> {
+    let headers = new HttpHeaders();
+    headers.append('Accept', 'application/json');
+    const httpOptions = {
+      headers: headers,
+    };
+    console.log('here');
+    console.log(formData);
+    return this.http.put(
+      `${environment.Api_core}/IncludeServices/UpdateIncludeService`,
+      formData,
+      httpOptions
+    );
+  }
+  getAllIncludeService(): Observable<IResponse<any[]>> {
+    return this.http.get<IResponse<any[]>>(
+      `${environment.Api_core}/IncludeServices/GetAllIncludeServices`
+    );
+   }
+   getIncludeServiceById(id:any): Observable<IResponse<any[]>> {
+    return this.http.get<IResponse<any[]>>(
+      `${environment.Api_core}/IncludeServices/GetIncludeServiceById/`+id
+    );
+   }
+   deleteIncludeService(id: number) : Observable<IResponse<any[]>>{
+    return this.http.delete<IResponse<any[]>>(
+      `${environment.Api_core}/IncludeServices/DeleteIncludeService/`+id
+    );
+   }
 }

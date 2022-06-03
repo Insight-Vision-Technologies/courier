@@ -16,7 +16,24 @@
     padding-bottom: 4.2rem;
     /* background:rgba(0, 0, 0, 0.76); */
 }
+.error-msg {
+    color: red;
+    font-size: 15px;
+    line-height: 20px;
+}
 
+input.ng-invalid.ng-touched {
+    border: 1px solid red;
+}
+
+input.ng-valid {
+    border-color: #79B93C;
+    padding-right: calc(1.5em + 0.75rem);
+    background-image: url('~src/assets/img/right-mark.svg')!important;
+    background-repeat: no-repeat;
+    background-position: right calc(0.375em + 0.1875rem) center;
+    background-size: calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
+}
 a {
     text-decoration: none !important;
 }
@@ -118,6 +135,14 @@ form .error {
 .cardw {
     width: 60%
 }
+mat-select.ng-valid {
+    border-color: #79B93C;
+    padding-right: calc(1.5em + 0.75rem);
+    background-image: url('~src/assets/img/right-mark.svg')!important;
+    background-repeat: no-repeat;
+    background-position: right calc(0.375em + 0.1875rem) center;
+    background-size: calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
+}
 
 .passIcon {
     float: right;
@@ -133,12 +158,6 @@ form .error {
     max-height: 150px;
 }
 
-input[type='file'] {
-    color: transparent;
-    width: 130px;
-    overflow-x: hidden;
-    font-size: 15px;
-}
 
 input[type=file]::file-selector-button {
     border: 1px solid wheat;

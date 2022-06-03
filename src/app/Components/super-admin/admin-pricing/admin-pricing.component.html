@@ -125,7 +125,45 @@
           </ul>
         </div>
         <div class="col-md-6 form-group">
-          <ul class="list-group font-size courier-box">
+          <ul class="courier-box2">
+          <ul class="list-group font-size">
+            <li class="list-group-item d-flex justify-content-between align-items-start">
+              <div class="ms-2 me-auto">
+                <div class="fw-bold">
+<form #form="ngForm" (ngSubmit)="addIncludeServiceForm(form)" class="container-fluid" method="post" enctype="multipart/form-data">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="serviceName">Write Service Name</label>
+                                <input type="text" class="form-control" name="serviceName" [(ngModel)]="includeServices.serviceName" #serviceName="ngModel" [ngClass]="{ 'is-invalid':form.submitted && serviceName.invalid || serviceName.touched }" placeholder="Write Service Name" required>
+                                <div *ngIf="form.submitted && serviceName.invalid || serviceName.touched" class="invalid-feedback error-msg form-group">
+                                    <div *ngIf="serviceName.errors?.required">Service Name is required</div>
+                                </div>
+                            </div>
+                        </div>
+                         <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="servicePrice">Write Service Price</label>
+                                <input type="number" class="form-control" name="servicePrice" [(ngModel)]="includeServices.servicePrice" #servicePrice="ngModel" [ngClass]="{ 'is-invalid':form.submitted && servicePrice.invalid || servicePrice.touched }" placeholder="Write Service Price" required>
+                                <div *ngIf="form.submitted && servicePrice.invalid || servicePrice.touched" class="invalid-feedback error-msg form-group">
+                                    <div *ngIf="servicePrice.errors?.required">Service Price is required</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-12 text-center mb-3">
+                            <button type="submit " class="btn btn-block mybtn btn-primary tx-tfm">
+      Add
+    </button>
+                        </div>
+                    </div>
+                </form>
+
+                </div>
+              </div>
+
+
+            </li>
             <li
               class="list-group-item d-flex justify-content-between align-items-start"
             >
@@ -140,71 +178,60 @@
                 Edit
               </button> -->
             </li>
+            </ul>
+            <ul class="list-group font-size" *ngFor="let service of includeServiceDetails; let i = index">
             <li
               class="list-group-item d-flex justify-content-between align-items-start"
-            >
+             >
               <div class="ms-2 me-auto">
                 <div class="fw-bold">
-                  {{ includeService1 }}
+                 {{service.serviceName}}
                 </div>
               </div>
-              <span *ngIf="include1Price > 0">{{
-                include1Price + " AED"
+              <span *ngIf="service.servicePrice > 0">{{
+                service.servicePrice + " AED"
               }}</span>
-              <span *ngIf="include1Price == 0">FREE</span>
+              <span *ngIf="service.servicePrice == 0">FREE</span>
+              <span>
+                <button type="button" class="btn btn-sm btn-outline-primary ml-2 mr-2" (click)="editIncludeService(service)">Edit  <i class='fas fa-edit'></i> </button>
+                <button type="button" class="btn btn-sm btn-outline-primary ml-2 mr-2" (click)="deleteIncludeService(service.includeServicesId)">Delete <i class='fas fa-trash-alt'></i></button>
+              </span>
             </li>
-            <li
-              class="list-group-item d-flex justify-content-between align-items-start"
-            >
-              <div class="ms-2 me-auto">
+            </ul>
+            <ul class="list-group font-size" *ngIf="editForm">
+<li class="list-group-item d-flex justify-content-between align-items-start">
+ <div class="ms-2 me-auto">
                 <div class="fw-bold">
-                  {{ includeService2 }}
+                <ng-container *ngIf="service">
+                    <h6 class="py-2">Edit Inculde Services</h6>
+                    <form [formGroup]="service">
+                      <div class="row">
+                        <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="serviceName" class="col-md-12 col-form-label">Service Name</label>
+                                <input type="text" class="form-control" id="serviceName" formControlName="serviceName">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="servicePrice" class="col-md-12 col-form-label">Service Price</label>
+                                <input type="text" class="form-control" id="servicePrice" formControlName="servicePrice">
+                            </div>
+                        </div>
+                        <div class="col-md-12 text-center">
+                        <div class="form-group">
+                                <button type="submit" class="btn btn-primary mr-2" (click)="save()">Save</button>
+                                <button type="reset" class="btn btn-outline-primary" (click)="cancel()">Cancel</button>
+                            </div>
+                        </div>
+                        </div>
+                    </form>
+                </ng-container>
                 </div>
               </div>
-              <span *ngIf="include2Price > 0">{{
-                include2Price + " AED"
-              }}</span>
-              <span *ngIf="include2Price == 0">FREE</span>
-            </li>
-            <li
-              class="list-group-item d-flex justify-content-between align-items-start"
-            >
-              <div class="ms-2 me-auto">
-                <div class="fw-bold">
-                  {{ includeService3 }}
-                </div>
-              </div>
-              <span *ngIf="include3Price > 0">{{
-                include3Price + " AED"
-              }}</span>
-              <span *ngIf="include3Price == 0">FREE</span>
-            </li>
-            <li
-              class="list-group-item d-flex justify-content-between align-items-start"
-            >
-              <div class="ms-2 me-auto">
-                <div class="fw-bold">
-                  {{ includeService4 }}
-                </div>
-              </div>
-              <span *ngIf="include4Price > 0">{{
-                include4Price + " AED"
-              }}</span>
-              <span *ngIf="include4Price == 0">FREE</span>
-            </li>
-            <li
-              class="list-group-item d-flex justify-content-between align-items-start"
-            >
-              <div class="ms-2 me-auto">
-                <div class="fw-bold">
-                  {{ includeService5 }}
-                </div>
-              </div>
-              <span *ngIf="include5Price > 0">{{
-                include5Price + " AED"
-              }}</span>
-              <span *ngIf="include5Price == 0">FREE</span>
-            </li>
+
+</li>
+          </ul>
           </ul>
         </div>
       </div>

@@ -67,11 +67,13 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="phone">Phone</label>
-                                <input type="text" name="phone" id="phone" class="form-control" [(ngModel)]="comp.phone" [ngClass]="{ 'is-invalid':form.submitted && phone.invalid || phone.touched }" placeholder="Enter your phone" #phone="ngModel" required minlength="12" maxLength="12"
+                                <input type="text" name="phone" id="phone" class="form-control" [(ngModel)]="comp.phone" [ngClass]="{ 'is-invalid':form.submitted && phone.invalid || phone.touched }" placeholder="Enter your phone" #phone="ngModel" required minlength="9" maxLength="12"
                                     oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" />
                                 <div *ngIf="form.submitted && phone.invalid || phone.touched" class="invalid-feedback error-msg form-group">
                                     <div *ngIf="phone.errors?.required">Phone is required</div>
-                                    <div *ngIf="phone.errors?.minlength">Phone should be (971)555555555</div>
+                                    <div *ngIf="phone.errors?.minlength">Phone should be 555555555</div>
+                                    <div *ngIf="phone.errors?.maxlength">Phone should be (971)555555555</div>
+                                    
                                 </div>
                             </div>
                         </div>

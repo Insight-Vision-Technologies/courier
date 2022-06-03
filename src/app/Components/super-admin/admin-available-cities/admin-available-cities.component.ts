@@ -15,6 +15,7 @@ export class AdminAvailableCitiesComponent implements OnInit {
 
   formData: FormData = new FormData();
   areaDetails: any;
+  editForm: any;
  areaAvailable!: IAvailableAreas[];
   area!: FormGroup;
   deletedAvailableArea: any;
@@ -40,6 +41,8 @@ editArea(area: IAvailableAreas) {
       cityNames: new FormControl(area.cityNames),
 
     });
+  this.editForm = true;
+  // this.area.reset();
   }
   save() {
     let index = this.areaAvailable.findIndex(areaAvailable => areaAvailable.availableAreaId === this.area.value.availableAreaId);
@@ -55,7 +58,9 @@ editArea(area: IAvailableAreas) {
         console.log("res")
         this.toster.success('Item Updated successfully','succes',{timeOut : 2000,closeButton:true,progressBar:true})
       //  window.location.reload();
-      this.getAreaDetails();
+          this.getAreaDetails();
+          this.editForm = false;
+          this.area.reset();
         console.log(res)
       },
       error => {
@@ -66,7 +71,9 @@ editArea(area: IAvailableAreas) {
     )
   }
    cancel() {
-  // this.rating = null;
+
+  this.editForm = false;
+  this.area.reset();
   }
  deleteArea(id:any) {
     this.SuperadminService.deleteAvailableArea(id).subscribe(response => {
@@ -125,7 +132,7 @@ getAreaDetails() {
 
      })
   }
-   availableCities(form: NgForm) {
+   addAvailableCities(form: NgForm) {
     console.log("formValue",form.value);
   //  this.formData.append("availableAreaId");
     this.formData.append("countryName", form.value.countryName);

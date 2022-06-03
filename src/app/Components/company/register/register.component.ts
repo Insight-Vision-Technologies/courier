@@ -35,7 +35,7 @@ export class RegisterComponent implements OnInit {
   }
 
   //url; //Angular 8
-  url: any = '../../../assets/img/fp.JPG'; //Angular 11, for stricter type
+  url: any = '../../../assets/img/download.png'; //Angular 11, for stricter type
   msg = '';
 
   //selectFile(event) { //Angular 8
@@ -66,10 +66,12 @@ compInfo:ICompany={
   userID:'',
   email:'',
   country:'',
-  city:''
+  city:'',
+  password:''
+
   }
 
-  onSubmit(form:NgForm){
+  async onSubmit(form:NgForm){
     console.log(form.value)
     console.log(this.authService.UserModel.UserId)
 
@@ -87,75 +89,56 @@ compInfo:ICompany={
     this.formData.append("userID", this.authService.UserModel.UserId);
     this.formData.append("license",  form.value.license);
 
-    // this.compInfo.city=form.value.City
-    // this.compInfo.companyName=form.value.CompanyName
-    // this.compInfo.country=form.value.Country
-    // this.compInfo.phone=form.value.Phone
-    // this.compInfo.photo=null
-    // this.compInfo.email=form.value.Email
-    // this.compInfo.userID=this.authService.UserModel.UserId
-
+    console.log(form.value)
     console.log(this.compInfo)
-
-    this.nxtstep=!this.nxtstep;
-
-    // this.router.navigateByUrl('/Company/Dashboard/home')
-
+    console.log(this.formData)
+       await this.compService.RegisterCompany(this.formData)
+        .subscribe(
+        res=>{
+          // console.log("res")
+          // console.log(res)
+          // console.log(res.token)
+            localStorage.removeItem('token');
+         localStorage.setItem('token',res.message);
+         this.authService.getUserCompany()
+    
+          this.toster.success('Item added successfully','succes',{timeOut : 2000,closeButton:true,progressBar:true})
+          this.router.navigate(['/Company/Dashboard/home'])
+          .then(() => {
+              window.location.reload();
+    
+            });
+    
+          console.log(res)
+        //  localStorage.removeItem('compId');
+        //  localStorage.setItem('compId',res.message);
+    
+        },
+        error => {
+          console.error(error);
+          console.log(error);
+          console.log("sdfghgfdsa");
+    
+       }
+      )
+        // this.router.navigateByUrl('/Company/Dashboard/home')
+      //   this.aythService.addVehicle(this.comp)
+      //   .subscribe(
+      //   res=>{
+      //     console.log("res")
+      //     this.toster.success('Item added successfully','succes',{timeOut : 2000,closeButton:true,progressBar:true})
+    
+      //     console.log(res)
+      //   },
+      //   error => {
+      //     console.error(error);
+      //     console.log(error);
+    
+      //  }
+      // )
+    
   }
 
  async onSubmitSecond(form:NgForm){
-    console.log(form.value)
-console.log(this.compInfo)
-console.log(this.formData)
-   await this.compService.RegisterCompany(this.formData)
-    .subscribe(
-    res=>{
-      // console.log("res")
-      // console.log(res)
-      // console.log(res.token)
-      if(res.isSuccess==false){
-        console.log(res.message)
-
-        throw res.errors
       }
-      else{
-        localStorage.removeItem('token');
-     localStorage.setItem('token',res.message);
-     this.authService.getUserCompany()
-
-      this.toster.success('Item added successfully','succes',{timeOut : 2000,closeButton:true,progressBar:true})
-      this.router.navigate(['/Company/Dashboard/home'])
-      .then(() => {
-          window.location.reload();
-
-        });
-
-      console.log(res)
-    //  localStorage.removeItem('compId');
-    //  localStorage.setItem('compId',res.message);
-      }
-    },
-    error => {
-      console.error(error);
-      console.log(error);
-      console.log("sdfghgfdsa");
-
-   }
-  )
-    // this.router.navigateByUrl('/Company/Dashboard/home')
-  //   this.aythService.addVehicle(this.comp)
-  //   .subscribe(
-  //   res=>{
-  //     console.log("res")
-  //     this.toster.success('Item added successfully','succes',{timeOut : 2000,closeButton:true,progressBar:true})
-
-  //     console.log(res)
-  //   },
-  //   error => {
-  //     console.error(error);
-  //     console.log(error);
-
-  //  }
-  // )
-  }
 }
