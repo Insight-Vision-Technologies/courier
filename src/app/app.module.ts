@@ -94,6 +94,7 @@ import { CommonModule } from '@angular/common';
 import { NgxStripeModule } from "ngx-stripe";
 import { PlutoModule } from "./pluto-angular";
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
+import { TestLoginComponent } from './Components/Sign/test-login/test-login.component';
 export function MSALInstanceFactory(): IPublicClientApplication {
   return new PublicClientApplication({
     auth: {
@@ -159,6 +160,7 @@ export function MSALInstanceFactory(): IPublicClientApplication {
     FeatureComponent,
     AddNewPaymentMethodComponent,
     AdminDashboardComponent,
+    TestLoginComponent,
     // SecurityComponent,
     // FinancialComponent,
 

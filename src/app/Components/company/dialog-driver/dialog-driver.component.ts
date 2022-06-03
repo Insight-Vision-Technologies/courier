@@ -5,6 +5,8 @@ import { ToastrService } from 'ngx-toastr';
 import { IDriver, IDriverRegister } from 'src/app/Models/idriver';
 import { CRUDTestService } from 'src/app/Services/crudtest.service';
 import { ICAR } from 'src/app/Models/icar';
+import { IAvailableAreas } from 'src/app/Models/iavailable-areas';
+import { SuperadminService } from 'src/app/Services/superadmin.service';
 
 @Component({
   selector: 'app-dialog-driver',
@@ -71,10 +73,14 @@ export class DialogDriverComponent implements OnInit {
     vehicleClassficactionID:0
     }
   }
+
+  areaDetails: IAvailableAreas []=[]
   constructor(public dialogRef: MatDialogRef<DialogDriverComponent>,
     private CRUDService: CRUDTestService,
+    private SuperadminService: SuperadminService,
     private toster: ToastrService) {
-    this.dropdownData();
+    // this.dropdownData();
+   this.getAreaDetails();
     }
 
   ngOnInit(): void {
@@ -92,27 +98,26 @@ export class DialogDriverComponent implements OnInit {
       return grouped[key];
     });
   }
-  dropdownData() {
-    this.CRUDService.getAllEmirates().subscribe(
-      (response) => {
-        console.log('i am all drivers', response);
-        if (response.returnObject.length != 0) {
-          this.allEmirate = this.filterData(response.returnObject);
-          console.log(
-            'I am all driver ',
-            this.allEmirate,
+  // dropdownData() {
+  //   this.CRUDService.getAllEmirates().subscribe(
+  //     (response) => {
+  //       console.log('i am all drivers', response);
+  //       if (response.returnObject.length != null) {
+  //         this.allEmirate = this.filterData(response.returnObject);
+  //         console.log(
+  //           'I am all driver ',
+  //           this.allEmirate,
 
-          );
-        } else {
-          //this.allEmirate = response;
-          console.log('no data');
-        }
-      },
-      (err) => {
-        console.log(err);
-      }
-    );
-  }
+  //         );
+  //       } else {
+  //         console.log('no data');
+  //       }
+  //     },
+  //     (err) => {
+  //       console.log(err);
+  //     }
+  //   );
+  // }
 
   async onSubmit(form:NgForm){
 
@@ -190,4 +195,25 @@ this.newDriver.reverse=true
     }
   }
 
+  
+getAreaDetails() {
+  this.SuperadminService.GetAllAvailableCities().subscribe(response => {
+    console.log("res", response)
+    console.log(response.returnObject);
+       if (response!= null) {
+         this.areaDetails = response.returnObject;
+         console.log(this.areaDetails);
+       
+       }
+       else {
+        this.areaDetails = response;
+console.log("no data")
+       }
+    },
+    error => {
+      console.error(error);
+      console.log(error);
+
+   })
+}
 }

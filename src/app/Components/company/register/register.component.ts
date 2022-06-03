@@ -113,6 +113,12 @@ console.log(this.formData)
       // console.log("res")
       // console.log(res)
       // console.log(res.token)
+      if(res.isSuccess==false){
+        console.log(res.message)
+
+        throw res.errors
+      }
+      else{
         localStorage.removeItem('token');
      localStorage.setItem('token',res.message);
      this.authService.getUserCompany()
@@ -127,7 +133,7 @@ console.log(this.formData)
       console.log(res)
     //  localStorage.removeItem('compId');
     //  localStorage.setItem('compId',res.message);
-
+      }
     },
     error => {
       console.error(error);

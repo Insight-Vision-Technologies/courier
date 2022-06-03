@@ -154,6 +154,12 @@ export class SuperadminService {
       `${environment.Api_core}/AvailableAreas/GetAllAvailableAreas`
     );
    }
+ 
+   GetAllAvailableCities(): Observable<IResponse<any[]>> {
+    return this.http.get<IResponse<any[]>>(
+      `${environment.Api_core}/AvailableAreas/GetAllAvailableCities`
+    );
+   }
    getAvailableAreaById(id:any): Observable<IResponse<any[]>> {
     return this.http.get<IResponse<any[]>>(
       `${environment.Api_core}/AvailableAreas/GetAvailableAreaById/`+id

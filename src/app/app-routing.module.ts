@@ -63,6 +63,7 @@ import { ActiveOrderComponent } from './Components/driverAccount/active-order/ac
 
 import { FeatureComponent } from './Components/feature/feature.component';
 import { DriverDetailsOrderComponent } from './Components/driverAccount/driver-details-order/driver-details-order.component';
+import { TestLoginComponent } from './Components/Sign/test-login/test-login.component';
 
 const routes: Routes = [
   // { path: 'dash', component: DashboardComponent },
@@ -91,6 +92,10 @@ const routes: Routes = [
       import('./Components/super-admin/super-admin.module').then(
         (m) => m.SuperAdminModule
       ),
+      canActivate: [RoleGuard],
+    data: {
+      role: 'Admin',
+    },
     // canActivate: [LoggedGuard],
   },
   // { path: 'dash', component: LoginComponent ,
@@ -100,6 +105,7 @@ const routes: Routes = [
     path: 'payment', // child route path
     component: StripePaymentComponent,
   },
+  { path: 'login', component: TestLoginComponent },
   { path: 'sign', component: LoginComponent },
   { path: 'signin', component: RegisterComponent },
 

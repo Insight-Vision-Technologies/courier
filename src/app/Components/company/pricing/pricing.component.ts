@@ -307,10 +307,12 @@ export class PricingComponent implements OnInit {
     this.CRUDService.getAllEmirates().subscribe(
       (res) => {
         // console.log(res)
+        if(res.returnObject != null){
         this.emirates = res.returnObject;
         this.emirates.forEach((element) => {
           // console.log(element.emirateEng)
         });
+      }
         // console.log(this.emirates)
       },
       (err) => {

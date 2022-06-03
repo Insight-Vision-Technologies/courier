@@ -7,6 +7,7 @@ import {
   UrlTree,
 
 } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { Observable } from 'rxjs';
 import { AuthService } from './auth.service';
 
@@ -14,7 +15,8 @@ import { AuthService } from './auth.service';
   providedIn: 'root',
 })
 export class RoleGuard implements CanActivate {
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(private authService: AuthService, private router: Router,
+    private toster: ToastrService,) {}
 
   canActivate(
     route: ActivatedRouteSnapshot,
@@ -33,8 +35,12 @@ export class RoleGuard implements CanActivate {
     if (!isAuthorized) {
       console.log(route.data.role);
       console.log(isAuthorized);
-
-      // this.router.navigateByUrl('/signin'), { queryParams: { returnUrl: state.url } };
+      this.toster.warning('You Are Not Allow TO This Page', 'warning', {
+        timeOut: 2000,
+        closeButton: true,
+        progressBar: true,
+      });
+      this.router.navigateByUrl('/'), { queryParams: { returnUrl: state.url } };
     }
     return isAuthorized;
   }

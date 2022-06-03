@@ -110,19 +110,19 @@ UserInfo: IUser={
     if(this.authService.tt.Role == 'User'){
       console.log('this.tt.CompId');
       this.router.navigate(['/Profile'])
-      .then(() => {
-        window.location.reload();
-      });
+      // .then(() => {
+      //   window.location.reload();
+      // });
       }
       else if(this.authService.tt.Role =='CompanyOwner'){
       console.log('hfhfh');
       this.authService.getUserCompany()
 
       this.router.navigate(['/Company/Dashboard/home'])
-      .then(() => {
-          window.location.reload();
+      // .then(() => {
+      //     window.location.reload();
 
-        });
+      //   });
       }
 
       else if(this.authService.tt.Role =='Driver'){
@@ -130,10 +130,22 @@ UserInfo: IUser={
       this.authService.getUserDriver()
 
       this.router.navigate(['/DriverPages/DriverDashboard'])
-      .then(() => {
-          window.location.reload();
+      // .then(() => {
+      //     window.location.reload();
 
-        });
+      //   });
+      }
+
+      else if(this.authService.tt.Role =='Admin'){
+      console.log('hfhfh');
+      this.authService.getUserDriver()
+
+      this.router.navigate(['/Admin/Dashboard'])
+      // .then(() => {
+      //     window.location.reload();
+
+      //   }
+      // );
       }
     // this.router.navigateByUrl('/')
     //////////ErrorTest/////

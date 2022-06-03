@@ -36,22 +36,23 @@
                         <div class="col-md-6">
                             <div class="form-group last mb-3">
                                 <label for="password">Password</label>
-                                <input type="password" [type]="hide? 'password':'text'" minlength="6" [(ngModel)]="comp.password" [ngClass]=" { 'is-invalid': form.submitted && password.invalid || password.touched }" class="form-control" placeholder="Your password" id="password" name="password"
-                                    required #password="ngModel" />
+                                <input type="password" pattern='^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,12}$' [type]="hide? 'password':'text'" minlength="6" [(ngModel)]="comp.password" [ngClass]=" { 'is-invalid': form.submitted && password.invalid || password.touched }"
+                                    class="form-control" placeholder="Your password" id="password" name="password" required #password="ngModel" />
                                 <i class="material-icons cc" matsuffix (click)="hide=!hide ">
                             {{hide ?  'visibility':'visibility_off'}}
                            </i>
                                 <div *ngIf="form.submitted && password.invalid || password.touched" class="invalid-feedback error-msg form-group">
                                     <div *ngIf="password.errors?.required">Password is required</div>
                                     <div *ngIf="password.errors?.minlength">Password should be at least 6 characters long</div>
+                                    <div *ngIf="password.errors?.pattern">At least 1 Uppercase <br> At least 1 Lowercase<br> At least 1 Number <br>At least 1 Symbol, symbol allowed --> !@#$%^&*_=+-<br> Min 8 chars and Max 12 chars</div>
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group last mb-3">
                                 <label for="confirmPassword">Confirm password</label>
-                                <input type="password" [type]="hideConfirm ? 'password' : 'text'" minlength="6" [(ngModel)]="comp.confirmPassword" [ngClass]=" { 'is-invalid': form.submitted && confirmPassword.invalid || confirmPassword.touched }" class="form-control" placeholder="confirm Password"
-                                    id="confirmPassword" name="confirmPassword" required #confirmPassword="ngModel" />
+                                <input type="password" pattern='^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,12}$' [type]="hideConfirm ? 'password' : 'text'" minlength="6" [(ngModel)]="comp.confirmPassword" [ngClass]=" { 'is-invalid': form.submitted && confirmPassword.invalid || confirmPassword.touched }"
+                                    class="form-control" placeholder="confirm Password" id="confirmPassword" name="confirmPassword" required #confirmPassword="ngModel" />
                                 <i class="material-icons cc" matsuffix (click)="hideConfirm = !hideConfirm">
                             {{ hideConfirm ? "visibility" : "visibility_off" }}
                           </i>

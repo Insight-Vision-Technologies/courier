@@ -27,7 +27,7 @@ import { AdminEditCouriresComponent } from './admin-edit-courires/admin-edit-cou
 
 
 const routes: Routes = [
-  { path: 'Dashboard', redirectTo: 'Dashboard/home', pathMatch: 'full' }, //Default Path
+  { path: 'Dashboard', redirectTo: 'Dashboard/AdminHome', pathMatch: 'full' }, //Default Path
 
   { path: '/', component: AdminDashboardComponent },
   { path: 'AdminCourireDerails ', component: AdminCourireDerailsComponent },
@@ -35,7 +35,7 @@ const routes: Routes = [
   { path: 'AdminorderDetails', component: AdminorderDetailsComponent },
   { path: 'Adminuserorderinfo', component: AdminuserorderinfoComponent },
   { path: 'AdminEditPricing', component: AdminEditPricingComponent },
-  
+
 
 
   {
@@ -111,8 +111,8 @@ const routes: Routes = [
 
        {
          path: 'AdminEditCourires',
-          component: AdminEditCouriresComponent 
-        
+          component: AdminEditCouriresComponent
+
         },
 
 

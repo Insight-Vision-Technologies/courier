@@ -87,7 +87,7 @@
                 <div class="form-group">
                     <label for="to">From <span class="text-danger">*</span></label>
                     <mat-select class="form-control" name="from" [(ngModel)]="newDriverRegister.from" [ngClass]="{ 'is-invalid':driverForm.submitted && from.invalid || from.touched }" required #from="ngModel">
-                        <mat-option *ngFor="let item of allEmirate" value="{{item}}">{{item}}</mat-option>
+                        <mat-option *ngFor="let item of areaDetails" value="{{item.cityNames}}">{{item.cityNames}}</mat-option>
                     </mat-select>
                     <div *ngIf="driverForm.submitted && to.invalid || to.touched" class="invalid-feedback error-msg form-group">
                         <div *ngIf="to.errors?.required">To is required</div>
@@ -99,7 +99,7 @@
                 <div class="form-group">
                     <label for="inputcapacity">To <span class="text-danger">*</span></label>
                     <mat-select class="form-control" name="to" [(ngModel)]="newDriverRegister.to" [ngClass]="{ 'is-invalid':driverForm.submitted && to.invalid || to.touched }" required #to="ngModel">
-                        <mat-option *ngFor="let item of allEmirate" value="{{item}}">{{item}}</mat-option>
+                        <mat-option *ngFor="let item of areaDetails" value="{{item.cityNames}}">{{item.cityNames}}</mat-option>
                     </mat-select>
                     <div *ngIf="driverForm.submitted && CarPlate.invalid || CarPlate.touched" class="invalid-feedback error-msg form-group">
                         <div *ngIf="CarPlate.errors?.required">Car assign is required</div>

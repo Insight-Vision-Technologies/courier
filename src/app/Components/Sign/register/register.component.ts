@@ -86,7 +86,12 @@ UserInfo: IUser={
       console.log(res)
       this.respon=res
       console.log(this.respon.message)
+      if(res.isSuccess==false){
+        console.log(res.message)
 
+        throw res.errors
+      }
+      else{
       this.toster.success('Registered Successfully','succes',{timeOut : 2000,closeButton:true,progressBar:true})
 
       console.log(res)
@@ -117,6 +122,7 @@ UserInfo: IUser={
           // console.log(err)
         }
       );
+      }
     },
     error => {
 

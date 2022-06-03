@@ -1,4 +1,4 @@
-<div *ngIf="changee" class="cc">
+<div *ngIf="changee" class="section">
     <div class="">
         <div class="bg align-items-center justify-content-center">
             <div class="shadow p-3 mb-5 bg-white rounded card container cardw">
@@ -46,12 +46,19 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <div class="form-group first">
-                                            <label for="Password"> Password</label>
-                                            <input matinput type="Password" [type]="hide ? 'Password' : 'text'" id="Password" class="form-control" placeholder="" name="Password" ngModel #Password="ngModel" required minlength="4" />
-                                            <i class="material-icons passIcon" matsuffix (click)="hide = !hide">
-                        {{ hide ? "visibility" : "visibility_off" }}
-                      </i>
+
+                                        <div class="form-group last mb-3">
+                                            <label for="Password">Password</label>
+                                            <input type="Password" pattern='^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,12}$' [type]="hide? 'Password':'text'" name="Password" ngModel #Password="ngModel" required minlength="4" [ngClass]=" { 'is-invalid': form.submitted && Password.invalid || Password.touched }"
+                                                class="form-control" id="Password" />
+                                            <i class="material-icons cc" matsuffix (click)="hide=!hide ">
+                                      {{hide ?  'visibility':'visibility_off'}}
+                                     </i>
+                                            <div *ngIf="form.submitted && Password.invalid || Password.touched" class="invalid-feedback error-msg form-group">
+                                                <div *ngIf="Password.errors?.required">Password is required</div>
+                                                <div *ngIf="Password.errors?.minlength">Password should be at least 6 characters long</div>
+                                                <div *ngIf="Password.errors?.pattern">At least 1 Uppercase <br> At least 1 Lowercase<br> At least 1 Number <br>At least 1 Symbol, symbol allowed --> !@#$%^&*_=+-<br> Min 8 chars and Max 12 chars</div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -70,12 +77,6 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <!-- <div class="col-md-6">
-                                    <div class="form-group first">
-                                        <label for="lname">Website</label>
-                                        <input type="text" class="form-control" placeholder="e.g. https://google.com" id="lname">
-                                    </div>
-                                </div> -->
                                 </div>
 
                                 <div class="row">
@@ -94,6 +95,7 @@
                                                 </div>
                                             </div>
                                         </div>
+
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group last mb-3">
